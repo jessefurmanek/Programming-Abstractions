@@ -26,7 +26,7 @@ void ListPermutations(string str, int n);
 
 int main() {
     
-    ListPermutations("AA", 0);
+    ListPermutations("BAAA", 0);
     
     return 0;
 }

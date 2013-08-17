@@ -36,6 +36,11 @@ void RecursivePermute(string prefix, string rest, string original) {
         cout << prefix << endl;
     } else {
         for (int i = 0; i < rest.length(); i++) {
+            bool dupeFound =false;
+            for(int x = 0; x<i; x++){  //set bounds for x<i so the first instance of a later duplicated letter still runs
+                if(rest[i]==rest[x]) dupeFound=true;
+            }
+                if (dupeFound) continue;
                 string newPrefix = prefix + rest[i];
                 string newRest = rest.substr(0, i) + rest.substr(i+1);
                 RecursivePermute(newPrefix, newRest, original);
