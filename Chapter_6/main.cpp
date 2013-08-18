@@ -21,12 +21,12 @@ using namespace std;
 
 /* Main program */
 
-void RecursivePermute(string prefix, string rest, string original);
-void ListPermutations(string str, int n);
+void PermutePhoneNumberToWord(string prefix, string rest);
+void ListMnemonics(string str);
 
 int main() {
     
-    ListPermutations("BAAA", 0);
+    ListMnemonics("63783");
     
     return 0;
 }
