@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9537360C17C0018600FFA579 /* ListMnemonics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9537360A17C0018600FFA579 /* ListMnemonics.cpp */; };
 		9549B6B917A54DB300C5F65E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9549B6B717A54DB300C5F65E /* main.cpp */; };
+		955097C417D8A7D40070FBA4 /* GenerateBinaryCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 955097C217D8A7D40070FBA4 /* GenerateBinaryCode.cpp */; };
 		95B57A5917D13D530034D050 /* ListSubsets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B57A5717D13D530034D050 /* ListSubsets.cpp */; };
 		95BD1E5E17BEA1CA00446E28 /* HanoiUsingStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BD1E5C17BEA1CA00446E28 /* HanoiUsingStack.cpp */; };
 		95BD1E6117BEAB7900446E28 /* RecursivePermute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BD1E5F17BEAB7900446E28 /* RecursivePermute.cpp */; };
@@ -20,6 +21,7 @@
 		8D1107320486CEB800E47090 /* CourseWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9537360A17C0018600FFA579 /* ListMnemonics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListMnemonics.cpp; sourceTree = "<group>"; };
 		9549B6B717A54DB300C5F65E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		955097C217D8A7D40070FBA4 /* GenerateBinaryCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GenerateBinaryCode.cpp; sourceTree = "<group>"; };
 		95B57A5717D13D530034D050 /* ListSubsets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListSubsets.cpp; sourceTree = "<group>"; };
 		95BD1E5C17BEA1CA00446E28 /* HanoiUsingStack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HanoiUsingStack.cpp; sourceTree = "<group>"; };
 		95BD1E5F17BEAB7900446E28 /* RecursivePermute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RecursivePermute.cpp; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				95BD1E5F17BEAB7900446E28 /* RecursivePermute.cpp */,
 				9537360A17C0018600FFA579 /* ListMnemonics.cpp */,
 				95B57A5717D13D530034D050 /* ListSubsets.cpp */,
+				955097C217D8A7D40070FBA4 /* GenerateBinaryCode.cpp */,
 			);
 			name = "Current Code";
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				95BD1E6117BEAB7900446E28 /* RecursivePermute.cpp in Sources */,
 				9537360C17C0018600FFA579 /* ListMnemonics.cpp in Sources */,
 				95B57A5917D13D530034D050 /* ListSubsets.cpp in Sources */,
+				955097C417D8A7D40070FBA4 /* GenerateBinaryCode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

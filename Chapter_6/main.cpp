@@ -22,11 +22,13 @@ using namespace std;
 /* Main program */
 
 
-void ListSubsets(string str);
+void GenerateBinaryCode(string str, int num);
+void BinaryCodeWrapper(int nBits);
+
 
 int main() {
     
-    ListSubsets("ABC");
+    BinaryCodeWrapper(4);
     
     return 0;
 }
