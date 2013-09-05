@@ -21,12 +21,12 @@ using namespace std;
 
 /* Main program */
 
-void PermutePhoneNumberToWord(string prefix, string rest);
-void ListMnemonics(string str);
+
+void ListSubsets(string str);
 
 int main() {
     
-    ListMnemonics("63783");
+    ListSubsets("ABC");
     
     return 0;
 }
