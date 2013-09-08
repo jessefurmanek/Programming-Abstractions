@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9529FF0E17D9F8FF00C3E3E9 /* GenerateGrayCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9529FF0C17D9F8FF00C3E3E9 /* GenerateGrayCode.cpp */; };
+		9529FF1117DA8C6800C3E3E9 /* NumberOfPartitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9529FF0F17DA8C6800C3E3E9 /* NumberOfPartitions.cpp */; };
 		9537360C17C0018600FFA579 /* ListMnemonics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9537360A17C0018600FFA579 /* ListMnemonics.cpp */; };
 		9549B6B917A54DB300C5F65E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9549B6B717A54DB300C5F65E /* main.cpp */; };
 		955097C417D8A7D40070FBA4 /* GenerateBinaryCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 955097C217D8A7D40070FBA4 /* GenerateBinaryCode.cpp */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CourseWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9529FF0C17D9F8FF00C3E3E9 /* GenerateGrayCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GenerateGrayCode.cpp; sourceTree = "<group>"; };
+		9529FF0F17DA8C6800C3E3E9 /* NumberOfPartitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NumberOfPartitions.cpp; sourceTree = "<group>"; };
 		9537360A17C0018600FFA579 /* ListMnemonics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListMnemonics.cpp; sourceTree = "<group>"; };
 		9549B6B717A54DB300C5F65E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		955097C217D8A7D40070FBA4 /* GenerateBinaryCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GenerateBinaryCode.cpp; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				9537360A17C0018600FFA579 /* ListMnemonics.cpp */,
 				95B57A5717D13D530034D050 /* ListSubsets.cpp */,
 				955097C217D8A7D40070FBA4 /* GenerateBinaryCode.cpp */,
+				9529FF0C17D9F8FF00C3E3E9 /* GenerateGrayCode.cpp */,
+				9529FF0F17DA8C6800C3E3E9 /* NumberOfPartitions.cpp */,
 			);
 			name = "Current Code";
 			sourceTree = "<group>";
@@ -184,6 +190,8 @@
 				9537360C17C0018600FFA579 /* ListMnemonics.cpp in Sources */,
 				95B57A5917D13D530034D050 /* ListSubsets.cpp in Sources */,
 				955097C417D8A7D40070FBA4 /* GenerateBinaryCode.cpp in Sources */,
+				9529FF0E17D9F8FF00C3E3E9 /* GenerateGrayCode.cpp in Sources */,
+				9529FF1117DA8C6800C3E3E9 /* NumberOfPartitions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
