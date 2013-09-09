@@ -21,7 +21,11 @@ using namespace std;
 
 /* Main program */
 
-int NumberOfPartitions(int target, Vector<int> vecInts);
+bool IsMeasurable(int target, Vector<int> vecArray);
+
+bool IsMeasurableWork(int target, Vector<int> vecSame, Vector<int> vecOther, Vector<int> vecArray);
+
+
 
 int main() {
     Vector<int> vecInts;
@@ -32,7 +36,7 @@ int main() {
     vecInts.add(2);
     
     
-    cout<<NumberOfPartitions(1, vecInts)<<endl;
+    cout<<IsMeasurable(18, vecInts)<<endl;
     
     
     

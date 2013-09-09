@@ -19,11 +19,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "main.cpp"
-         timestampString = "400345176.39848"
+         timestampString = "400389657.977384"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78">
+         startingLineNumber = "82"
+         endingLineNumber = "82">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -43,11 +43,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "main.cpp"
-         timestampString = "400340806.993615"
+         timestampString = "400389657.977384"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "30"
+         endingLineNumber = "30">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "NumberOfPartitions.cpp"
+         timestampString = "400387267.188889"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "26"
-         endingLineNumber = "26">
+         endingLineNumber = "26"
+         landmarkName = "NumberOfPartitions(int target, Vector&lt;int&gt; vecInts)"
+         landmarkType = "7">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
