@@ -34,6 +34,7 @@ int main() {
     vecInts.add(3);
     vecInts.add(4);
     vecInts.add(2);
+    vecInts.add(23);
     
     
     cout<<IsMeasurable(18, vecInts)<<endl;
