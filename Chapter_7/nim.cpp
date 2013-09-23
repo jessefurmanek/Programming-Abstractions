@@ -12,7 +12,7 @@
 using namespace std;
 
 
-const int N_COINS = 7;  //= initial number of coins
+const int N_COINS = 13;  //= initial number of coins
 const int MAX_MOVE=3;  //maximum number of coins that a player may take
 const int NO_GOOD_MOVE = -1;  //sentinel (symbolic indicator) indicating that no good move is available
 
@@ -20,7 +20,7 @@ const int NO_GOOD_MOVE = -1;  //sentinel (symbolic indicator) indicating that no
 
 enum playerT { Human, Computer };  //creates an enuerated type of Player, that distiguishes the turns for the human player
 
-void GiveInstructions();
+void GiveInstructionsNim();
 void AnnounceWinner(int nCoins, playerT whoseTurn);
 int GetUserMove(int nCoins);
 bool MoveIsLegal(int nTaken, int nCoins);
@@ -35,7 +35,7 @@ void RunNim(){
     int nCoins, nTaken;
     playerT whoseTurn;
     
-    GiveInstructions();
+    GiveInstructionsNim();
     nCoins = N_COINS;
     whoseTurn = Human;
     while (nCoins>1){
@@ -55,7 +55,7 @@ void RunNim(){
     AnnounceWinner(nCoins, whoseTurn);
 }
 
-void GiveInstructions() {
+void GiveInstructionsNim() {
     cout << "Hello.  Welcome to the game of nim."  << endl;
     cout << "In this game, we will start with a pile of" << endl;
     cout << N_COINS  << " coins on the table. " << endl;

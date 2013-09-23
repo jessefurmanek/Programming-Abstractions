@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B3A9CE01713B46200787D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B3A9CDE1713B46200787D95 /* main.cpp */; };
+		9520319717E1FCF500136E5B /* TicTacToe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9520319517E1FCF500136E5B /* TicTacToe.cpp */; };
+		9541E44217F09B670026AE76 /* KnightsTour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9541E44017F09B670026AE76 /* KnightsTour.cpp */; };
 		957C0D0417E0E69000A0A5CC /* nim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957C0D0217E0E69000A0A5CC /* nim.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
@@ -16,6 +18,10 @@
 		2B3A9CDE1713B46200787D95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.7_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.7_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9520319517E1FCF500136E5B /* TicTacToe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TicTacToe.cpp; sourceTree = "<group>"; };
+		9520319617E1FCF500136E5B /* TicTacToe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicTacToe.h; sourceTree = "<group>"; };
+		9541E44017F09B670026AE76 /* KnightsTour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KnightsTour.cpp; sourceTree = "<group>"; };
+		9541E44117F09B670026AE76 /* KnightsTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnightsTour.h; sourceTree = "<group>"; };
 		957C0D0217E0E69000A0A5CC /* nim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nim.cpp; sourceTree = "<group>"; };
 		957C0D0517E10A3C00A0A5CC /* nim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
@@ -48,6 +54,10 @@
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
 				957C0D0517E10A3C00A0A5CC /* nim.h */,
 				957C0D0217E0E69000A0A5CC /* nim.cpp */,
+				9520319517E1FCF500136E5B /* TicTacToe.cpp */,
+				9520319617E1FCF500136E5B /* TicTacToe.h */,
+				9541E44017F09B670026AE76 /* KnightsTour.cpp */,
+				9541E44117F09B670026AE76 /* KnightsTour.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -100,7 +110,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Ch.7_Coursework" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -154,6 +164,8 @@
 			files = (
 				2B3A9CE01713B46200787D95 /* main.cpp in Sources */,
 				957C0D0417E0E69000A0A5CC /* nim.cpp in Sources */,
+				9541E44217F09B670026AE76 /* KnightsTour.cpp in Sources */,
+				9520319717E1FCF500136E5B /* TicTacToe.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +175,7 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "/tmp/Blank Project/build";
 				COPY_PHASE_STRIP = NO;
@@ -187,12 +200,15 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CONFIGURATION_BUILD_DIR = .;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRARY_SEARCH_PATHS = StanfordCPPLib;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fstack-check";
-				SDKROOT = "";
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = StanfordCPPLib;
 				WARNING_CFLAGS = (
 					"-Wall",
