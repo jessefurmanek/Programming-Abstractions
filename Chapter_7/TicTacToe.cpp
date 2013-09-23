@@ -48,7 +48,7 @@ struct stateT{  //defines an object that contains a board state, whose turns it 
     
 };
 
-const int MAX_DEPTH = 6;  //the maximum depth of the recursion
+const int MAX_DEPTH = 5;  //the maximum depth of the recursion
 const playerT FIRST_PLAYER = Computer;  //assigning a playerT constant to set the Computer as the first player
 
 
@@ -176,8 +176,7 @@ moveT FindBestMove (stateT state, int depth, int & rating){
             
             bestMove=move;
             minRating=curRating;
-            cout<<"move: "<<move<<endl;
-            cout<<"rating: "<<curRating<<endl;
+
         }
         RetractMove(state, move);
     }

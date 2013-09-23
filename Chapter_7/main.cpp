@@ -8,13 +8,15 @@
 #include "console.h"
 #include "simpio.h"
 #include "KnightsTour.h"
+#include "TicTacToe.h"
 
 using namespace std;
 void displayKnightsTour();
+void PlayTicTacToe();
 
 
 int main() {
    
-    displayKnightsTour();
+    PlayTicTacToe();
     return 0;
 }
