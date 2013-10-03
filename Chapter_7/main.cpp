@@ -7,16 +7,18 @@
 #include <iostream>
 #include "console.h"
 #include "simpio.h"
-#include "KnightsTour.h"
-#include "TicTacToe.h"
+#include "grid.h"
+#include "nQueens.h"
+
 
 using namespace std;
-void displayKnightsTour();
-void PlayTicTacToe();
+
+void RunNQueens(int nQueens, int BoardSize);
 
 
 int main() {
-   
-    PlayTicTacToe();
+    
+    RunNQueens(8,8);
+    
     return 0;
 }

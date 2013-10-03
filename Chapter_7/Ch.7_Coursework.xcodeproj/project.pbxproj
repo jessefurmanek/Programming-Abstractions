@@ -10,6 +10,7 @@
 		2B3A9CE01713B46200787D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B3A9CDE1713B46200787D95 /* main.cpp */; };
 		9520319717E1FCF500136E5B /* TicTacToe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9520319517E1FCF500136E5B /* TicTacToe.cpp */; };
 		9541E44217F09B670026AE76 /* KnightsTour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9541E44017F09B670026AE76 /* KnightsTour.cpp */; };
+		9549EA2517F30BED000CCFE6 /* nQueens.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9549EA2317F30BED000CCFE6 /* nQueens.cpp */; };
 		957C0D0417E0E69000A0A5CC /* nim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957C0D0217E0E69000A0A5CC /* nim.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
@@ -22,6 +23,8 @@
 		9520319617E1FCF500136E5B /* TicTacToe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicTacToe.h; sourceTree = "<group>"; };
 		9541E44017F09B670026AE76 /* KnightsTour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KnightsTour.cpp; sourceTree = "<group>"; };
 		9541E44117F09B670026AE76 /* KnightsTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnightsTour.h; sourceTree = "<group>"; };
+		9549EA2317F30BED000CCFE6 /* nQueens.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nQueens.cpp; sourceTree = "<group>"; };
+		9549EA2417F30BED000CCFE6 /* nQueens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nQueens.h; sourceTree = "<group>"; };
 		957C0D0217E0E69000A0A5CC /* nim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nim.cpp; sourceTree = "<group>"; };
 		957C0D0517E10A3C00A0A5CC /* nim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 				9520319617E1FCF500136E5B /* TicTacToe.h */,
 				9541E44017F09B670026AE76 /* KnightsTour.cpp */,
 				9541E44117F09B670026AE76 /* KnightsTour.h */,
+				9549EA2317F30BED000CCFE6 /* nQueens.cpp */,
+				9549EA2417F30BED000CCFE6 /* nQueens.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -163,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B3A9CE01713B46200787D95 /* main.cpp in Sources */,
+				9549EA2517F30BED000CCFE6 /* nQueens.cpp in Sources */,
 				957C0D0417E0E69000A0A5CC /* nim.cpp in Sources */,
 				9541E44217F09B670026AE76 /* KnightsTour.cpp in Sources */,
 				9520319717E1FCF500136E5B /* TicTacToe.cpp in Sources */,
