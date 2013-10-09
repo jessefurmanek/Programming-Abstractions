@@ -9,16 +9,16 @@
 #include "simpio.h"
 #include "grid.h"
 #include "nQueens.h"
+#include "vector.h"
+#include "InstantInsanity.h"
 
+void RunInsanityCubes();
 
 using namespace std;
 
-void RunNQueens(int nQueens, int BoardSize);
-
-
 int main() {
-    
-    RunNQueens(8,8);
-    
+   
+    RunInsanityCubes();
+
     return 0;
 }

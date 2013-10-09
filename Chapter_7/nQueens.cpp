@@ -171,7 +171,7 @@ void GenerateMoveList(Grid<char> & Board, int curQueens, Vector<movePositionT> &
     
     for(int x= 0; x<Board.numCols(); x++){   //crate a vector of all current moves
         for(int y=0; y<Board.numRows(); y++){
-            if(Board[x][y]==NULL){
+            if(Board[x][y]== NULL){
                 temp.x=x;
                 temp.y=y;
                 CurrentMoveList.add(temp);
@@ -184,7 +184,7 @@ void GenerateMoveList(Grid<char> & Board, int curQueens, Vector<movePositionT> &
 
 void MarkBoard(Grid<char> & Board, int startRow, int startCol, int dRow, int dCol, int Iterations, char charQueens){
     for(int x=0; x<Iterations; x++){
-        if(Board[startRow][startCol]==NULL){
+        if(Board[startRow][startCol]== NULL){
             Board[startRow][startCol]='X';
         }
         startRow+=dRow;
