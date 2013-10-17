@@ -8,18 +8,19 @@
 #include "console.h"
 #include "simpio.h"
 #include "grid.h"
-
 #include "vector.h"
-#include "InstantInsanity.h"
+#include "NimLikeTicTacToe.h"
+#include "nim.h"
+#include "TicTacToe.h"
 
 
-void RunInsanityCubes();
+void PlayNim();
 
 using namespace std;
 
 int main() {
     
-        RunInsanityCubes();
+    PlayNim();
     
     return 0;
 }
