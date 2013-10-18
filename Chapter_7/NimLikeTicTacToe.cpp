@@ -12,7 +12,6 @@
  */
 
 #include "NimLikeTicTacToe.h"
-#include "TicTacToe.h"
 #include "simpio.h"
 #include "vector.h"
 #include "grid.h"
