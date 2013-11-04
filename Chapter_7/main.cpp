@@ -9,18 +9,16 @@
 #include "simpio.h"
 #include "grid.h"
 #include "vector.h"
-#include "NimLikeTicTacToe.h"
-#include "nim.h"
-#include "TicTacToe.h"
-
-
-void PlayNim();
-
+#include "nQueens.h"
+#include "NimModification.h"
 using namespace std;
+
+void PlayNimMod();
+
 
 int main() {
     
-    PlayNim();
+    PlayNimMod();
     
     return 0;
 }

@@ -37,7 +37,7 @@ void RunNim(){
     
     GiveInstructionsNim();
     nCoins = N_COINS;
-    whoseTurn = Human;
+    whoseTurn = Computer;
     while (nCoins>1){
         cout<<"There are " <<nCoins<< " coins in the pile."<<endl;
         switch(whoseTurn){

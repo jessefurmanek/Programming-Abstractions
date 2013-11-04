@@ -39,10 +39,12 @@ struct stateT{  //defines the game state
     int numCoins;
     playerT whoseTurn;
     int turnsTaken;
+    int playerPile;  //add a odd/even pile for the computer and the player
+    int computerPile;
     
 };
 
-const int MAX_DEPTH = 9;  //the maximum depth of the recursion
+const int MAX_DEPTH = 17;  //the maximum depth of the recursion
 const playerT FIRST_PLAYER = Computer;  //assigning a playerT constant to set the Computer as the first player
 
 
@@ -63,9 +65,13 @@ playerT NimModWhoseTurn(stateT state);
 playerT NimModOpponent(playerT player);
 int NimModEvaluatePosition(stateT state, int depth);
 int NimModEvaluateStaticPosition(stateT state, int depth);
+bool PileIsEven(stateT state);
 
 void PlayNimMod(){
     stateT state = NimModNewGame();  //begin the game with the max number of coins
+    cout<<"The pile begins with 17 coins. On each turn, players alternate taking one, two, three, or four coins from the pile. \
+    The player whose pile contains an even number of coins after the last one is taken wins the game."<<endl;
+    
     moveT move;
     while (!NimModGameIsOver(state)){
         NimModDisplayGame(state);
@@ -79,6 +85,11 @@ void PlayNimMod(){
                 break;
         }
         NimModMakeMove(state,move);  //this function updates the state
+         //add spacing
+        cout<<endl<<"My pile has "<<state.computerPile<<" coins"<<endl;
+        cout<<"Your pile has "<<state.playerPile<<" coins"<<endl<<endl;
+      
+        
         
     }
     NimModAnnounceResult(state);
@@ -88,9 +99,10 @@ void PlayNimMod(){
 
 stateT NimModNewGame(){
     stateT state;
-    state.numCoins = 13;
+    state.numCoins = 17;
     state.whoseTurn = FIRST_PLAYER;  //set's the turn to the constant FIRST_PLAYER
-    state.turnsTaken = 0;  //begins the game with 0 turns taken
+    state.playerPile = 0;  //each of the player's piles begins blank
+    state.computerPile = 0;
     return state;
 }
 
@@ -112,7 +124,8 @@ moveT NimModFindBestMove (stateT state, int depth, int & rating){
         moveT move = moveList[x];  //create a list of possible moves
         
         
-        NimModMakeMove(state, move);  //make the first move
+        NimModMakeMove(state, move);  //make the first move from the list of possibly moves
+        
         
         int curRating = NimModEvaluatePosition(state, depth+1);  //begin recursive call
         
@@ -135,19 +148,52 @@ int NimModEvaluatePosition(stateT state, int depth){
     if(NimModGameIsOver(state) || depth==MAX_DEPTH){  //if the max depth of recursion has been reached.
         return NimModEvaluateStaticPosition(state, depth);
     }
-    NimModFindBestMove(state,depth,rating);  //recursive call back to FindBestMove
     
-    cout<<rating<<endl;
+    NimModFindBestMove(state,depth,rating);  //recursive call back to FindBestMove
+ 
     return rating;
 }
 
 int NimModEvaluateStaticPosition(stateT state, int depth){
-    if(state.numCoins==1){  //if there is 1 coin left, that player loses
-        return LOSING_POSITION;
+    
+    if(state.numCoins==0){  //if there are no coins left
+        if(state.whoseTurn==Computer){  //if its the computers turn
+            if(state.computerPile%2==0){   //and the computer's pile is even
+                return WINNING_POSITION;   //the computer is in a winning position
+            }else return LOSING_POSITION;  //ELSE the computer is in a bad position
+            
+        }else{ //if its the players turn
+            if(state.computerPile%2==0){  //and the computer's pile is even
+                return LOSING_POSITION;  //the payer is in a bad position
+                
+            }else return WINNING_POSITION;
+        }
+        
     }if(depth ==MAX_DEPTH){
         return  NEUTRAL_POSITION;
     }
-    return WINNING_POSITION;
+    return NEUTRAL_POSITION;
+}
+
+void NimModMakeMove(stateT & state, moveT move){
+    state.numCoins -= move; //subtract number of coins from pile
+    
+    if(state.whoseTurn==Computer){
+        state.computerPile+=move;  //add the value back to the respective players pile
+    }else{
+        state.playerPile+=move;
+    }
+    state.whoseTurn = NimModOpponent(state.whoseTurn);  //switch player
+}
+
+void NimModRetractMove(stateT & state, moveT move){  //used to reverse the game state after 'playing' through the game tree to find the best move
+    state.numCoins += move;
+    if(state.whoseTurn== Human){  //if its the humans turn
+        state.computerPile-=move;  //subtract the value from the COMPUTER's pile-- this is because the MakeMove() function switches the current turn
+    }else{
+        state.playerPile-=move;
+    }
+    state.whoseTurn = NimModOpponent(state.whoseTurn);
 }
 
 
@@ -183,25 +229,15 @@ Vector<moveT> NimModGenerateMoveList(stateT state, Vector<moveT> moveList){
 }
 
 bool NimModMoveIsLegal(moveT move, stateT state){
-    if(move<0 || move>MAX_MOVE || (state.numCoins-move)<1) return false;  //if any of these cases are true, return false
+    if(move<1 || move>MAX_MOVE || (state.numCoins-move)<0) return false;  //if any of these cases are true, return false
     
     return true;  //else return true.
 }
 
-void NimModMakeMove(stateT & state, moveT move){
-    state.numCoins -= move; //subtract number of coins from ile
-    state.whoseTurn = NimModOpponent(state.whoseTurn);  //switch player
-    state.turnsTaken++; // increment turns
-    
-}
 
-void NimModRetractMove(stateT & state, moveT move){  //used to reverse the game state after 'playing' through the game tree to find the best move
-    state.numCoins += move;
-    state.whoseTurn = NimModOpponent(state.whoseTurn);
-}
 
 bool NimModGameIsOver(stateT state){  //return true if there are no coins left
-    return (state.numCoins) == 1 ;
+    return (state.numCoins) == 0 ;
 }
 
 
@@ -216,7 +252,10 @@ playerT NimModOpponent(playerT player){
 
 
 void NimModAnnounceResult(stateT state){
-    if(state.whoseTurn==Computer){
+    cout<<"My pile has "<<state.computerPile<<" coins"<<endl;
+    cout<<"Your pile has "<<state.playerPile<<" coins"<<endl;
+    
+    if(state.playerPile%2==0){
         cout<<"I lose."<<endl;
     }else{
         cout<<"You lose."<<endl;
