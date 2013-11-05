@@ -10,15 +10,15 @@
 #include "grid.h"
 #include "vector.h"
 #include "nQueens.h"
-#include "NimModification.h"
+#include "ThreePileNim.h"
 using namespace std;
 
-void PlayNimMod();
+void PlayThreePileNim();
 
 
 int main() {
     
-    PlayNimMod();
+    PlayThreePileNim();
     
     return 0;
 }
