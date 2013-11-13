@@ -1,0 +1,53 @@
+1) No, the simple but inefficient recursion example of the Fibonacci sequence can not be extrapolated to infer that all recursion makes for inefficient  algorithms.  The divide-and-conquer algorithms evidence this.
+
+2) The sorting problem is reordering elements in an array
+
+3) By adding an additional check, you are making n more expensive and the resulting representation (n)^2 larger
+
+4) it would take about .797 milliseconds =  (50ms/31,375 operations) * 500,500 operations 
+
+5) (n(n+1))/2
+
+6)  Computational complexity is the shape/rate at which an algorithm increases in cost over time.
+
+7)   False, it was introduced before computers
+
+8) Two rules required for simplifying big-O notation
+
+
+   * 1) There must be a constant Nsub0 AND
+   * 2) a constant C where
+   * t(N) [actual run time of the algorithm] ≤  C x f(N) 
+
+9) Yes, its technically correct.  But its unnecessarily noisy.
+
+10) No, it is not technically correct.  The sort algorithm does not increase in runtime by a factor of 3.
+
+11)  It’s customary because most computer scientists use binary notation— it doesn’t really matter though, because changing the value of the log base is essentially multiplying the log by a coefficient.  Using the binary log is the simplest form.
+
+12)  The computational complexity is O(N)— the function will iterate through itself N times.
+
+13) This is a constant, so something like O(1)
+
+14) Worse-case complexity is just what it sounds like— a measurement of the performance of the algorithm in the worst possible case.  Average case complexity is much more difficult to figure out, and represents the average case for all possible inputs.
+
+15) (N) is an approximation of t(N) with the following characteristic: it must be possible to find a constant N0 and a positive constant C so that for every value of N ≤ N0, the following condition holds: (N)≤Cx ƒ(N) 
+
+16)  The Merge function runs in linear time (at least in the beginning), because its merely adding all the loops.
+
+17) Doesn’t seem to matter when I switched it.
+
+18)  constant ,logarithmic,linear,N log N, quadratic,cubic,exponential
+
+19)  Polynomial algorithm are those whose complexity is not exponential, and therefore tractable
+
+20)  Computer Scientists look to the computational complexity to determine whether the growth will so large as to be prohibitive
+
+21)  Lh position must be equal to Rh position, those values lower than the partition will appear before the partition, greater values will be after
+
+22) Worst case for quick-sort is O(N^2), Average case is N(log(N))
+
+23) Prove the base case, prove the inductive case (if the proposition is true for N, it must also be true for N+1)
+
+24)  The book describes them as the same process but viewed in reverse.  I tend to solve for recursion the same way as I would solve for induction, in that, I look to solve the base case, and then I try to solve it for the base case +1.
+

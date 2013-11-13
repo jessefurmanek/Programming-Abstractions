@@ -1,0 +1,57 @@
+For the tic-tac-toe minimax strategy, the reason why there aren't "choices left on the table" is the algorithm assumes that the opponent will choose the move which will put his opponent in the worst best position.
+
+1) Backtracking algorithms allow you to backtrack to a previous decision point.  Also, when solved recursively, at least one of possible prongs must have a solution.
+
+2)  The right hand rule is following along the wall of a maze until the reach the exit.  This allows the maze solver to reach the end without touching the same wall.  A left hand rule would be just as effective.
+
+3) Each step of the maze involves the same problem;  Eventually, that problem will yield a solution (allowing for a base case)
+
+4) 
+
+
+   * If the solver finds a token that its left from a previous iteration, there is no solution.
+   * If the solver finds the exit
+
+5)  Marking squares allows the user to see the solution found by the algorithm  Otherwise, there would be no  version of the solution saved
+
+6)  The unmark square makes it so only the solution is shown to the client.  Otherwise, the client would see both successful paths and unsuccessful paths on the map.
+
+7)  The boolean result returned conveys to the client whether the maze is solvable
+
+8)  At any given point, try to go N, W, S, and then East.  If the algorithm runs into a wall, backtrack to the last position where it didn't run into a wall and continue the function.  
+
+9) Yes, because it's not a good position.  In other words, if the computer minimizes the maximum score for the human and the human does the same, the human will lose.  The computer can make a multiple of four which = a losing position.
+
+10)
+
+bool MoveIsGoodTest(int nCoins){
+    if (nCoins%4 != 1) return true;
+    
+    return false;
+
+}
+  
+11)The minimax algorithm minimizes the maximum outcome for the opponent.  
+
+12)  I would choose the second prong from the left, leaving the opponent with a maximum move of -2.  This would be a score of +2 for me.
+
+13) An abstract implementation allows for the use of the algorithm in a variety of zero-sum games (as opposed to only being useful for one type of game)
+
+14)  FindBestMove(), EvaluatePosition()
+
+15)  Three arguments == State, Depth, Rating
+
+
+   * State
+   * 
+      * Keeps track of the position of the board, the number of turns taken, and whose turn it is
+   * Depth
+   * 
+      * Keeps track of how deep in the game tree the function currently is.  This allows the client to set a floor for the depth level.  A program requires a floor when a game is complex e.g. chess, and allowing the tree to fully calculate would take an unreasonably long time.
+   * Rating  
+
+   * 
+      * Keeps track of the current lowest rating, which gives an argument to compare to the move object, which is used to find the BestMove
+
+16)  EvaluateStaticPosition is used as the base case for the FindBestMove -Evaluate Position recursion.  It is used to assign a rating for the FindBestMove argument.
+
