@@ -12,23 +12,24 @@
 #include "grid.h"
 #include "vector.h"
 #include "random.h"
-#include "SortToTenThousand.h"
+#include "QuickSortMedian.h"
+
+
 
 using namespace std;
-
-void SortTo10k (Vector<int> & vec);
+void QuicksortMed(Vector<int> & vec, int start, int finish);
 
 int main() {
-    Vector<int> vec;
+    Vector<int> test;
+    test.add(2);
+    test.add(8);
+    test.add(7);
+    test.add(3);
+    test.add(4);
     
-    for(int x=0; x<500000; x++){
-        vec.add(randomInteger(0, 10000));
-    }
-    
-    SortTo10k(vec);
-    
-    
-  
+   
+    QuicksortMed(test, 0, test.size()-1);
+    cout<<test<<endl;
     
     return 0;
 }
