@@ -47,8 +47,9 @@ void runTest(){
             //run Linear Search
             LinAve+=runLinear(testVector, 0, key);
             
-            //run Vector Search
+            //run Binary Search
             BinAve+=runBinary(testVector,0,key);
+            
             
         }
         BinAve/=3;

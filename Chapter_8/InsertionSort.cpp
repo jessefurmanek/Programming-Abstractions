@@ -22,6 +22,7 @@ Vector <int> Sort(Vector<int> & vec){
             }
             lh++;
         }
+    
         rh++;  //go to the next number
     }
     return vec;

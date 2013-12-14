@@ -17,20 +17,11 @@
 
 
 using namespace std;
-void QuicksortMed(Vector<int> & vec, int start, int finish);
+
+void QuickSortTest();
 
 int main() {
-    Vector<int> test;
-    test.add(2);
-    test.add(8);
-    test.add(7);
-    test.add(3);
-    test.add(4);
-    
-   
-    QuicksortMed(test, 0, test.size()-1);
-    cout<<test<<endl;
-    
+    QuickSortTest();
     return 0;
 }
 
