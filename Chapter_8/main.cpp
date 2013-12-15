@@ -12,16 +12,15 @@
 #include "grid.h"
 #include "vector.h"
 #include "random.h"
-#include "QuickSortMedian.h"
+#include "HybridSort.h"
 
+void HybridFindTest();
 
 
 using namespace std;
 
-void QuickSortTest();
-
 int main() {
-    QuickSortTest();
+    HybridFindTest();
     return 0;
 }
 
