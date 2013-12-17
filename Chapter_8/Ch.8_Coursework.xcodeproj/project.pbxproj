@@ -10,6 +10,7 @@
 		2B3A9CE01713B46200787D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B3A9CDE1713B46200787D95 /* main.cpp */; };
 		952A2E68185A79FD00B2A839 /* QuickSortMedian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952A2E66185A79FD00B2A839 /* QuickSortMedian.cpp */; };
 		952BE96F185BB73E0080A182 /* HybridSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952BE96D185BB73E0080A182 /* HybridSort.cpp */; };
+		952BE9721860041E0080A182 /* MajorityLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 952BE9701860041E0080A182 /* MajorityLinear.cpp */; };
 		953C89D61859139F00DFA640 /* BinaryVsLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953C89D41859139F00DFA640 /* BinaryVsLinear.cpp */; };
 		959606B718328C950048F73E /* RaiseToPower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959606B518328C950048F73E /* RaiseToPower.cpp */; };
 		959606BA183291130048F73E /* InsertionSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959606B8183291130048F73E /* InsertionSort.cpp */; };
@@ -26,6 +27,8 @@
 		952A2E67185A79FD00B2A839 /* QuickSortMedian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickSortMedian.h; sourceTree = "<group>"; };
 		952BE96D185BB73E0080A182 /* HybridSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HybridSort.cpp; sourceTree = "<group>"; };
 		952BE96E185BB73E0080A182 /* HybridSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HybridSort.h; sourceTree = "<group>"; };
+		952BE9701860041E0080A182 /* MajorityLinear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MajorityLinear.cpp; sourceTree = "<group>"; };
+		952BE9711860041E0080A182 /* MajorityLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MajorityLinear.h; sourceTree = "<group>"; };
 		953C89D41859139F00DFA640 /* BinaryVsLinear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryVsLinear.cpp; sourceTree = "<group>"; };
 		953C89D51859139F00DFA640 /* BinaryVsLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinaryVsLinear.h; sourceTree = "<group>"; };
 		959606B518328C950048F73E /* RaiseToPower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RaiseToPower.cpp; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
+				952BE9701860041E0080A182 /* MajorityLinear.cpp */,
+				952BE9711860041E0080A182 /* MajorityLinear.h */,
 				952BE96D185BB73E0080A182 /* HybridSort.cpp */,
 				952BE96E185BB73E0080A182 /* HybridSort.h */,
 				953C89D41859139F00DFA640 /* BinaryVsLinear.cpp */,
@@ -190,6 +195,7 @@
 				959606BD18329F800048F73E /* SortToTenThousand.cpp in Sources */,
 				959606BA183291130048F73E /* InsertionSort.cpp in Sources */,
 				959606C0183445FF0048F73E /* SortTimer.cpp in Sources */,
+				952BE9721860041E0080A182 /* MajorityLinear.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

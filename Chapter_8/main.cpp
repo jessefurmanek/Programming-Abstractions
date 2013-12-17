@@ -12,15 +12,17 @@
 #include "grid.h"
 #include "vector.h"
 #include "random.h"
-#include "HybridSort.h"
+#include "MajorityLinear.h"
 
-void HybridFindTest();
+Vector<int> RandomVec(int n);
+void RunMajLinear();
+
 
 
 using namespace std;
 
 int main() {
-    HybridFindTest();
+    RunMajLinear();
     return 0;
 }
 
