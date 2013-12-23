@@ -30,7 +30,7 @@
  * spaceOption -- Current character position in the buffer
  */
 
-Scanner::Scanner() {
+Scanner::Scanner() {  //instantiates a scanner object
     buffer = "";
     spaceOption = PreserveSpaces;
 }
@@ -55,6 +55,7 @@ std::string Scanner::nextToken() {
         error("setInput has not been called");
     }
     if (spaceOption == IgnoreSpaces) skipSpaces();
+    
     int start = cp;
     if (start >= len) return "";
     if (isalnum(buffer[cp])) {
@@ -76,6 +77,7 @@ bool Scanner::hasMoreTokens() {
 void Scanner::setSpaceOption(spaceOptionT option) {
     spaceOption = option;
 }
+
 Scanner::spaceOptionT Scanner::getSpaceOption() {
     return spaceOption;
 }

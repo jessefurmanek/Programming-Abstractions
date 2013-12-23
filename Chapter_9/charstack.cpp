@@ -43,7 +43,7 @@ void CharStack::expandCapacity(){
         array[i] = elements[i];
     }
     delete[] elements;
-    elements = array;  //copy the temp array's elements into the new "elements" array
+    elements = array;  //copy the temp array's elements into the new "elements" array 
 }
 
 void CharStack::push(char chElement){
