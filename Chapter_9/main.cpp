@@ -11,15 +11,18 @@
 #include "simpio.h"
 #include "grid.h"
 #include "vector.h"
-#include "random.h"
-#include "scanner.h"
+#include "rpncalc.h"
+#include "rational.h"
+#include "rationalstack.h"
 
 using namespace std;
 
 
+void rpnCalc();
+
 int main() {
-
-
+    rpnCalc();
+    
     return 0;
 }
 

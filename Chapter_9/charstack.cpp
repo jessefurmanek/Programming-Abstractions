@@ -13,6 +13,7 @@
 #include "error.h"
 
 
+
 CharStack::CharStack(){  //constructor
     elements = new char[INITIAL_CAPACITY];
     capacity = INITIAL_CAPACITY;

@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2B3A9CE01713B46200787D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B3A9CDE1713B46200787D95 /* main.cpp */; };
-		95FB8B99186238780047957C /* charstack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FB8B97186238780047957C /* charstack.cpp */; };
-		95FB8B9C186269220047957C /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FB8B9A186269220047957C /* scanner.cpp */; };
+		953FDBAB1867F2F9000F8FF3 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953FDBA81867F2F9000F8FF3 /* scanner.cpp */; };
+		953FDBB41867F33D000F8FF3 /* charstack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953FDBB21867F33D000F8FF3 /* charstack.cpp */; };
+		953FDBB71867F3CC000F8FF3 /* charstackVec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953FDBB51867F3CC000F8FF3 /* charstackVec.cpp */; };
+		9564A3BD1874DE2900CEF24A /* rpncalc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9564A3BB1874DE2900CEF24A /* rpncalc.cpp */; };
+		9564A3C01874E13D00CEF24A /* rationalstack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9564A3BE1874E13D00CEF24A /* rationalstack.cpp */; };
+		95B1D8351869403D00EE1437 /* rational.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B1D8331869403D00EE1437 /* rational.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
 
@@ -17,11 +21,19 @@
 		2B3A9CDE1713B46200787D95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.9_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.9_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		95FB8B97186238780047957C /* charstack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = charstack.cpp; sourceTree = "<group>"; };
-		95FB8B98186238780047957C /* charstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charstack.h; sourceTree = "<group>"; };
-		95FB8B9A186269220047957C /* scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cpp; sourceTree = "<group>"; };
-		95FB8B9B186269220047957C /* scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner.h; sourceTree = "<group>"; };
-		95FB8B9D18626A180047957C /* scanpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = scanpriv.h; sourceTree = "<group>"; };
+		953FDBA81867F2F9000F8FF3 /* scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cpp; sourceTree = "<group>"; };
+		953FDBA91867F2F9000F8FF3 /* scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner.h; sourceTree = "<group>"; };
+		953FDBAA1867F2F9000F8FF3 /* scanpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanpriv.h; sourceTree = "<group>"; };
+		953FDBB21867F33D000F8FF3 /* charstack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = charstack.cpp; sourceTree = "<group>"; };
+		953FDBB31867F33D000F8FF3 /* charstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charstack.h; sourceTree = "<group>"; };
+		953FDBB51867F3CC000F8FF3 /* charstackVec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = charstackVec.cpp; sourceTree = "<group>"; };
+		953FDBB61867F3CC000F8FF3 /* charstackVec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charstackVec.h; sourceTree = "<group>"; };
+		9564A3BB1874DE2900CEF24A /* rpncalc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rpncalc.cpp; sourceTree = "<group>"; };
+		9564A3BC1874DE2900CEF24A /* rpncalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rpncalc.h; sourceTree = "<group>"; };
+		9564A3BE1874E13D00CEF24A /* rationalstack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rationalstack.cpp; sourceTree = "<group>"; };
+		9564A3BF1874E13D00CEF24A /* rationalstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rationalstack.h; sourceTree = "<group>"; };
+		95B1D8331869403D00EE1437 /* rational.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rational.cpp; sourceTree = "<group>"; };
+		95B1D8341869403D00EE1437 /* rational.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rational.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,11 +62,19 @@
 			isa = PBXGroup;
 			children = (
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
-				95FB8B97186238780047957C /* charstack.cpp */,
-				95FB8B98186238780047957C /* charstack.h */,
-				95FB8B9A186269220047957C /* scanner.cpp */,
-				95FB8B9B186269220047957C /* scanner.h */,
-				95FB8B9D18626A180047957C /* scanpriv.h */,
+				95B1D8331869403D00EE1437 /* rational.cpp */,
+				95B1D8341869403D00EE1437 /* rational.h */,
+				953FDBB51867F3CC000F8FF3 /* charstackVec.cpp */,
+				953FDBB61867F3CC000F8FF3 /* charstackVec.h */,
+				9564A3BF1874E13D00CEF24A /* rationalstack.h */,
+				9564A3BE1874E13D00CEF24A /* rationalstack.cpp */,
+				953FDBB31867F33D000F8FF3 /* charstack.h */,
+				953FDBB21867F33D000F8FF3 /* charstack.cpp */,
+				953FDBA91867F2F9000F8FF3 /* scanner.h */,
+				953FDBA81867F2F9000F8FF3 /* scanner.cpp */,
+				953FDBAA1867F2F9000F8FF3 /* scanpriv.h */,
+				9564A3BB1874DE2900CEF24A /* rpncalc.cpp */,
+				9564A3BC1874DE2900CEF24A /* rpncalc.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -159,9 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95FB8B9C186269220047957C /* scanner.cpp in Sources */,
-				95FB8B99186238780047957C /* charstack.cpp in Sources */,
+				953FDBB41867F33D000F8FF3 /* charstack.cpp in Sources */,
+				953FDBAB1867F2F9000F8FF3 /* scanner.cpp in Sources */,
+				9564A3C01874E13D00CEF24A /* rationalstack.cpp in Sources */,
 				2B3A9CE01713B46200787D95 /* main.cpp in Sources */,
+				95B1D8351869403D00EE1437 /* rational.cpp in Sources */,
+				953FDBB71867F3CC000F8FF3 /* charstackVec.cpp in Sources */,
+				9564A3BD1874DE2900CEF24A /* rpncalc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +226,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LIBRARY_SEARCH_PATHS = StanfordCPPLib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fstack-check";
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = StanfordCPPLib;
