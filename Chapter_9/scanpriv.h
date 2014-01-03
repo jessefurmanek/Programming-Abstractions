@@ -21,10 +21,12 @@ std::string buffer; //the string containing the tokens
 int len;        //buffer length
 int cp;         //current index of the buffer
 spaceOptionT spaceOption;   //space option
+stringOptionT stringOption; //string option
 
 
 void skipSpaces();
 int scanToEndOfIdentifier();
+int getNextQuote();
 
 
 #endif

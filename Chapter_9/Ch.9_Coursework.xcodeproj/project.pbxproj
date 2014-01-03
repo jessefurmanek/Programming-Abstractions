@@ -15,6 +15,7 @@
 		9564A3BD1874DE2900CEF24A /* rpncalc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9564A3BB1874DE2900CEF24A /* rpncalc.cpp */; };
 		9564A3C01874E13D00CEF24A /* rationalstack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9564A3BE1874E13D00CEF24A /* rationalstack.cpp */; };
 		95B1D8351869403D00EE1437 /* rational.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B1D8331869403D00EE1437 /* rational.cpp */; };
+		95BDFAB91877366F00B6956F /* scannertest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95BDFAB71877366F00B6956F /* scannertest.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,8 @@
 		9564A3BF1874E13D00CEF24A /* rationalstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rationalstack.h; sourceTree = "<group>"; };
 		95B1D8331869403D00EE1437 /* rational.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rational.cpp; sourceTree = "<group>"; };
 		95B1D8341869403D00EE1437 /* rational.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rational.h; sourceTree = "<group>"; };
+		95BDFAB71877366F00B6956F /* scannertest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scannertest.cpp; sourceTree = "<group>"; };
+		95BDFAB81877366F00B6956F /* scannertest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scannertest.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
+				95BDFAB71877366F00B6956F /* scannertest.cpp */,
+				95BDFAB81877366F00B6956F /* scannertest.h */,
 				9519714418764C5700E500E2 /* labelgen.cpp */,
 				9519714518764C5700E500E2 /* labelgen.h */,
 				95B1D8331869403D00EE1437 /* rational.cpp */,
@@ -184,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95BDFAB91877366F00B6956F /* scannertest.cpp in Sources */,
 				953FDBB41867F33D000F8FF3 /* charstack.cpp in Sources */,
 				953FDBAB1867F2F9000F8FF3 /* scanner.cpp in Sources */,
 				9564A3C01874E13D00CEF24A /* rationalstack.cpp in Sources */,

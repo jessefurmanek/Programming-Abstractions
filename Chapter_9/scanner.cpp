@@ -33,6 +33,7 @@
 Scanner::Scanner() {  //instantiates a scanner object
     buffer = "";
     spaceOption = PreserveSpaces;
+    stringOption = ScanQuotesAsStrings;
 }
 
 Scanner::~Scanner() {
@@ -58,10 +59,20 @@ std::string Scanner::nextToken() {
     
     int start = cp;
     if (start >= len) return "";
-    if (isalnum(buffer[cp])) {
-        int finish = scanToEndOfIdentifier();
-        return buffer.substr(start, finish - start + 1);
-    }
+    
+    if (stringOption == ScanQuotesAsStrings){
+        if(buffer[cp]== 34){
+            int finish = getNextQuote();
+            return buffer.substr(start, finish - start + 1);
+        }else if(isalnum(buffer[cp])){
+            int finish = scanToEndOfIdentifier();
+            return buffer.substr(start, finish - start + 1);
+        }
+    }else if(isalnum(buffer[cp])){
+            int finish = scanToEndOfIdentifier();
+            return buffer.substr(start, finish - start + 1);
+    }else{}
+    
     cp++;
     return buffer.substr(start, 1);
 }
@@ -71,6 +82,7 @@ bool Scanner::hasMoreTokens() {
         error("setInput has not been called");
     }
     if (spaceOption == IgnoreSpaces) skipSpaces();
+    
     return (cp < len);
 }
 
@@ -80,6 +92,10 @@ void Scanner::setSpaceOption(spaceOptionT option) {
 
 Scanner::spaceOptionT Scanner::getSpaceOption() {
     return spaceOption;
+}
+
+Scanner::stringOptionT Scanner::getStringOption() {
+    return stringOption;
 }
 
 
@@ -97,6 +113,10 @@ void Scanner::skipSpaces() {
     while (cp < len && isspace(buffer[cp])) {
         cp++; }
 }
+
+
+
+
 /*
  * Private method: scanToEndOfIdentifier
  * Usage: finish = scanToEndOfIdentifier();
@@ -110,5 +130,17 @@ void Scanner::skipSpaces() {
 int Scanner::scanToEndOfIdentifier() {
     while (cp < len && isalnum(buffer[cp])) {
         cp++; }
+ 
     return cp - 1;
 }
+
+int Scanner::getNextQuote(){
+   
+    while (cp < len && buffer[cp+1]!= 34) {
+        cp++; }
+   
+    return cp - 1;
+    
+}
+
+

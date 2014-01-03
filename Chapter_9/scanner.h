@@ -84,10 +84,13 @@ public:
      * of this option.
      */
     enum spaceOptionT { PreserveSpaces, IgnoreSpaces };
+    enum stringOptionT { SkipQuotes, ScanQuotesAsStrings};
     
     void setSpaceOption(spaceOptionT option);
+    void setStringOption(stringOptionT option);
     
     spaceOptionT getSpaceOption();
+    stringOptionT getStringOption();
 
 private:
     #include "scanpriv.h"  //include private scanner header to shield implementation from the client
