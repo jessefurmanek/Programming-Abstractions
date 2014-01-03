@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>160E6575-C2B9-402C-B597-7A483BC2F884</string>
+	<string>22668927-3E46-44E4-A31E-86EBD4E8144F</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Ch.7_Coursework</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>42C474EC-C99D-4178-ADC3-9B4D0AD7F4DC</key>
+		<key>E0550B55-BBC1-4206-B951-A4B26458541D</key>
 		<string>https://github.com/jessefurmanek/Programming-Abstractions.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Chapter_7/Ch.7_Coursework.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>42C474EC-C99D-4178-ADC3-9B4D0AD7F4DC</key>
+		<key>E0550B55-BBC1-4206-B951-A4B26458541D</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>42C474EC-C99D-4178-ADC3-9B4D0AD7F4DC</string>
+	<string>E0550B55-BBC1-4206-B951-A4B26458541D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>42C474EC-C99D-4178-ADC3-9B4D0AD7F4DC</string>
+			<string>E0550B55-BBC1-4206-B951-A4B26458541D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Programming Abstractions</string>
 		</dict>

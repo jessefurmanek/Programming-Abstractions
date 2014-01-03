@@ -28,6 +28,9 @@ using namespace std;
 const int WINNING_POSITION  = 1000;
 const int NEUTRAL_POSITION  = 0;
 const int LOSING_POSITION   = -WINNING_POSITION;
+const int MAX_DEPTH = 9;  //the maximum depth of the recursion
+
+
 
 enum playerT { Human, Computer };
 /*
@@ -48,8 +51,8 @@ struct stateT{  //defines an object that contains a board state, whose turns it 
     
 };
 
-const int MAX_DEPTH = 5;  //the maximum depth of the recursion
 const playerT FIRST_PLAYER = Computer;  //assigning a playerT constant to set the Computer as the first player
+
 
 
 void PlayTicTacToe();
@@ -70,7 +73,7 @@ void AnnounceResult(stateT state);
 playerT WhoseTurn(stateT state);
 playerT Opponent(playerT player);
 int EvaluatePosition(stateT state, int depth);
-int EvaluateStaticPosition(stateT state);
+int EvaluateStaticPosition(stateT state, int depth);
 bool CheckForWinWrapper(stateT state, playerT player);
 bool CheckForWin(Grid<char> & board, char mark);
 bool CheckLine(Grid<char> & board, char mark,int row, int col, int dRow, int dCol);
@@ -165,7 +168,7 @@ moveT FindBestMove (stateT state, int depth, int & rating){
         
         moveT move = moveList[x];
         
-        MakeMove(state, move);
+        MakeMove(state, move); //makes move, changes turn
         
         
         
@@ -187,25 +190,24 @@ moveT FindBestMove (stateT state, int depth, int & rating){
 int EvaluatePosition(stateT state, int depth){
     int rating;
     if(GameIsOver(state) || depth>=MAX_DEPTH){  //if 9 turns have been taken or the max depth of recursion has been reached.
-        return EvaluateStaticPosition(state);
+        return EvaluateStaticPosition(state, depth);
     }
     FindBestMove(state,depth,rating);  //recursive call back to FindBestMove
     
     return rating;
 }
 
-int EvaluateStaticPosition(stateT state){
-    if(CheckForWinWrapper(state,state.whoseTurn)){
-        
-        return WINNING_POSITION;
-    }
-    if(CheckForWinWrapper(state, Opponent(state.whoseTurn))){
+int EvaluateStaticPosition(stateT state, int depth){
+    if(GameIsOver(state))
         return LOSING_POSITION;
+    if(depth==MAX_DEPTH){
+        return NEUTRAL_POSITION;
     }
+    return WINNING_POSITION;
     
-    return NEUTRAL_POSITION;
-    
-}
+    }
+
+
 
 bool CheckForWinWrapper(stateT state, playerT player){
     if (state.turnsTaken<5) return false;

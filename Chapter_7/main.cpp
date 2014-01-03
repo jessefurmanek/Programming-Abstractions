@@ -8,17 +8,17 @@
 #include "console.h"
 #include "simpio.h"
 #include "grid.h"
+#include "vector.h"
 #include "nQueens.h"
-
-
+#include "ThreePileNim.h"
 using namespace std;
 
-void RunNQueens(int nQueens, int BoardSize);
+void PlayThreePileNim();
 
 
 int main() {
     
-    RunNQueens(8,8);
+    PlayThreePileNim();
     
     return 0;
 }

@@ -1,0 +1,34 @@
+1) 
+   * Object - A type of data structure in computer science
+   * Class - A type of object
+   * Data Member -
+   * Method- a procedure for specific class objects
+
+2)  Public is where the client references the object; Private is where the object is implemented
+3) “this” is a pointer to the current object, and when used in conjunction with the “->” operator, allows an implementer to use the same name for both the parameter (the part in parenthesis in the function) and the instance variable (a variable in the function).
+4) Immutable classes are designed to make it impossible to change any of the instance variables once the object is created.
+5)A constructor looks like a method BUT: 1) the name of the class is used as the constructor name. 2) the prototype for the constructor does not specify a return type 3) The body of the constructor does not return a value but instead initializes the object. 
+6) class Interval{
+public:
+     Interval(double low, double high)
+private:
+     double low, high;
+}
+
+7) Whenever a particular object takes up data, using a deconstructor releases unused heap memory when an object disappears, providing memory management in lieu of a garbage collector.
+
+8) True ( i think, and the internet confirms.)
+
+9) False (what is being described is what happens in modern languages like Java)
+
+10)  A)  the “count” data member may be updated at some point which could break the code that the implementor was relying on.  B) No, it is not possible for the client to query the count value, as the count value is not in the public part of the interface (it’s in the private header)
+
+11) An additional header file was created to query the private section of the class file.  A programmer would have to look for that additional file to see the contents of the implementation.
+
+12) A dynamic array which uses a private method to double the size of the array as the array approaches its max capacity
+
+13) The default behavior for C++ copying an object copies the pointer (but not the object which the pointer points).  This is called a shallow copy.
+
+14)  The disallow copying macro spits out a compiler error when a user attempts to copy a class. A user needs only to put the DISALLOW_COPYING MACRO into the private section of a class.
+
+15) Keeping implementation details away from the client is likely to foster simplicity, flexibility, and security?

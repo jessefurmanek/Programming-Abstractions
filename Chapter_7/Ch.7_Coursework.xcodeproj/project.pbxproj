@@ -11,7 +11,11 @@
 		9520319717E1FCF500136E5B /* TicTacToe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9520319517E1FCF500136E5B /* TicTacToe.cpp */; };
 		9541E44217F09B670026AE76 /* KnightsTour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9541E44017F09B670026AE76 /* KnightsTour.cpp */; };
 		9549EA2517F30BED000CCFE6 /* nQueens.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9549EA2317F30BED000CCFE6 /* nQueens.cpp */; };
+		956C530418271CA600F6707A /* ThreePileNim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956C530218271CA600F6707A /* ThreePileNim.cpp */; };
 		957C0D0417E0E69000A0A5CC /* nim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 957C0D0217E0E69000A0A5CC /* nim.cpp */; };
+		9580FB96180D68680080D593 /* NimLikeTicTacToe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9580FB94180D68680080D593 /* NimLikeTicTacToe.cpp */; };
+		9592C45E1810863B0012B6FC /* NimModification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9592C45C1810863B0012B6FC /* NimModification.cpp */; };
+		95C414FB180487F3004EE828 /* InstantInsanity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C414F9180487F3004EE828 /* InstantInsanity.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +29,16 @@
 		9541E44117F09B670026AE76 /* KnightsTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KnightsTour.h; sourceTree = "<group>"; };
 		9549EA2317F30BED000CCFE6 /* nQueens.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nQueens.cpp; sourceTree = "<group>"; };
 		9549EA2417F30BED000CCFE6 /* nQueens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nQueens.h; sourceTree = "<group>"; };
+		956C530218271CA600F6707A /* ThreePileNim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreePileNim.cpp; sourceTree = "<group>"; };
+		956C530318271CA600F6707A /* ThreePileNim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreePileNim.h; sourceTree = "<group>"; };
 		957C0D0217E0E69000A0A5CC /* nim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nim.cpp; sourceTree = "<group>"; };
 		957C0D0517E10A3C00A0A5CC /* nim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim.h; sourceTree = "<group>"; };
+		9580FB94180D68680080D593 /* NimLikeTicTacToe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NimLikeTicTacToe.cpp; sourceTree = "<group>"; };
+		9580FB95180D68680080D593 /* NimLikeTicTacToe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimLikeTicTacToe.h; sourceTree = "<group>"; };
+		9592C45C1810863B0012B6FC /* NimModification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NimModification.cpp; sourceTree = "<group>"; };
+		9592C45D1810863B0012B6FC /* NimModification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimModification.h; sourceTree = "<group>"; };
+		95C414F9180487F3004EE828 /* InstantInsanity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InstantInsanity.cpp; sourceTree = "<group>"; };
+		95C414FA180487F3004EE828 /* InstantInsanity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstantInsanity.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +75,14 @@
 				9541E44117F09B670026AE76 /* KnightsTour.h */,
 				9549EA2317F30BED000CCFE6 /* nQueens.cpp */,
 				9549EA2417F30BED000CCFE6 /* nQueens.h */,
+				95C414F9180487F3004EE828 /* InstantInsanity.cpp */,
+				95C414FA180487F3004EE828 /* InstantInsanity.h */,
+				9580FB94180D68680080D593 /* NimLikeTicTacToe.cpp */,
+				9580FB95180D68680080D593 /* NimLikeTicTacToe.h */,
+				9592C45C1810863B0012B6FC /* NimModification.cpp */,
+				9592C45D1810863B0012B6FC /* NimModification.h */,
+				956C530218271CA600F6707A /* ThreePileNim.cpp */,
+				956C530318271CA600F6707A /* ThreePileNim.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -168,9 +188,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B3A9CE01713B46200787D95 /* main.cpp in Sources */,
+				95C414FB180487F3004EE828 /* InstantInsanity.cpp in Sources */,
+				9580FB96180D68680080D593 /* NimLikeTicTacToe.cpp in Sources */,
 				9549EA2517F30BED000CCFE6 /* nQueens.cpp in Sources */,
 				957C0D0417E0E69000A0A5CC /* nim.cpp in Sources */,
 				9541E44217F09B670026AE76 /* KnightsTour.cpp in Sources */,
+				9592C45E1810863B0012B6FC /* NimModification.cpp in Sources */,
+				956C530418271CA600F6707A /* ThreePileNim.cpp in Sources */,
 				9520319717E1FCF500136E5B /* TicTacToe.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
