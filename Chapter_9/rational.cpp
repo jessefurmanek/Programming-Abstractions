@@ -18,8 +18,7 @@
 
 Rational::Rational(int n, int d){
     
-    
-    for (int i = 1; i<std::abs(n); i++){  //reduce the numerator and the denominator
+    for (int i = 1; i<=std::abs(n); i++){  //reduce the numerator and the denominator
         if(n%i==0){
             if(d%i==0){
                 n/=i;
@@ -28,8 +27,6 @@ Rational::Rational(int n, int d){
             }
         }
     }
-    
-    
     
     if(n<0){
         if(d<0){

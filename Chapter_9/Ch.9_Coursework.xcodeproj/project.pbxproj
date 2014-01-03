@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B3A9CE01713B46200787D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B3A9CDE1713B46200787D95 /* main.cpp */; };
+		9519714618764C5700E500E2 /* labelgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9519714418764C5700E500E2 /* labelgen.cpp */; };
 		953FDBAB1867F2F9000F8FF3 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953FDBA81867F2F9000F8FF3 /* scanner.cpp */; };
 		953FDBB41867F33D000F8FF3 /* charstack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953FDBB21867F33D000F8FF3 /* charstack.cpp */; };
 		953FDBB71867F3CC000F8FF3 /* charstackVec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 953FDBB51867F3CC000F8FF3 /* charstackVec.cpp */; };
@@ -21,6 +22,8 @@
 		2B3A9CDE1713B46200787D95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.9_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.9_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9519714418764C5700E500E2 /* labelgen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = labelgen.cpp; sourceTree = "<group>"; };
+		9519714518764C5700E500E2 /* labelgen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = labelgen.h; sourceTree = "<group>"; };
 		953FDBA81867F2F9000F8FF3 /* scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cpp; sourceTree = "<group>"; };
 		953FDBA91867F2F9000F8FF3 /* scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner.h; sourceTree = "<group>"; };
 		953FDBAA1867F2F9000F8FF3 /* scanpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanpriv.h; sourceTree = "<group>"; };
@@ -62,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
+				9519714418764C5700E500E2 /* labelgen.cpp */,
+				9519714518764C5700E500E2 /* labelgen.h */,
 				95B1D8331869403D00EE1437 /* rational.cpp */,
 				95B1D8341869403D00EE1437 /* rational.h */,
 				953FDBB51867F3CC000F8FF3 /* charstackVec.cpp */,
@@ -186,6 +191,7 @@
 				95B1D8351869403D00EE1437 /* rational.cpp in Sources */,
 				953FDBB71867F3CC000F8FF3 /* charstackVec.cpp in Sources */,
 				9564A3BD1874DE2900CEF24A /* rpncalc.cpp in Sources */,
+				9519714618764C5700E500E2 /* labelgen.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

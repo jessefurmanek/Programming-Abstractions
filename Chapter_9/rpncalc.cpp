@@ -112,7 +112,6 @@ void ApplyOperator(char op, RatStackVec &operandStack) {
     
     Rational result(num,den); //recreate the rational number to push onto the stack
     operandStack.pushVec(result);
-    operandStack.pushVec(result);
   
     cout << result.getN() <<" / "<<result.getD()<<endl;  //print derived rational number
   
