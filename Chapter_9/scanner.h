@@ -85,16 +85,20 @@ public:
      */
     enum spaceOptionT { PreserveSpaces, IgnoreSpaces };
     enum stringOptionT { SkipQuotes, ScanQuotesAsStrings};
+    enum numberOptionT { ScanNumbersAsIntegers, ScanNumbersAsReals};
     
     void setSpaceOption(spaceOptionT option);
     void setStringOption(stringOptionT option);
+    void setNumberOption(numberOptionT option);
     
     spaceOptionT getSpaceOption();
     stringOptionT getStringOption();
-
+    numberOptionT getNumberOption();
+    
 private:
     #include "scanpriv.h"  //include private scanner header to shield implementation from the client
-    
+
 };
 
 #endif /* defined(__Ch_9_Coursework__Scanner__) */
+    

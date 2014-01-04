@@ -19,15 +19,25 @@ using namespace std;
 void ScannerTest(){
     
     Scanner scanner;
-    string test=" \"Hello World!\" ";
+    string test="3rd 33.4 and 17.5E-9 and thirty-three and 3.143";
+    scanner.setNumberOption(Scanner::ScanNumbersAsIntegers);
     
     
     scanner.setInput(test);
     
     while (scanner.hasMoreTokens()){
         string word = scanner.nextToken();
-        cout<<word<<endl;
+        cout<<"("<<word<<")"<<flush;
     }
     
+    cout<<endl;
+    scanner.setNumberOption(Scanner::ScanNumbersAsReals);
+
+    scanner.setInput(test);
+    
+    while (scanner.hasMoreTokens()){
+        string word = scanner.nextToken();
+         cout<<"("<<word<<")"<<flush;
+    }
     
 }

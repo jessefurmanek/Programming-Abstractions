@@ -13,6 +13,7 @@
 
 
 class CharStack {
+    
 public:
     
     /*
@@ -99,6 +100,7 @@ private:
     int count;     //current count of chars on the stack
     
     void expandCapacity();  //method to expand the array
+    
     
 };
     

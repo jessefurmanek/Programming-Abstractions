@@ -27,7 +27,6 @@
 		9519714518764C5700E500E2 /* labelgen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = labelgen.h; sourceTree = "<group>"; };
 		953FDBA81867F2F9000F8FF3 /* scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cpp; sourceTree = "<group>"; };
 		953FDBA91867F2F9000F8FF3 /* scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner.h; sourceTree = "<group>"; };
-		953FDBAA1867F2F9000F8FF3 /* scanpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanpriv.h; sourceTree = "<group>"; };
 		953FDBB21867F33D000F8FF3 /* charstack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = charstack.cpp; sourceTree = "<group>"; };
 		953FDBB31867F33D000F8FF3 /* charstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charstack.h; sourceTree = "<group>"; };
 		953FDBB51867F3CC000F8FF3 /* charstackVec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = charstackVec.cpp; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		9564A3BF1874E13D00CEF24A /* rationalstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rationalstack.h; sourceTree = "<group>"; };
 		95B1D8331869403D00EE1437 /* rational.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rational.cpp; sourceTree = "<group>"; };
 		95B1D8341869403D00EE1437 /* rational.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rational.h; sourceTree = "<group>"; };
+		95B5AD2C18788CE400DE1C00 /* scanpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = scanpriv.h; sourceTree = "<group>"; };
 		95BDFAB71877366F00B6956F /* scannertest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scannertest.cpp; sourceTree = "<group>"; };
 		95BDFAB81877366F00B6956F /* scannertest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scannertest.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 				953FDBB21867F33D000F8FF3 /* charstack.cpp */,
 				953FDBA91867F2F9000F8FF3 /* scanner.h */,
 				953FDBA81867F2F9000F8FF3 /* scanner.cpp */,
-				953FDBAA1867F2F9000F8FF3 /* scanpriv.h */,
+				95B5AD2C18788CE400DE1C00 /* scanpriv.h */,
 				9564A3BB1874DE2900CEF24A /* rpncalc.cpp */,
 				9564A3BC1874DE2900CEF24A /* rpncalc.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
