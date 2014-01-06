@@ -1,0 +1,165 @@
+Review questions
+1. True or false: The computational complexity of a program depends only on its algorithmic structure, not on the structures used to represent the data.
+
+
+   * False
+
+
+2. What does wysiwyg stand for?
+
+
+   * What you see is what you get (“whizy-wig"
+
+
+3. In your own words, describe the purpose of the buffer abstraction used in this
+chapter.
+
+
+   * The editor is used as a visual representation of a text file.  Through the abstraction a user can edit the file.
+
+
+4. What are the six commands implemented by the editor application? What are the
+corresponding public members functions in the EditorBuffer class?
+
+
+   * F -Moves the editing cursor forward one character position - void moveCursorForward();
+   * B -Moves the editing cursor backward one character position -  void moveCursorBackward();
+   * J- Jumps to the beginning of the buffer (before the first character) - void moveCursorToStart();
+   * E- Moves the cursor to the end of the buffer (after the last character)-  void moveCursorToEnd();
+   * Ixxx -Inserts the characters xxx at the current cursor position - void insertCharacter();
+   * D - Deletes the character just after the current cursor position  - void deleteCharacter();
+
+
+5. In addition to the methods that correspond to the editor commands, what other public
+operations are exported by the EditorBuffer class?
+
+
+   * display() - displays the current bugger
+   * the Constructor and Destructor classes
+
+
+6. Which editor operations require linear time in the array representation of the editor
+buffer? What makes those operations slow?
+
+
+   * Insert and Delete Character
+   * The operations are slow because in the worst case (in the beginning and in the end respectively), the entire contents of the array is shifted
+
+
+
+7. Draw a diagram showing the contents of the before and after stack in the two- stack representation of a buffer that contains the following text, with the cursor positioned as shown:
+
+
+
+   * Before stack
+   * 
+      * DCBA
+   * After Stack
+   * 
+      * HGIJ
+
+
+8. How is the cursor position indicated in the two-stack representation of the editor buffer?
+
+
+   * It’s indicated by the demarcation between the before and after stacks
+
+
+9. Which editor operations require linear time in the two-stack representation?
+
+
+   * Move character to start/end
+
+10. Define each of the following terms: cell, link, linked list, dummy cell.
+
+
+   * Cell - Object containing a character and a link
+   * Link - a pointer to the next cell in the linked list
+   * Linked list - a series of objects which container pointer attributes used to order the list
+   * Dummy cell - a cell containing no value used to allow the cursor to go into 1 more position than there are values in an array e.g. in an array of 3, the cursor can go 4 places
+
+11. What is the conventional way to mark the end of a linked list?
+
+
+   * NULL
+
+12. What is meant by a recursive data type?
+
+
+   * A data type where one of the attributes is of the data type being created
+
+13. What is the purpose of a dummy cell in a linked list?
+
+
+   * allows the cursor to go into 1 more position than there are values in an array e.g. in an array of 3, the cursor can go 4 places 
+
+
+14. Does the dummy cell go at the beginning or the end of a linked list? Why?
+
+
+   * Generally it goes at the beginning
+   * The advantage: the existence of the dummy cell at the beginning reduces the number of special cases you need to consider in your code. 
+
+
+15. What are the five steps required to insert a new character into the linked-list buffer? 
+
+
+   * allocate a new cell and store a pointer to it in the variable 
+   * Put the character to be inserted into the ch field of the new cell
+   * copy the link field from the cell whose address appears in the cursor field into the link field of the new cell. 
+   * change the link field in the current cell addressed by the cursor so that it points to the newly allocated cell
+   * change the cursor field in the buffer structure so that it also points to the new cell
+
+16. Draw a diagram showing all the cells in the linked-list representation of a buffer that contains the following text, with the cursor positioned as shown:
+
+
+
+   * H E L | L O
+   * 
+
+
+17. Modify the diagram you drew in the preceding exercise to show what happens if you insert the character X at the cursor position.
+
+
+   * 
+
+
+
+18. What is meant by the phrase traversing a list?
+
+
+   * Going from the start position to the cursor via links
+
+19. What is the standard idiom used in C++ to traverse a linked list?
+
+
+   * for (cp = start; cp->link != cursor; cp = cp->link) {
+/* Empty */
+} 
+
+
+20. Which editor operations require linear time in the linked-list representation of the editor buffer? What makes those operations slow?
+
+
+   * The operations which go backward i.e. moveCursorBackward() and moveCursorToEnd()
+
+
+21. What modification can you make to the linked-list structure so that all six of the editor operations run in constant time?
+
+
+   * Make the linked-list include a link pointing the other way i.e. a doubly linked-list
+
+
+22. What is a time-space tradeoff?
+
+
+   * The more efficient an algorithm you have, there may be increases in memory which decrease the overall efficiency/tractability of the algo
+
+
+23. What is the major drawback to the solution you offered in your answer to question 21? What can you do to improve the situation? 
+
+
+   * The solution offered in question 21 increases the memory used for each object dramatically
+   * Use a hybrid model
+   * 
+      * you could combine the array and linked-list strategies by representing the buffer as a doubly linked list of lines, where each line was represented using the array form. In this case, insertion at the beginning of a line would be a little slower, but only in proportion to the length of the line and not to the length of the entire buffer. On the other hand, this strategy requires link pointers for each line rather than for each character.  
