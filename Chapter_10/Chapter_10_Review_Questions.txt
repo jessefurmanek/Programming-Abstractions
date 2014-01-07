@@ -116,12 +116,61 @@ buffer? What makes those operations slow?
 
    * H E L | L O
    * 
+      * Cursor - Cell3
+      * Start - Dummy Cell
+      * Dummy Cell
+      * 
+         * Blank
+         * Cell1
+      * Cell1
+      * 
+         * H
+         *  Cell2
+      * Cell2
+      * 
+         * E
+         * Cell3
+      * Cell3
+      * 
+         * L
+         * Cell4
+      * Cell4
 
+      * 
+         * L
+         * Cell5
+      * Cell5
+      * 
+         * O
+         * NULL
 
 17. Modify the diagram you drew in the preceding exercise to show what happens if you insert the character X at the cursor position.
 
 
+   * Cursor - Cell4
+   * Start - Dummy Cell
+   * Dummy Cell
+      * Blank
+      * Cell1
+   * Cell1
+      * H
+      * Cell2
+   * Cell2
+      * E
+      * Cell3
+   * Cell3
+      * L
+      * Cell4
+   * Cell4
+      * X
+      * Cell5
+   * Cell5
+      * L
+      * Cell6
+   * Cell6
    * 
+      * O
+      * NULL
 
 
 
@@ -161,5 +210,4 @@ buffer? What makes those operations slow?
 
    * The solution offered in question 21 increases the memory used for each object dramatically
    * Use a hybrid model
-   * 
       * you could combine the array and linked-list strategies by representing the buffer as a doubly linked list of lines, where each line was represented using the array form. In this case, insertion at the beginning of a line would be a little slower, but only in proportion to the length of the line and not to the length of the entire buffer. On the other hand, this strategy requires link pointers for each line rather than for each character.  

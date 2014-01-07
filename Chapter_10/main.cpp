@@ -17,7 +17,7 @@ using namespace std;
 
 
 int main() {
-  
+    cout<<"Hello"<<"My"<<flush;
 
     return 0;
 }
