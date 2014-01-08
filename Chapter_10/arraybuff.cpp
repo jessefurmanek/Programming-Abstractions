@@ -7,6 +7,9 @@
 //
 
 #include "arraybuff.h"
+#include "arrbuffpriv.h"
+
+
 /*
  * File: arraybuf.cpp
  * ------------------
@@ -14,7 +17,6 @@
  * array to represent the buffer.
  */
 #include <iostream>
-
 
 using namespace std;
 /* Constants */
@@ -30,21 +32,28 @@ using namespace std;
  * the cursor would appear on the screen.  The constructor simply
  * initializes that structure.
  */
+
+
 EditorBuffer::EditorBuffer() {
-    capacity = INITIAL_CAPACITY;
-    array = list;
-    length = 0;
-    cursor = 0; }
+    rtRow.chString = new char[INITIAL_CAPACITY]; //initialize first row of characters
+    rtRow.chLength = new int[INITIAL_CAPACITY];  //initialize the length array
+    rtRow.chLength[0] = 0;
+    rtRow.rowLink = new RowT[ROW_CAPACITY]; //link to next row
+    cursorRow=0;
+    cursorPlace = 0;
+    lastRow = 0;
+}
 /*
  * Implementation notes: ~EditorBuffer
  * -----------------------------------
  * The destructor has to free any memory that is allocated
- * along the way in order to support the guarantee that
+ * along the way in order to supp
+ ort the guarantee that
  * the editor buffer not leak memory.  The only dynamically
  * allocated memory is the dynamic array that stores the text.
  */
 EditorBuffer::~EditorBuffer() {
-    delete[] array;
+    delete[] rtRow.chString;
 }
 
 /*
@@ -54,16 +63,38 @@ EditorBuffer::~EditorBuffer() {
  * cursor instance variable.
  */
 void EditorBuffer::moveCursorForward() {
-    if (cursor < length) cursor++;
+    if (cursorPlace < rtRow.chLength[cursorPlace]){  //if cursor is less than the length of the ch array
+        if(rtRow.chString[cursorPlace+1]==10){ //if the next value is equal to newline
+            cursorPlace++;
+            cursorRow++;
+        }else{
+            cursorPlace++;
+        }
+    }
+ }
+
+void EditorBuffer::moveCursorBackward(){
+    if (cursorPlace==0){
+        if(cursorRow>0){ //if at the first place in row, and NOT in the first row
+            cursorRow--;  //move the cursor up one row
+            cursorPlace =rtRow.chLength[cursorRow]-1; //set cursor equal to length of char array
+        }else{
+        cursorPlace--;
+        }
+    }
 }
-void EditorBuffer::moveCursorBackward() {
-    if (cursor > 0) cursor--;
+    
+    
+void EditorBuffer::moveCursorToStart(){
+    cursorPlace=0;
+    cursorRow=0;
 }
-void EditorBuffer::moveCursorToStart() {
-    cursor = 0; }
+
 void EditorBuffer::moveCursorToEnd() {
-    cursor = length;
+    cursorRow = lastRow;
+    cursorPlace = rtRow.chLength[lastRow]-1;
 }
+
 /*
  * Implementation notes: insertCharacter and deleteCharacter
  * ---------------------------------------------------------
@@ -72,22 +103,50 @@ void EditorBuffer::moveCursorToEnd() {
  * to make room for new insertions or to close up space left
  * by deletions.
  */
+
 void EditorBuffer::insertCharacter(char ch) {
-    if (length == capacity) expandCapacity();
-    for (int i = length; i > cursor; i--) {
-        array[i] = array[i - 1];
+    if (cursorPlace == rtRow.chLength[cursorRow]) expandCapacity();
+    
+    for (int i = rtRow.chLength[cursorRow]; i > cursorPlace; i--) {  //starting at the back of the array and until you reach the cursor
+        rtRow.chString[i] = rtRow.chString[i - 1];  //move everything up one
     }
-    array[cursor] = ch;
-    length++;
-    cursor++;
+    rtRow.chString[cursorPlace] = ch;
+    rtRow.chLength[cursorRow]++; //increase the length of the current char array
+    cursorPlace++;  //increase the cursor to match where it was previously
 }
+
 void EditorBuffer::deleteCharacter() {
-    if (cursor < length) {
-        for (int i = cursor+1; i < length; i++) {
-            array[i - 1] = array[i];
+    if (cursorPlace < rtRow.chLength[cursorRow]) {
+        for (int i = cursorPlace+1; i < tRow.chLength[cursorRow]; i++) {  //starting one ahead of the cursor
+            array[i - 1] = array[i];  //shift everything backwards
         }
-        length--; }
+        rtRow.chLength[cursorRow]--; //decrease the length of the current char array
+        cursorPlace--;  //decrease the cursor to match where it was previously
+    }
 }
+
+
+
+
+/*
+ * Implementation notes: expandCapacity
+ * ------------------------------------
+ * This private method doubles the size of the array whenever
+ * it runs out of space.  To do so, it must allocate a new array,
+ * copy all the characters from the old array to the new one, and
+ * then free the old storage.
+ */
+
+void EditorBuffer::expandCapacity() {
+    char *oldChString = rtRow.chString;
+    capacity *= 2;
+    array = new char[capacity];
+    for (int i = 0; i < length; i++) {
+        array[i] = oldArray[i];
+    }
+    delete[] oldArray;
+}
+
 
 void EditorBuffer::display() {
     for (int i = 0; i < length; i++) {
@@ -97,21 +156,4 @@ void EditorBuffer::display() {
     for (int i = 0; i < cursor; i++) {
         cout << " "; }
     cout << '^' << endl;
-}
-/*
- * Implementation notes: expandCapacity
- * ------------------------------------
- * This private method doubles the size of the array whenever
- * it runs out of space.  To do so, it must allocate a new array,
- * copy all the characters from the old array to the new one, and
- * then free the old storage.
- */
-void EditorBuffer::expandCapacity() {
-    char *oldArray = array;
-    capacity *= 2;
-    array = new char[capacity];
-    for (int i = 0; i < length; i++) {
-        array[i] = oldArray[i];
-    }
-    delete[] oldArray;
 }

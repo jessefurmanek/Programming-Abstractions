@@ -9,12 +9,26 @@
 #ifndef Ch_10_Coursework_arrbuffpriv_h
 #define Ch_10_Coursework_arrbuffpriv_h
 
-const int INITIAL_CAPACITY = 100;
-int capacity;
+const int INITIAL_CAPACITY = 20;
+const int ROW_CAPACITY = 7;
+
+struct RowT{
+    char *chString;  //character pointer
+    int *chLength;  //integer pointer to hold array of lengths
+    RowT *rowLink;  //link to next row
+};
+
+
+
+
+RowT *start;
+
+int cursorRow;
+int cursorPlace;
+RowT rtRow;
+int lastRow;
+
 char *array;
-char *list;
-int length;
-int cursor;
 
 void expandCapacity();
 

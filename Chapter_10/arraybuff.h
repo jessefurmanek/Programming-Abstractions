@@ -20,8 +20,8 @@ public:
 //deconstructor
     ~EditorBuffer();
     
-void moveCursorForward();
 void moveCursorBackward();
+void moveCursorForward();
 void moveCursorToStart();
 void moveCursorToEnd();
     
