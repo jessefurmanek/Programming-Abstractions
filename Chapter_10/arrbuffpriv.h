@@ -13,8 +13,8 @@ const int INITIAL_CAPACITY = 20;
 const int ROW_CAPACITY = 7;
 
 struct RowT{
-    char *chString;  //character pointer
-    int *chLength;  //integer pointer to hold array of lengths
+    std::string *strArray;  //string pointer
+    int *strLength;  //integer pointer to hold array of lengths
     RowT *rowLink;  //link to next row
 };
 
@@ -30,6 +30,6 @@ int lastRow;
 
 char *array;
 
-void expandCapacity();
-
+void expandLineCapacity();
+void expandRowCapacity();
 #endif

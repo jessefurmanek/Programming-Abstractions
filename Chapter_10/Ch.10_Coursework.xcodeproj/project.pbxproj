@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B3A9CE01713B46200787D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B3A9CDE1713B46200787D95 /* main.cpp */; };
+		95282261187E45CF008971A6 /* buffertest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9528225F187E45CF008971A6 /* buffertest.cpp */; };
 		95EAD07E187B8ED500D57455 /* arraybuff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EAD07C187B8ED500D57455 /* arraybuff.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
@@ -16,6 +17,8 @@
 		2B3A9CDE1713B46200787D95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.10_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.10_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9528225F187E45CF008971A6 /* buffertest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffertest.cpp; sourceTree = "<group>"; };
+		95282260187E45CF008971A6 /* buffertest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffertest.h; sourceTree = "<group>"; };
 		95EAD07C187B8ED500D57455 /* arraybuff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = arraybuff.cpp; sourceTree = "<group>"; };
 		95EAD07D187B8ED500D57455 /* arraybuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arraybuff.h; sourceTree = "<group>"; };
 		95EAD07F187B906400D57455 /* arrbuffpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = arrbuffpriv.h; sourceTree = "<group>"; };
@@ -46,6 +49,8 @@
 		29B97314FDCFA39411CA2CEA /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				9528225F187E45CF008971A6 /* buffertest.cpp */,
+				95282260187E45CF008971A6 /* buffertest.h */,
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
 				95EAD07C187B8ED500D57455 /* arraybuff.cpp */,
 				95EAD07F187B906400D57455 /* arrbuffpriv.h */,
@@ -155,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95EAD07E187B8ED500D57455 /* arraybuff.cpp in Sources */,
+				95282261187E45CF008971A6 /* buffertest.cpp in Sources */,
 				2B3A9CE01713B46200787D95 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

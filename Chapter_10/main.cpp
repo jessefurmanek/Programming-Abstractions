@@ -9,15 +9,18 @@
 #include <iostream>
 #include "console.h"
 #include "simpio.h"
+#include "arraybuff.h"
+#include "buffertest.h"
 
-
+void BufferTest();
 
 using namespace std;
 
 
 
 int main() {
-    cout<<"Hello"<<"My"<<flush;
+    
+    BufferTest();
 
     return 0;
 }
