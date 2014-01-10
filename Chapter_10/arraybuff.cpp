@@ -76,13 +76,16 @@ EditorBuffer::~EditorBuffer() {
  * cursor instance variable.
  */
 void EditorBuffer::moveCursorForward() {
-    if (cursorPlace < rtRow.strLength[cursorRow]){  //if cursor is less than the length of the str array
-        if(rtRow.strArray[cursorRow][cursorPlace+1]==10){ //if the next value is equal to newline
-            cursorPlace++;
-            cursorRow++;
+    if (cursorPlace < rtRow.strArray[cursorRow].size()){  //if cursor is less than the length of the str array
+        if(rtRow.strArray[cursorRow][cursorPlace]==10){ //if the next value is equal to newline
+                cursorPlace=0;
+                cursorRow++;
         }else{
             cursorPlace++;
         }
+    }else{
+        cursorPlace=0;
+        cursorRow++;
     }
 }
 
@@ -90,10 +93,12 @@ void EditorBuffer::moveCursorBackward(){
     if (cursorPlace==0){
         if(cursorRow>0){ //if at the first place in row, and NOT in the first row
             cursorRow--;  //move the cursor up one row
-            cursorPlace =rtRow.strLength[cursorRow]-1; //set cursor equal to length of char array
+            cursorPlace =rtRow.strArray[cursorRow].size()-1; //set cursor equal to length of char array-1
         }else{
-            cursorPlace--;
+           //do nothing- you're at row 1 place 1
         }
+    }else{
+        cursorPlace--;
     }
 }
 
@@ -118,9 +123,8 @@ void EditorBuffer::moveCursorToEnd() {
  */
 
 void EditorBuffer::insertCharacter(char ch) {
-    if (cursorPlace == rtRow.strLength[cursorRow]) expandLineCapacity();
     
-    for (int i = rtRow.strLength[cursorRow]; i > cursorPlace; i--) {  //starting at the back of the array and until you reach the cursor
+    for (int i = rtRow.strArray[cursorRow].size()-1; i > cursorPlace; i--) {  //starting at the back of the array and until you reach the cursor
         rtRow.strArray[cursorRow][i] = rtRow.strArray[cursorRow][i - 1];  //move everything up one
     }
     rtRow.strArray[cursorRow][cursorPlace] = ch;
@@ -129,16 +133,12 @@ void EditorBuffer::insertCharacter(char ch) {
 }
 
 void EditorBuffer::deleteCharacter() {
-    if (cursorPlace < rtRow.strLength[cursorRow]) {
+    if (cursorPlace < rtRow.strArray[cursorRow].size()-1) {
         for (int i = cursorPlace+1; i < rtRow.strLength[cursorRow]; i++) {  //starting one ahead of the cursor
             rtRow.strArray[cursorRow][i - 1] = rtRow.strArray[cursorRow][i];  //shift everything backwards
         }
-        rtRow.strLength[cursorRow]--; //decrease the length of the current char array
-        cursorPlace--;  //decrease the cursor to match where it was previously
     }
 }
-
-
 
 
 /*
@@ -158,25 +158,30 @@ void EditorBuffer::expandLineCapacity() {
 void EditorBuffer::display() {
     for (int i =0; i<=lastRow; i++)
         for (int j = 0; j < rtRow.strArray[i].size(); j++) {
-            if (rtRow.strArray[i][j]==10){
+            if (rtRow.strArray[i][j+1]==10){
+                cout <<rtRow.strArray[i][j]<<"   "<<flush;
+                j++;  //go past the /n
             }else{
                 cout <<" "<< rtRow.strArray[i][j]<<flush;
             }
     }
+    
     cout << endl;
-    bool cursorFound = false;
+
     
     for (int i =0; i<=lastRow; i++)
-        for (int j = 0; j < rtRow.strLength[i]; j++) {
-            if(cursorFound==false){
-                if(i==cursorPlace && j==cursorRow){
+        for (int j = 0; j < rtRow.strArray[i].length(); j++) {
+            if(i==cursorRow && j==cursorPlace){
                     cout << '^' << flush;
-                    cursorFound = true;
-                }else{
-                    cout<<' '<<flush;
-                }
+            }else if(rtRow.strArray[cursorRow][cursorPlace+1]==10){
+                cout<<"  "<<flush;
+            }else{
+                cout<<"  "<<flush;
             }
         }
+
     cout<<endl;
-  
+    cout<<cursorRow<<endl;
+    cout<<cursorPlace<<endl;
+    
 }
