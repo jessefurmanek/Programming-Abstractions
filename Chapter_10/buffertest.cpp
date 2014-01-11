@@ -9,8 +9,8 @@
 #include <iostream>
 #include "console.h"
 #include "simpio.h"
-#include "buffertest.h"
-#include "arraybuff.h"
+#include "stackarraybuff.h"
+
 
 using namespace std;
 
