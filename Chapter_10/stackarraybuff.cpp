@@ -152,6 +152,8 @@ void EditorBuffer::expandCapacity() {
         chArray[i]=tempArray[i-cursor];
     }
     cursor=afterCursorPosition;
+    
+    delete[] tempArray;
 }
 
 void EditorBuffer::display(){
