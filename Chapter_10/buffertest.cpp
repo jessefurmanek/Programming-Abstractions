@@ -35,12 +35,16 @@ void BufferTest(){
 void ExecuteCommand(EditorBuffer & buffer, string line) {
     string justNumbers;
     string restOfString;
+    char secondCmd;
     char justLetter;
     bool hasNumbers= false;
     bool insertFoo = false;
     for (int i = 0; i < line.length(); i++) {
         
-        if(isdigit(line[i])){  //if the first character is a digit
+        if(isdigit(line[i])){  //if the character is a digit
+            justNumbers = justNumbers+line[i];
+            hasNumbers=true;
+        }else if(line[i]=='-'){
             justNumbers = justNumbers+line[i];
             hasNumbers=true;
         }else if(i==0){  //if the first character is a letter
@@ -51,13 +55,15 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
         }else{
             if (insertFoo){
                 restOfString= line[i]+ restOfString;
-                cout<<restOfString<<endl;
+            }else{
+                secondCmd = toupper(line[i]);
             }
         }
     }
     
     int numOfTimes =1;
     if(hasNumbers){
+        cout<<"here"<<endl;
         numOfTimes = stringToInteger(justNumbers);
     }
     
@@ -67,25 +73,61 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
         }
             break;
         case 'D': {
-            for(int x=0; x<numOfTimes; x++){
+            if(numOfTimes>0){
+                for(int x=0; x<numOfTimes; x++){
                 buffer.deleteCharacter();
-            }
+                }
+            }else if(numOfTimes==1){
+                buffer.deleteCharacter();
+            }else{
+                for(int x=0; x<abs(numOfTimes); x++){
+                    buffer.deleteCharBackwards();
+                }
+            
              break;
+            }
         }
         case 'F':  {
-            for(int x=0; x<numOfTimes; x++){
-               buffer.moveCursorForward();
+            if(numOfTimes>0){
+                for(int x=0; x<numOfTimes; x++){
+                    buffer.moveCursorForward();
+                }
+            }else{
+                for(int x=0; x<abs(numOfTimes); x++){
+                    buffer.moveCursorBackward();
+                }
             }
             break;
         }
         case 'B': {
-            for(int x=0; x<numOfTimes; x++){
-               buffer.moveCursorBackward();
+            if(numOfTimes>0){
+                for(int x=0; x<numOfTimes; x++){
+                    buffer.moveCursorBackward();
+                }
+            }else{
+                for(int x=0; x<abs(numOfTimes); x++){
+                    buffer.moveCursorForward();
+                }
             }
             break;
+        }
+        case 'W': {
+            switch(secondCmd){
+                case 'F': {
+                    buffer.moveForwardWord(); break;
+                }
+                case 'B' :{
+                    buffer.moveBackwardWord(); break;
+                }
+                case 'D': buffer.deleteWord(); break;
+                    
+            }
+            break;
+            
         }
         case 'J': buffer.moveCursorToStart(); break;
         case 'E': buffer.moveCursorToEnd(); break;
         case 'Q': exit(0);
         default:  cout << "Illegal command" << endl; break;
-    } }
+        }
+    }

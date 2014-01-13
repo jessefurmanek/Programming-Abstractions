@@ -27,8 +27,12 @@ public:
     
     void insertCharacter(char ch);
     void deleteCharacter();
+    void deleteCharBackwards();
     void display();
     
+    void deleteWord();
+    void moveForwardWord();
+    void moveBackwardWord();
     
 private:
     

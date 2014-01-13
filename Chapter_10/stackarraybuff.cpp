@@ -86,11 +86,12 @@ void EditorBuffer::moveCursorBackward(){
 
 void EditorBuffer::moveCursorToStart(){
     for(int i=cursor-1; i>cursor-beforeStkCap-1; i--){
-        chArray[i]=chArray[beforeStkCap-1];
+        chArray[i]=chArray[i-(cursor-beforeStkCap)];
     }
     
+    cursor=cursor-beforeStkCap;
     beforeStkCap=0;
-    cursor=0;
+    
 }
 
 void EditorBuffer::moveCursorToEnd() {
@@ -123,6 +124,43 @@ void EditorBuffer::insertCharacter(char ch) {
 
 void EditorBuffer::deleteCharacter() {
     cursor++;
+}
+
+void EditorBuffer::deleteCharBackwards(){
+    beforeStkCap--;
+}
+
+void EditorBuffer::moveForwardWord(){
+    bool stop = false;
+    for(int i=cursor; i<totalCapacity; i++) {
+        if(chArray[i]!=' ' && stop ==false){
+            moveCursorForward();
+        }else{
+            stop = true;
+        }
+    }
+}
+
+void EditorBuffer::moveBackwardWord(){
+    bool stop = false;
+    for(int i=beforeStkCap; i>0; i--) {
+        if(chArray[i]!=' '  && stop == false){
+            moveCursorBackward();
+        }else{
+            stop = true;
+        }
+    }
+}
+
+void EditorBuffer::deleteWord(){
+    bool stop = false;
+    for(int i=cursor; i<totalCapacity; i++) {
+        if(chArray[i]!=' '&& stop ==false){
+            deleteCharacter();
+        }else{
+            stop = true;
+        }
+    }
 }
 
 
