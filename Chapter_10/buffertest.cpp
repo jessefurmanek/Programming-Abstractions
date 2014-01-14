@@ -63,7 +63,6 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
     
     int numOfTimes =1;
     if(hasNumbers){
-        cout<<"here"<<endl;
         numOfTimes = stringToInteger(justNumbers);
     }
     
@@ -76,14 +75,18 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             if(numOfTimes>0){
                 for(int x=0; x<numOfTimes; x++){
                 buffer.deleteCharacter();
+                 buffer.moveCursorBackward();
+                
                 }
             }else if(numOfTimes==1){
                 buffer.deleteCharacter();
+                 buffer.moveCursorBackward();
+         
             }else{
                 for(int x=0; x<abs(numOfTimes); x++){
                     buffer.deleteCharBackwards();
                 }
-            
+               
              break;
             }
         }
@@ -124,9 +127,15 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             }
             break;
             
+        }case 'C': {
+            if(numOfTimes>0){
+                buffer.copy(numOfTimes);
+            }
+            break;
         }
         case 'J': buffer.moveCursorToStart(); break;
         case 'E': buffer.moveCursorToEnd(); break;
+        case 'P': buffer.paste(); break;
         case 'Q': exit(0);
         default:  cout << "Illegal command" << endl; break;
         }

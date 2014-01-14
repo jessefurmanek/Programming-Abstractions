@@ -33,6 +33,8 @@ public:
     void deleteWord();
     void moveForwardWord();
     void moveBackwardWord();
+    void copy(int count);
+    void paste();
     
 private:
     

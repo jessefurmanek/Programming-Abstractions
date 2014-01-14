@@ -118,6 +118,7 @@ void EditorBuffer::moveCursorToEnd() {
 void EditorBuffer::insertCharacter(char ch) {
     if(cursor==beforeStkCap) expandCapacity();
     
+    
     cursor--;
     chArray[cursor] = ch;
 }
@@ -163,6 +164,23 @@ void EditorBuffer::deleteWord(){
     }
 }
 
+void EditorBuffer::copy(int count){
+    string copyOfString;
+    for(int x= cursor; x<cursor+count; x++){
+        if(x<totalCapacity){
+            copyOfString =chArray[x]+copyOfString;
+        }
+    }
+    
+    copyString = copyOfString;
+}
+
+void EditorBuffer::paste(){
+    cout<<copyString<<endl;
+    for(int x = 0; x<copyString.length(); x++){
+        insertCharacter(copyString[x]);
+    }
+}
 
 /*
  * Implementation notes: expandCapacity
@@ -174,7 +192,9 @@ void EditorBuffer::deleteWord(){
  */
 
 void EditorBuffer::expandCapacity() {
+    cout<<"here"<<endl;
     int beforeCursorPosition = totalCapacity-cursor;
+    int beforeTotalCapacity= totalCapacity;
     totalCapacity*=2;  //double the capacity
     int afterCursorPosition = totalCapacity-beforeCursorPosition;
     
@@ -187,7 +207,7 @@ void EditorBuffer::expandCapacity() {
     }
     
     for(int i = afterCursorPosition; i<totalCapacity; i++){  //populate the afterStk
-        chArray[i]=tempArray[i-cursor];
+        chArray[i]=tempArray[i-beforeTotalCapacity];
     }
     cursor=afterCursorPosition;
     

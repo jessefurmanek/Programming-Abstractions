@@ -15,9 +15,9 @@ const int INITIAL_CAPACITY = 10;
     int totalCapacity;  //total size of the char array
     int beforeStkCap; // endpoint of first stack
     int cursor; //represents both the cursor and the beginning of the endStack
+    std::string copyString;
 
-
-void expandCapacity();
+    void expandCapacity();
 
 
 #endif
