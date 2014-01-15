@@ -73,22 +73,22 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             break;
         case 'D': {
             if(numOfTimes>0){
-                for(int x=0; x<numOfTimes; x++){
-                buffer.deleteCharacter();
-                 buffer.moveCursorBackward();
-                
+                if(numOfTimes==1){
+                    buffer.deleteCharacter();
+                    buffer.moveCursorBackward();
+                }else{for(int x=0; x<numOfTimes; x++){
+                    buffer.deleteCharacter();
+                    buffer.moveCursorBackward();
+                    }
                 }
-            }else if(numOfTimes==1){
-                buffer.deleteCharacter();
-                 buffer.moveCursorBackward();
-         
             }else{
                 for(int x=0; x<abs(numOfTimes); x++){
                     buffer.deleteCharBackwards();
+                    buffer.moveCursorBackward();
                 }
                
-             break;
             }
+              break;
         }
         case 'F':  {
             if(numOfTimes>0){
@@ -130,6 +130,16 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
         }case 'C': {
             if(numOfTimes>0){
                 buffer.copy(numOfTimes);
+            }
+            break;
+        }case 'X':{
+            int totalChar = buffer.cut();
+            
+            buffer.moveCursorToStart();
+            buffer.copy(totalChar);  //copy the total length of the buffer
+            
+            for(int x = 0; x<totalChar; x++){
+                buffer.deleteCharacter();
             }
             break;
         }

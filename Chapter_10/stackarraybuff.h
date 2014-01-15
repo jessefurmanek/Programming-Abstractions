@@ -34,6 +34,7 @@ public:
     void moveForwardWord();
     void moveBackwardWord();
     void copy(int count);
+    int cut();
     void paste();
     
 private:

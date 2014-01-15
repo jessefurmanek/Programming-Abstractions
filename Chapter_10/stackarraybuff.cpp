@@ -124,12 +124,19 @@ void EditorBuffer::insertCharacter(char ch) {
 }
 
 void EditorBuffer::deleteCharacter() {
-    cursor++;
+    if(cursor<totalCapacity){
+        cursor++;
+        
+    }
+   
 }
 
 void EditorBuffer::deleteCharBackwards(){
-    beforeStkCap--;
+    if(beforeStkCap>0){
+       beforeStkCap--;
+    };
 }
+
 
 void EditorBuffer::moveForwardWord(){
     bool stop = false;
@@ -176,10 +183,14 @@ void EditorBuffer::copy(int count){
 }
 
 void EditorBuffer::paste(){
-    cout<<copyString<<endl;
+
     for(int x = 0; x<copyString.length(); x++){
         insertCharacter(copyString[x]);
     }
+}
+
+int EditorBuffer::cut(){
+    return totalCapacity;
 }
 
 /*
@@ -192,7 +203,7 @@ void EditorBuffer::paste(){
  */
 
 void EditorBuffer::expandCapacity() {
-    cout<<"here"<<endl;
+
     int beforeCursorPosition = totalCapacity-cursor;
     int beforeTotalCapacity= totalCapacity;
     totalCapacity*=2;  //double the capacity
@@ -215,6 +226,10 @@ void EditorBuffer::expandCapacity() {
 }
 
 void EditorBuffer::display(){
+    
+    cout<<cursor<<endl;
+    cout<<beforeStkCap<<endl;
+    cout<<totalCapacity<<endl;
     
     for(int i = 0; i<beforeStkCap; i++){ //print beforeStk
         cout<<" "<<chArray[i]<<flush;
