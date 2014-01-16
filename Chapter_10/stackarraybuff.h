@@ -33,8 +33,9 @@ public:
     void deleteWord();
     void moveForwardWord();
     void moveBackwardWord();
+    bool search(std::string searchString);
     void copy(int count);
-    int cut();
+    int getCapacity();
     void paste();
     
 private:

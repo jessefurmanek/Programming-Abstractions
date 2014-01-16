@@ -189,7 +189,7 @@ void EditorBuffer::paste(){
     }
 }
 
-int EditorBuffer::cut(){
+int EditorBuffer::getCapacity(){
     return totalCapacity;
 }
 
@@ -225,11 +225,86 @@ void EditorBuffer::expandCapacity() {
     delete[] tempArray;
 }
 
+
+bool EditorBuffer::search(string searchString){
+    int strLength = searchString.length();
+    
+    for(int x=0; x<beforeStkCap; x++){  //iterate through the letters in the before stack
+        int strY=0;//counter for the search string
+        int strX=x;
+        bool matchString = true;
+        
+        while(strY<beforeStkCap && matchString){
+            if(chArray[strX]==searchString[strY]){
+                
+                strY++;
+                strX++;
+                
+                if(strY==strLength) return true;
+                
+            }else{
+                
+                matchString =false;
+            }
+            
+        }
+        
+     
+        int afterStkCounter = strY+(cursor-beforeStkCap);
+        
+        while (matchString && afterStkCounter<totalCapacity){
+            
+            if(chArray[afterStkCounter]==searchString[strY]){
+                afterStkCounter++;
+                strY++;
+                
+                if(strY==strLength) return true;
+            }else{
+                matchString=false;
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    for(int x=cursor; x<totalCapacity; x++){
+        int stringCounter = 0;
+        int strX=x;
+        bool matchString = true;
+        
+        
+        while (matchString && strX<totalCapacity){
+           
+
+            if(chArray[strX]==searchString[stringCounter]){
+               
+                stringCounter++;
+                strX++;
+                
+                
+                
+                if(stringCounter==strLength) return true;
+            }else{
+                matchString=false;
+            }
+
+        }
+    }
+    
+    
+    return false;
+}
+
+
+
+
 void EditorBuffer::display(){
     
-    cout<<cursor<<endl;
-    cout<<beforeStkCap<<endl;
-    cout<<totalCapacity<<endl;
+    cout<<"Cursor: "<<cursor<<endl;
+    cout<<"Before Stack Cap: "<<beforeStkCap<<endl;
+    cout<<"Total Capacity: "<<totalCapacity<<endl;
     
     for(int i = 0; i<beforeStkCap; i++){ //print beforeStk
         cout<<" "<<chArray[i]<<flush;

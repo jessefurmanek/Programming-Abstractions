@@ -49,7 +49,7 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             hasNumbers=true;
         }else if(i==0){  //if the first character is a letter
             justLetter = line[i];
-            if(toupper(line[i])=='I'){
+            if(toupper(line[i])=='I' ||toupper(line[i])=='S'){
                 insertFoo = true;
             }
         }else{
@@ -75,16 +75,16 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             if(numOfTimes>0){
                 if(numOfTimes==1){
                     buffer.deleteCharacter();
-                    buffer.moveCursorBackward();
+                  
                 }else{for(int x=0; x<numOfTimes; x++){
                     buffer.deleteCharacter();
-                    buffer.moveCursorBackward();
+                   
                     }
                 }
             }else{
                 for(int x=0; x<abs(numOfTimes); x++){
                     buffer.deleteCharBackwards();
-                    buffer.moveCursorBackward();
+                
                 }
                
             }
@@ -133,7 +133,7 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             }
             break;
         }case 'X':{
-            int totalChar = buffer.cut();
+            int totalChar = buffer.getCapacity();
             
             buffer.moveCursorToStart();
             buffer.copy(totalChar);  //copy the total length of the buffer
@@ -141,6 +141,22 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             for(int x = 0; x<totalChar; x++){
                 buffer.deleteCharacter();
             }
+            break;
+        }case 'S':{
+            int y=0;
+            std::string copyString = restOfString;
+            
+            for(int x=restOfString.length()-1; x>=0; x--){
+                restOfString[y]=copyString[x];  //correct reversing string effect
+                y++;
+            }
+            
+
+            if(buffer.search(restOfString)){
+                cout<<"String Found"<<endl;
+            }else{
+                cout<<"Not Found"<<endl;
+            };
             break;
         }
         case 'J': buffer.moveCursorToStart(); break;
