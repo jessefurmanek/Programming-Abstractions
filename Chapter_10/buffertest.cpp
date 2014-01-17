@@ -48,8 +48,9 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             justNumbers = justNumbers+line[i];
             hasNumbers=true;
         }else if(i==0){  //if the first character is a letter
-            justLetter = line[i];
-            if(toupper(line[i])=='I' ||toupper(line[i])=='S'){
+            justLetter = toupper(line[i]);
+            
+            if(justLetter=='I' ||justLetter=='S'|| justLetter=='R'){
                 insertFoo = true;
             }
         }else{
@@ -151,12 +152,72 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
                 y++;
             }
             
-
+            cout<<buffer.search(restOfString)<<endl;
+            
             if(buffer.search(restOfString)){
                 cout<<"String Found"<<endl;
             }else{
                 cout<<"Not Found"<<endl;
             };
+            
+            break;
+        }case 'R':{
+           
+            int y=0;
+
+            std::string copyString = restOfString;
+            std::string replaceString;
+            restOfString.clear();
+            bool afterSlash = false;
+    
+            
+            for(int x=copyString.length()-1; x>=0; x--){
+                
+                
+                if(!afterSlash){ //if before the slash, set to search string
+                    if(copyString[y]=='/'){
+                        
+                        afterSlash=true;
+                        y++;
+                    }else{
+                        restOfString+=copyString[x];  //correct reversing string effect
+                        y++;
+                    }
+                }else{ //if after the slash, set replacement string
+                    replaceString+=copyString[x];
+                    
+                }
+            }
+            
+            
+            cout<<buffer.search(restOfString)<<endl;
+            
+            if(buffer.search(restOfString)){
+                
+                int cursorPos =(buffer.search(restOfString));
+                
+                buffer.moveCursorToStart();
+                
+                
+                for(int x=0; x<cursorPos; x++){
+                    buffer.moveCursorForward();
+                }
+               
+                
+                for(int x=0; x<restOfString.length(); x++){  //delete the searched for string
+                    buffer.deleteCharacter();
+                }
+                
+                for(int x=0; x<replaceString.length(); x++){
+                    buffer.insertCharacter(replaceString[x]);
+                }
+                //if found, replace
+                //delete found string
+                //replace with replcement
+            }else{
+                cout<<"Not Found"<<endl;
+            };
+            
             break;
         }
         case 'J': buffer.moveCursorToStart(); break;

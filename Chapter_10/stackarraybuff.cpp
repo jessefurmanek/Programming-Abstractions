@@ -226,8 +226,9 @@ void EditorBuffer::expandCapacity() {
 }
 
 
-bool EditorBuffer::search(string searchString){
+int EditorBuffer::search(string searchString){
     int strLength = searchString.length();
+    int searchInt=0;
     
     for(int x=0; x<beforeStkCap; x++){  //iterate through the letters in the before stack
         int strY=0;//counter for the search string
@@ -237,13 +238,15 @@ bool EditorBuffer::search(string searchString){
         while(strY<beforeStkCap && matchString){
             if(chArray[strX]==searchString[strY]){
                 
+                
                 strY++;
                 strX++;
+                searchInt++;
                 
-                if(strY==strLength) return true;
+                if(strY==strLength) return searchInt;
                 
             }else{
-                
+                searchInt=0;
                 matchString =false;
             }
             
@@ -257,9 +260,11 @@ bool EditorBuffer::search(string searchString){
             if(chArray[afterStkCounter]==searchString[strY]){
                 afterStkCounter++;
                 strY++;
+                searchInt++;
                 
-                if(strY==strLength) return true;
+                if(strY==strLength) return searchInt;
             }else{
+                searchInt=0;
                 matchString=false;
             }
             
@@ -268,6 +273,7 @@ bool EditorBuffer::search(string searchString){
     }
     
     
+    searchInt=beforeStkCap-1;
     
     for(int x=cursor; x<totalCapacity; x++){
         int stringCounter = 0;
@@ -276,17 +282,18 @@ bool EditorBuffer::search(string searchString){
         
         
         while (matchString && strX<totalCapacity){
-           
-
+            
             if(chArray[strX]==searchString[stringCounter]){
+                
                
                 stringCounter++;
                 strX++;
+                searchInt++;
                 
                 
-                
-                if(stringCounter==strLength) return true;
+                if(stringCounter==strLength) return searchInt;
             }else{
+                searchInt=0;
                 matchString=false;
             }
 

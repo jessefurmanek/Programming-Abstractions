@@ -336,11 +336,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "buffertest.cpp"
-            timestampString = "411275644.57745"
+            timestampString = "411623424.685526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "ExecuteCommand(EditorBuffer &amp; buffer, string line)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "buffertest.cpp"
+            timestampString = "411628306.698115"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "ExecuteCommand(EditorBuffer &amp; buffer, string line)"
             landmarkType = "7">
          </BreakpointContent>
