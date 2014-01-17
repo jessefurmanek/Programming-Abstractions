@@ -254,7 +254,7 @@ int EditorBuffer::search(string searchString){
             
         }
         
-
+        int numberOfCharBeforeBeforeStk = strY;  //account for the number of characters used before the break
         int afterStkCounter = cursor;  //adjust counter for chArray to account for space
         
         
@@ -267,7 +267,7 @@ int EditorBuffer::search(string searchString){
                 searchInt++;
                 
                 if(strY==strLength) {
-                    return beforeStkCap+strLength-1;
+                    return beforeStkCap+strLength-numberOfCharBeforeBeforeStk;
                 }
             }else{
                 searchInt=0;
