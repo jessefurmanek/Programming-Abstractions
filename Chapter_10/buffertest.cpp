@@ -152,8 +152,6 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
                 y++;
             }
             
-            cout<<buffer.search(restOfString)<<endl;
-            
             if(buffer.search(restOfString)){
                 cout<<"String Found"<<endl;
             }else{
@@ -163,46 +161,50 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             break;
         }case 'R':{
            
-            int y=0;
-
-            std::string copyString = restOfString;
+            std::string copyString = restOfString;  //create a copy of the search & replace string
             std::string replaceString;
             restOfString.clear();
             bool afterSlash = false;
     
             
-            for(int x=copyString.length()-1; x>=0; x--){
+            for(int x=copyString.length()-1; x>=0; x--){  //parse out search and replace string
                 
                 
                 if(!afterSlash){ //if before the slash, set to search string
-                    if(copyString[y]=='/'){
+                    if(copyString[x]=='/'){
                         
                         afterSlash=true;
-                        y++;
+                    
                     }else{
                         restOfString+=copyString[x];  //correct reversing string effect
-                        y++;
+                        
                     }
                 }else{ //if after the slash, set replacement string
-                    replaceString+=copyString[x];
+                    replaceString=copyString[x]+replaceString;
                     
                 }
             }
             
             
-            cout<<buffer.search(restOfString)<<endl;
-            
             if(buffer.search(restOfString)){
                 
-                int cursorPos =(buffer.search(restOfString));
+                int cursorPos =buffer.search(restOfString);
                 
                 buffer.moveCursorToStart();
+               
                 
+                cout<<"CursorPos: "<<cursorPos<<endl;
                 
                 for(int x=0; x<cursorPos; x++){
                     buffer.moveCursorForward();
+               
                 }
                
+                for(int x=0; x<restOfString.length(); x++){
+                    buffer.moveCursorBackward();
+                   
+                }
+              
                 
                 for(int x=0; x<restOfString.length(); x++){  //delete the searched for string
                     buffer.deleteCharacter();

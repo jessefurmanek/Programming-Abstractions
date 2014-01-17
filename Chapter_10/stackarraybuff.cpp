@@ -228,16 +228,16 @@ void EditorBuffer::expandCapacity() {
 
 int EditorBuffer::search(string searchString){
     int strLength = searchString.length();
-    int searchInt=0;
+    int searchInt=0;  //counts the number of letters matched
     
     for(int x=0; x<beforeStkCap; x++){  //iterate through the letters in the before stack
-        int strY=0;//counter for the search string
-        int strX=x;
+        int strY=0; //counter for the search string
+        int strX=x; //counter for the chArray
+        
         bool matchString = true;
         
-        while(strY<beforeStkCap && matchString){
+        while(strX<beforeStkCap && matchString){  //while the chArray counter is less than the beforeStkCap
             if(chArray[strX]==searchString[strY]){
-                
                 
                 strY++;
                 strX++;
@@ -245,15 +245,19 @@ int EditorBuffer::search(string searchString){
                 
                 if(strY==strLength) return searchInt;
                 
-            }else{
+            }else{  //if the strings don't match, reset the search counter
                 searchInt=0;
                 matchString =false;
+                
+                break;  //exit the while loop
             }
             
         }
         
-     
-        int afterStkCounter = strY+(cursor-beforeStkCap);
+
+        int afterStkCounter = cursor;  //adjust counter for chArray to account for space
+        
+        
         
         while (matchString && afterStkCounter<totalCapacity){
             
@@ -262,7 +266,9 @@ int EditorBuffer::search(string searchString){
                 strY++;
                 searchInt++;
                 
-                if(strY==strLength) return searchInt;
+                if(strY==strLength) {
+                    return beforeStkCap+strLength-1;
+                }
             }else{
                 searchInt=0;
                 matchString=false;
@@ -272,11 +278,14 @@ int EditorBuffer::search(string searchString){
         
     }
     
-    
-    searchInt=beforeStkCap-1;
+  
+    //afterStack
+   
+    int stringCounter = 0;
     
     for(int x=cursor; x<totalCapacity; x++){
-        int stringCounter = 0;
+        searchInt=cursor;
+        
         int strX=x;
         bool matchString = true;
         
@@ -285,22 +294,27 @@ int EditorBuffer::search(string searchString){
             
             if(chArray[strX]==searchString[stringCounter]){
                 
-               
+                
                 stringCounter++;
                 strX++;
                 searchInt++;
                 
+           
                 
-                if(stringCounter==strLength) return searchInt;
+                if(stringCounter==strLength) {
+                   
+                    return searchInt;
+                    
+                }
             }else{
-                searchInt=0;
+                searchInt=cursor;
+                stringCounter=0;
                 matchString=false;
             }
 
         }
     }
-    
-    
+
     return false;
 }
 
