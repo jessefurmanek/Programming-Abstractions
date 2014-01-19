@@ -319,6 +319,28 @@ int EditorBuffer::search(string searchString){
 }
 
 
+string EditorBuffer::toString(){
+    string retString;
+    
+    //grab the bottom stack
+    
+    for(int x=0; x<beforeStkCap; x++){
+        retString+=chArray[x];
+    }
+    
+    
+    //grab the top stack
+    
+    for(int x=cursor; x<totalCapacity; x++){
+        
+        retString+=chArray[x];
+        
+    }
+    
+    
+    return retString;
+}
+
 
 
 void EditorBuffer::display(){

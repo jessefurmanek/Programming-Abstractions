@@ -221,6 +221,11 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
             };
             
             break;
+        }case 'G':{
+            
+            cout<<buffer.toString()<<endl;
+            
+            break;
         }
         case 'J': buffer.moveCursorToStart(); break;
         case 'E': buffer.moveCursorToEnd(); break;

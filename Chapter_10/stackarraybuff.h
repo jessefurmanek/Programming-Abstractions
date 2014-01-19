@@ -36,6 +36,7 @@ public:
     int search(std::string searchString);
     void copy(int count);
     int getCapacity();
+    std::string toString();
     void paste();
     
 private:
