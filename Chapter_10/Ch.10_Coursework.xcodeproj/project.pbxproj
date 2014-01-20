@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B3A9CE01713B46200787D95 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B3A9CDE1713B46200787D95 /* main.cpp */; };
-		95282261187E45CF008971A6 /* buffertest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9528225F187E45CF008971A6 /* buffertest.cpp */; };
-		95F0BB5A1880DAFD0073DA89 /* stackarraybuff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F0BB581880DAFD0073DA89 /* stackarraybuff.cpp */; };
+		95F74E7B188CA92A00CF4A8E /* listbufnodummy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95F74E79188CA92A00CF4A8E /* listbufnodummy.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
 
@@ -17,11 +16,9 @@
 		2B3A9CDE1713B46200787D95 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.10_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.10_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9528225F187E45CF008971A6 /* buffertest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffertest.cpp; sourceTree = "<group>"; };
-		95282260187E45CF008971A6 /* buffertest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffertest.h; sourceTree = "<group>"; };
-		95F0BB581880DAFD0073DA89 /* stackarraybuff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stackarraybuff.cpp; sourceTree = "<group>"; };
-		95F0BB591880DAFD0073DA89 /* stackarraybuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stackarraybuff.h; sourceTree = "<group>"; };
-		95F0BB5B1880DB780073DA89 /* stackarraybuffpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stackarraybuffpriv.h; sourceTree = "<group>"; };
+		95F74E79188CA92A00CF4A8E /* listbufnodummy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = listbufnodummy.cpp; sourceTree = "<group>"; };
+		95F74E7A188CA92A00CF4A8E /* listbufnodummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listbufnodummy.h; sourceTree = "<group>"; };
+		95F74E7C188CABF700CF4A8E /* listbufpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = listbufpriv.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,11 +47,9 @@
 			isa = PBXGroup;
 			children = (
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
-				9528225F187E45CF008971A6 /* buffertest.cpp */,
-				95F0BB5B1880DB780073DA89 /* stackarraybuffpriv.h */,
-				95F0BB581880DAFD0073DA89 /* stackarraybuff.cpp */,
-				95F0BB591880DAFD0073DA89 /* stackarraybuff.h */,
-				95282260187E45CF008971A6 /* buffertest.h */,
+				95F74E79188CA92A00CF4A8E /* listbufnodummy.cpp */,
+				95F74E7A188CA92A00CF4A8E /* listbufnodummy.h */,
+				95F74E7C188CABF700CF4A8E /* listbufpriv.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -159,9 +154,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95282261187E45CF008971A6 /* buffertest.cpp in Sources */,
+				95F74E7B188CA92A00CF4A8E /* listbufnodummy.cpp in Sources */,
 				2B3A9CE01713B46200787D95 /* main.cpp in Sources */,
-				95F0BB5A1880DAFD0073DA89 /* stackarraybuff.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
