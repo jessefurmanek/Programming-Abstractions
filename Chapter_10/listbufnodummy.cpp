@@ -38,7 +38,9 @@ using namespace std;
 
 EditorBuffer::EditorBuffer() {
     cursor = new cellT;
-    cursor->linkF = cursor;
+    cursor->linkF = NULL;
+    cursor->linkB = NULL;
+    cursor->ch = NULL;
 }
 /*
  * Implementation notes: EditorBuffer destructor
@@ -105,13 +107,34 @@ void EditorBuffer::moveCursorToEnd() {
  * 4. Move the cursor forward over the inserted character.
  */
 void EditorBuffer::insertCharacter(char ch) {
-    cellT *cp = new cellT;
-    cp->ch = ch;
-    cp->linkF = cursor->linkF;
-    cp->linkB = cursor->linkB;
-    cursor->linkF = cp;
-    cursor->linkB = cp;
-    cursor = cp;
+    if (cursor->linkB==NULL){
+        cellT *cp = new cellT;
+        cp->ch = ch;
+        cp->linkF = cursor->linkF;
+        cp->linkB = cursor;
+        if(cursor->linkF != NULL) cursor->linkF->linkB = cp; //set the link backward
+        cursor->linkF = cp;
+        cursor->linkB = NULL;
+    }else{
+        cellT *cp = new cellT;
+        cp->ch = ch;
+      
+        if(cursor->linkF!=NULL){
+            cp->linkF = cursor->linkF;
+            cp->linkB = cursor->linkB;
+            cursor->linkF->linkB = cp;  //set the link backward
+            cursor->linkF = cp;
+            cursor->linkB = cp;
+            cursor = cp;
+        }else{  //if the cursor is at the end of the buffer
+            cp->linkF = NULL;  //link foward to the last cell is NULL
+            cp->linkB = cursor->linkB->linkF;  //link backward for the last cell is to the former last cell
+            cursor->linkF = cp;  //change the last cell so that it points forward to the new last cell
+            
+
+        }
+        
+    }
 }
 
 /*
@@ -126,11 +149,14 @@ void EditorBuffer::insertCharacter(char ch) {
  */
 void EditorBuffer::deleteCharacter() {
     if (cursor->linkF != NULL) {
-        cellT *oldcell = cursor->linkF;  //
+        cellT *oldcell = cursor->linkF;  //set a temp cell equal to the next cell in the chain
         cursor->linkF = oldcell->linkF;  //set the cursor link forward equal to the selected char cell's linkF
-        cursor->linkB = oldcell->linkB;  //set the cursor link backward equal to the selected char cell's linkB
-        delete oldcell;
-    } }
+        
+        
+        if(cursor->linkF != NULL) cursor->linkF->linkB = cursor->linkB;  //point around the cell that is going to be deleted; ie the cell ahead of the cursor points backwards to where the cursor is currently pointing
+        delete oldcell;  //delete pointer
+    }
+}
 /*
  * Implementation notes: display
  * -----------------------------
@@ -154,6 +180,6 @@ void EditorBuffer::display() {
     }
     cout << endl;
     for (cellT *cp = begPlaceHolder; cp != cursor; cp = cp->linkF) {
-        cout << " "; }
+        cout << "  "; }
     cout << '^' << endl;
 }

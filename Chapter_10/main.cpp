@@ -7,15 +7,16 @@
 //Recursive function to raise 
 
 #include <iostream>
-#include "console.h"
 #include "simpio.h"
+#include "console.h"
 
 using namespace std;
 
+void buffernoDummyTest();
 
 
 int main() {
-    
+    buffernoDummyTest();
 
 
     return 0;
