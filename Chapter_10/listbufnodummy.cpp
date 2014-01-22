@@ -107,7 +107,7 @@ void EditorBuffer::moveCursorToEnd() {
  * 4. Move the cursor forward over the inserted character.
  */
 void EditorBuffer::insertCharacter(char ch) {
-    if (cursor->linkB==NULL){
+    if (cursor->linkB==NULL){ //if in the first position
         cellT *cp = new cellT;
         cp->ch = ch;
         cp->linkF = cursor->linkF;
@@ -115,23 +115,28 @@ void EditorBuffer::insertCharacter(char ch) {
         if(cursor->linkF != NULL) cursor->linkF->linkB = cp; //set the link backward
         cursor->linkF = cp;
         cursor->linkB = NULL;
-    }else{
+    }else{ //if in the middle
         cellT *cp = new cellT;
         cp->ch = ch;
       
         if(cursor->linkF!=NULL){
             cp->linkF = cursor->linkF;
-            cp->linkB = cursor->linkB;
-            cursor->linkF->linkB = cp;  //set the link backward
+            cp->linkB = cursor;
+            cp->linkF->linkB = cp; //set the link backward from the cell in front of cp
             cursor->linkF = cp;
-            cursor->linkB = cp;
-            cursor = cp;
+            
         }else{  //if the cursor is at the end of the buffer
-            cp->linkF = NULL;  //link foward to the last cell is NULL
+            if(cursor->linkF ==NULL){
+            cp->linkF = NULL;  //link for the newly created cell(and now that last cell) is NULL
             cp->linkB = cursor->linkB->linkF;  //link backward for the last cell is to the former last cell
             cursor->linkF = cp;  //change the last cell so that it points forward to the new last cell
-            
-
+            cursor = cp->linkB;
+            }else{
+                
+                
+            }
+        
+ 
         }
         
     }
@@ -149,12 +154,19 @@ void EditorBuffer::insertCharacter(char ch) {
  */
 void EditorBuffer::deleteCharacter() {
     if (cursor->linkF != NULL) {
-        cellT *oldcell = cursor->linkF;  //set a temp cell equal to the next cell in the chain
-        cursor->linkF = oldcell->linkF;  //set the cursor link forward equal to the selected char cell's linkF
+        
+        if(cursor->linkB != NULL){
+            cellT *oldcell = cursor->linkF;  //set a temp cell equal to the next cell in the chain
+            cursor->linkF = oldcell->linkF;  //set the cursor link forward equal to the selected char cell's linkF
         
         
-        if(cursor->linkF != NULL) cursor->linkF->linkB = cursor->linkB;  //point around the cell that is going to be deleted; ie the cell ahead of the cursor points backwards to where the cursor is currently pointing
-        delete oldcell;  //delete pointer
+            if(cursor->linkF != NULL) cursor->linkF->linkB = cursor->linkB;  //point around the cell that is going to be deleted; ie the cell ahead of the cursor points backwards to where the cursor is currently pointing
+            delete oldcell;  //delete pointer
+        }else{
+           cursor = cursor->linkF;  //set a temp cell equal to the next cell in the chain
+           cursor->linkB = NULL;
+
+        }
     }
 }
 /*

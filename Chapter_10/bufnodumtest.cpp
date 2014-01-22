@@ -31,8 +31,10 @@ void buffernoDummyTest() {
  */
 void ExecuteCommand(EditorBuffer & buffer, string line) {
     switch (toupper(line[0])) {
-        case 'I': for (int i = line.length()-1; i > 0; i--) {
-            buffer.insertCharacter(line[i]);
+        case 'I': for (int i = line.length()-1; i>0; i--) {
+                buffer.insertCharacter(line[i]);
+        
+            
         }
             break;
         case 'D': buffer.deleteCharacter(); break;
