@@ -12,11 +12,9 @@
 
 using namespace std;
 
-void buffernoDummyTest();
-
 
 int main() {
-    buffernoDummyTest();
+  
 
 
     return 0;
