@@ -22,10 +22,17 @@ struct blockT {
     blockT *linkB;  //link backward
     char *chArray;
     int blockPos;  //number of elements in the charArray
+    
 };
 
 //prototype for adding a block;
 void addBlock();
+
+blockT *cursor;
+blockT *start;
+blockT *end;
+
+
 
 
 #endif

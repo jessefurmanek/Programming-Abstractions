@@ -29,7 +29,6 @@ public:
     void deleteCharacter();
     void display();
     
-    
 private:
     
 #include "bufferlppriv.h"

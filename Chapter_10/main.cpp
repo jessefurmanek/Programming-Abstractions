@@ -9,13 +9,15 @@
 #include <iostream>
 #include "simpio.h"
 #include "console.h"
+#include "bufferlpfoo.h"
 
 using namespace std;
 
+void buffernoDummyTest();
 
 int main() {
   
-
+    buffernoDummyTest();
 
     return 0;
 }

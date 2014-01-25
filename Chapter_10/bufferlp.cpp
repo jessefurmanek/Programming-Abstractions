@@ -11,9 +11,9 @@
 using namespace std;
 
 EditorBuffer::EditorBuffer() {
-    blockT *start = new blockT;
-    blockT *end = new blockT;
-    blockT *cursor= start;
+    start = new blockT;
+    end = new blockT;
+    cursor= start;
     
     start->linkB = NULL;  //set the start blocks link forward to NULL
     end->linkF=NULL;  //set the end block's link backward to NULL
@@ -40,7 +40,10 @@ void EditorBuffer::moveCursorToEnd() {
 }
 
 void EditorBuffer::insertCharacter(char ch) {
-  
+        blockT *insertBlock = new blockT;
+    
+        cursor->linkF->linkB = insertBlock;
+        cursor->linkF->linkB->linkF= insertBlock;
 }
 
 
@@ -51,4 +54,19 @@ void EditorBuffer::deleteCharacter() {
 void EditorBuffer::display() {
     //go to beginning
     
+    blockT *begPlaceHolder;  //create a dummy pointer to find the beginning
+    
+    begPlaceHolder = start;
+    
+    while(begPlaceHolder->linkB != NULL){
+        begPlaceHolder = begPlaceHolder->linkB;
+    }
+    
+    for (blockT *cp = begPlaceHolder->linkF; cp != NULL; cp = cp->linkF) {
+        cout << ' ' << cp->ch;
+    }
+    cout << endl;
+    for (blockT *cp = begPlaceHolder; cp != cursor; cp = cp->linkF) {
+        cout << "  "; }
+    cout << '^' << endl;
 }
