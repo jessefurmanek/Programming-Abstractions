@@ -51,8 +51,8 @@
 			children = (
 				959D343B1891C76A00B61FAC /* bufferlp.cpp */,
 				959D343C1891C76A00B61FAC /* bufferlp.h */,
-				95223359189382B50017F29F /* bufferlpfoo.cpp */,
 				959D343E1891CAAC00B61FAC /* bufferlppriv.h */,
+				95223359189382B50017F29F /* bufferlpfoo.cpp */,
 				2B3A9CDE1713B46200787D95 /* main.cpp */,
 				9522335C189383BC0017F29F /* bufferlpfoo.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,

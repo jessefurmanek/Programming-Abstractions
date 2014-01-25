@@ -9,28 +9,34 @@
 #ifndef _bufferlppriv_h
 #define _bufferlppriv_h
 
-int BLOCK_CAPACITY=4;
+int BLOCK_CAPACITY=3;
 
-int numberOfBlocks =0;
-int curPos = 0;
-int curBlock =0;
+
+//prototype for adding a block;
+void appendBlock();
+void insertBlock();
+void insertShiftLettersRight();
+bool noBlocks();
+bool blockFull();
+
+
+int numberOfBlocks;
+int curPos;
+int curBlock;
 
 
 struct blockT {
-    char ch;
     blockT *linkF;  //link forward
     blockT *linkB;  //link backward
     char *chArray;
     int blockPos;  //number of elements in the charArray
     
 };
-
-//prototype for adding a block;
-void addBlock();
-
 blockT *cursor;
 blockT *start;
 blockT *end;
+
+
 
 
 
