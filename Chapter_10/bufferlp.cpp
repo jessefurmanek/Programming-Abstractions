@@ -16,17 +16,24 @@ EditorBuffer::EditorBuffer() {
     cursor= start;
     
     start->linkB = NULL;  //set the start blocks link forward to NULL
+    start->linkF = end;
+    start->blockPos = 1; //to allow loop in display
     end->linkF=NULL;  //set the end block's link backward to NULL
+    end->linkB=start;
+    end->blockPos =1;
   
     
     
     numberOfBlocks=0; //set number of blocks equal to zero
     curPos = 0;  //set current cursor position = 0;
     curBlock = 0;  //set current block (as in the one which the cursor is currently on = 0
+
 }
 
 
 EditorBuffer::~EditorBuffer() {
+    
+    //need to iterate through the blocks and delete them all
  
 }
 
@@ -58,7 +65,6 @@ void EditorBuffer::insertCharacter(char ch) {
             
         }else if(cursor==start){
             cursor->linkF->chArray[curPos]= ch;
-            curPos++;  //increment cursor position counter
             cursor->linkF->blockPos++;  //increment block counter
             
             
@@ -89,6 +95,7 @@ void EditorBuffer::insertBlock(){
         cursor->linkF = newBlock;
         newBlock->chArray = new char[BLOCK_CAPACITY];  //initialize the newBlock's chArray;
     numberOfBlocks++;
+    newBlock->blockPos=0;
 }
 
 void EditorBuffer::insertShiftLettersRight(){
@@ -104,15 +111,34 @@ void EditorBuffer::display() {
     
     begPlaceHolder = start;
     
-    while(begPlaceHolder->linkB != NULL){
-        begPlaceHolder = begPlaceHolder->linkB;
-    }
-    
-    for (blockT *cp = begPlaceHolder->linkF; cp != NULL; cp = cp->linkF) {
-        cout << ' ' << cp->ch;
+    if(numberOfBlocks==0){
+        cout<< " ^"<<endl;  //if there are no blocks, print the cursor
+        
+    } else{
+    for (blockT *cp = begPlaceHolder->linkF; cp->linkF != NULL; cp = cp->linkF) {
+        for(int x=0; x<cp->blockPos; x++){  //iterate through each block's chArray
+            cout << ' ' << cp->chArray[x];
+        }
     }
     cout << endl;
-    for (blockT *cp = begPlaceHolder; cp != cursor; cp = cp->linkF) {
-        cout << "  "; }
-    cout << '^' << endl;
+    for (blockT *cp = begPlaceHolder; cp->linkF != NULL; cp = cp->linkF) {
+        if(cp==cursor){  //if on the cursor block
+            for(int x= 0; x<cp->blockPos; x++){
+                if(curPos == x){
+                    cout << '^' <<flush;
+                }else{
+                    cout << ' ' << flush;
+                }
+                
+            }
+            
+        }else{
+            for(int x=0; x<cp->blockPos; x++)
+            cout<< ' ' <<flush;  //if not on the cursor block, print a blank for each letter
+        }
+        
+    }
+    }
+    
+    cout<<endl;
 }
