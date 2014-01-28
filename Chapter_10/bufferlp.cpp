@@ -39,8 +39,27 @@ EditorBuffer::~EditorBuffer() {
 
 void EditorBuffer::moveCursorForward() {
    
+    if(curPos==BLOCK_CAPACITY){ //if cursor is at block capacity
+        if(cursor->linkF!=NULL){
+            cursor=cursor->linkF;
+            curPos=0;
+        }
+        
+    }else{ //if not at block capacity
+        cursor->blockPos++;  //increment block position
+    }
+   
 }
 void EditorBuffer::moveCursorBackward() {
+    if(curPos==0){ //if cursor is equal to 0 in the block
+        if(cursor->linkB!=NULL){  //and the next block isn't blank
+            cursor=cursor->linkB;  //go backwards
+            curPos=cursor->blockPos;  //set the curPos to the last used block
+        }
+        
+    }else{ //if not at block capacity
+        cursor->blockPos++;  //increment block position
+    }
  
 }
 void EditorBuffer::moveCursorToStart() {
@@ -59,15 +78,16 @@ void EditorBuffer::insertCharacter(char ch) {
         if(blockFull()){
             insertBlock();  //add block to the end of the current block
             insertShiftLettersRight();  //shift letters right into next block
+            insertCharacter(ch);
            
-            
-            
-            
         }else if(cursor==start){
-            cursor->linkF->chArray[curPos]= ch;
+            cursor->linkF->chArray[cursor->linkF->blockPos]= ch;
             cursor->linkF->blockPos++;  //increment block counter
+    
             
-            
+        }else{
+            cursor->chArray[cursor->blockPos]=ch;
+            cursor->blockPos++;
         }
        
     }
@@ -99,6 +119,19 @@ void EditorBuffer::insertBlock(){
 }
 
 void EditorBuffer::insertShiftLettersRight(){
+    int divisor = BLOCK_CAPACITY/2;
+    int newBlockX=0;
+    
+    for(int x = divisor; x<BLOCK_CAPACITY; x++){
+        cursor->linkF->chArray[newBlockX] = cursor->chArray[divisor];  //set new block equal to the second half of the old block
+        newBlockX++;
+    }
+    
+    if (BLOCK_CAPACITY%2==0){  //if block capacity is even
+        cursor->blockPos=divisor;
+    }else{
+        cursor->blockPos=divisor-1;  //if the block capacity is odd, subtract one
+    }
     
     
 }
@@ -125,6 +158,7 @@ void EditorBuffer::display() {
         if(cp==cursor){  //if on the cursor block
             for(int x= 0; x<cp->blockPos; x++){
                 if(curPos == x){
+                    
                     cout << '^' <<flush;
                 }else{
                     cout << ' ' << flush;

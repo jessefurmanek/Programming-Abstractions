@@ -9,7 +9,7 @@
 #ifndef _bufferlppriv_h
 #define _bufferlppriv_h
 
-int BLOCK_CAPACITY=3;
+int BLOCK_CAPACITY=4;
 
 
 //prototype for adding a block;
