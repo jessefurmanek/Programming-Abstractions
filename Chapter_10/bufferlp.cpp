@@ -39,14 +39,14 @@ EditorBuffer::~EditorBuffer() {
 
 void EditorBuffer::moveCursorForward() {
    
-    if(curPos==BLOCK_CAPACITY){ //if cursor is at block capacity
-        if(cursor->linkF!=NULL){
+    if(curPos==cursor->blockPos-1){ //if cursor is at block capacity
+        if(cursor->linkF->linkF!=NULL){
             cursor=cursor->linkF;
             curPos=0;
         }
         
     }else{ //if not at block capacity
-        cursor->blockPos++;  //increment block position
+        curPos++;  //increment block position
     }
    
 }
@@ -58,7 +58,7 @@ void EditorBuffer::moveCursorBackward() {
         }
         
     }else{ //if not at block capacity
-        cursor->blockPos++;  //increment block position
+        curPos--;  //increment block position
     }
  
 }
@@ -81,11 +81,16 @@ void EditorBuffer::insertCharacter(char ch) {
             insertCharacter(ch);
            
         }else if(cursor==start){
-            cursor->linkF->chArray[cursor->linkF->blockPos]= ch;
+            for(int x=BLOCK_CAPACITY-1; x>curPos; x--){
+                cursor->linkF->chArray[x]=cursor->linkF->chArray[x-1];  //move chars in charArray to the right in the array
+            }
+            cursor->linkF->chArray[curPos]= ch;
             cursor->linkF->blockPos++;  //increment block counter
     
-            
         }else{
+            for(int x=BLOCK_CAPACITY-1; x>curPos; x--){
+                cursor->chArray[x]=cursor->chArray[x-1];  //move chars in charArray to the right in the array
+            }
             cursor->chArray[cursor->blockPos]=ch;
             cursor->blockPos++;
         }
@@ -103,7 +108,7 @@ bool EditorBuffer::noBlocks(){
 }
 
 bool EditorBuffer::blockFull(){
-    return cursor->blockPos==BLOCK_CAPACITY; //if the current block is full
+    return cursor->blockPos==BLOCK_CAPACITY-1; //if the current block is full
         
 }
 
@@ -123,14 +128,21 @@ void EditorBuffer::insertShiftLettersRight(){
     int newBlockX=0;
     
     for(int x = divisor; x<BLOCK_CAPACITY; x++){
-        cursor->linkF->chArray[newBlockX] = cursor->chArray[divisor];  //set new block equal to the second half of the old block
+        cursor->linkF->chArray[newBlockX] = cursor->chArray[x];  //set new block equal to the second half of the old block
         newBlockX++;
     }
     
+    
     if (BLOCK_CAPACITY%2==0){  //if block capacity is even
-        cursor->blockPos=divisor;
+        cursor->blockPos=divisor-1;
+        cursor->linkF->blockPos=divisor-1;
+        cursor=cursor->linkF;
+        curPos=0;
     }else{
-        cursor->blockPos=divisor-1;  //if the block capacity is odd, subtract one
+        cursor->blockPos=divisor;  //if the block capacity is odd, subtract one
+        cursor->linkF->blockPos=divisor;
+        cursor=cursor->linkF;
+        curPos=0;
     }
     
     
@@ -139,16 +151,18 @@ void EditorBuffer::insertShiftLettersRight(){
 
 void EditorBuffer::display() {
     //go to beginning
+    bool found=false;
     
     blockT *begPlaceHolder;  //create a dummy pointer to find the beginning
     
     begPlaceHolder = start;
     
     if(numberOfBlocks==0){
+        cout<<endl;
         cout<< " ^"<<endl;  //if there are no blocks, print the cursor
         
     } else{
-    for (blockT *cp = begPlaceHolder->linkF; cp->linkF != NULL; cp = cp->linkF) {
+    for (blockT *cp = begPlaceHolder->linkF; cp != end; cp = cp->linkF) {
         for(int x=0; x<cp->blockPos; x++){  //iterate through each block's chArray
             cout << ' ' << cp->chArray[x];
         }
@@ -156,22 +170,26 @@ void EditorBuffer::display() {
     cout << endl;
     for (blockT *cp = begPlaceHolder; cp->linkF != NULL; cp = cp->linkF) {
         if(cp==cursor){  //if on the cursor block
-            for(int x= 0; x<cp->blockPos; x++){
+            for(int x= 0; x<=cp->blockPos; x++){
                 if(curPos == x){
                     
                     cout << '^' <<flush;
+                    found = true;
                 }else{
-                    cout << ' ' << flush;
+                    cout << "  " << flush;
                 }
                 
             }
             
+        }else if(cp->linkF==end && found==false){
+           cout<<"^"<<endl;  //print cursor if at the end of the block ;
         }else{
-            for(int x=0; x<cp->blockPos; x++)
-            cout<< ' ' <<flush;  //if not on the cursor block, print a blank for each letter
+            for(int x=0; x<=cp->blockPos; x++)
+            cout<< " " <<flush;  //if not on the cursor block, print a blank for each letter
         }
         
     }
+        
     }
     
     cout<<endl;
