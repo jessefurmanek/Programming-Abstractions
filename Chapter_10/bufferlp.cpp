@@ -75,11 +75,15 @@ void EditorBuffer::moveCursorBackward() {
  
 }
 void EditorBuffer::moveCursorToStart() {
+    curPos = 0;
+    cursor = start;
   
 }
 
 void EditorBuffer::moveCursorToEnd() {
-
+    cursor = end->linkB;
+    curPos = cursor->blockPos-1;
+    
 }
 
 void EditorBuffer::insertCharacter(char ch) {
@@ -183,40 +187,38 @@ void EditorBuffer::display() {
         for(int x=0; x<cp->blockPos; x++){  //iterate through each block's chArray
             cout << ' ' << cp->chArray[x];
         }
+    }
     
     cout << endl;
-        
-        
+    
   
-    if(cp==start){
-            cout<<" ^"<<flush; //if there are no blocks, print the cursor
+    if(cursor==start){
+            cout<<"^"<<flush; //if there are no blocks, print the cursor
+            found=true;
     }else{
         cout<<"  "<<flush;
-    }
     
         for (blockT *cp = begPlaceHolder->linkF; cp->linkF != NULL; cp = cp->linkF) {
         
-        if(cp==cursor){  //if on the cursor block
-            for (int x=0; x<cp->blockPos; x++){
-                if(x==curPos){
+            if(cp==cursor){  //if on the cursor block
+                for (int x=0; x<cp->blockPos; x++){
+                    if(x==curPos){
                     cout<<'^'<<flush;
-                }else{
+                        found=true;
+                    }else{
                     cout<<"  "<<flush;
+                    }
                 }
+            }else if(cp->linkF==end && found==false){
+                cout<<"^"<<flush;  //print cursor if at the end of the block ;
+            }else{//if not on the cursor, print out all the potentional cursor points
+                for(int x=0; x< cp->blockPos; x++)
+                    cout<<"  "<<flush;  //if not on the cursor block, print a blank for each letter
             }
-        }else if(cp->linkF==end && found==false){
-            cout<<"^"<<flush;  //print cursor if at the end of the block ;
-        }else{//if not on the cursor, print out all the potentional cursor points
-            for(int x=0; x<=cp->blockPos; x++)
-                cout<<"  "<<flush;  //if not on the cursor block, print a blank for each letter
-            
+        
         }
-        
+
     }
-        
-    }
-    
-    
     cout<<endl;
     cout<<"blockPos: "<<cursor->blockPos<<endl;
     cout<<"curPos: "<<curPos<<endl;
