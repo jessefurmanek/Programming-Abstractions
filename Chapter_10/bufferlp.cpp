@@ -17,7 +17,7 @@ EditorBuffer::EditorBuffer() {
     
     start->linkB = NULL;  //set the start blocks link forward to NULL
     start->linkF = end;
-    start->blockPos = 1; //to allow loop in display
+    start->blockPos = 0 ; //to allow loop in display
     end->linkF=NULL;  //set the end block's link backward to NULL
     end->linkB=start;
     end->blockPos =1;
@@ -38,8 +38,15 @@ EditorBuffer::~EditorBuffer() {
 }
 
 void EditorBuffer::moveCursorForward() {
-   
-    if(curPos==cursor->blockPos-1){ //if cursor is at block capacity
+    if(cursor==start){
+        if(noBlocks()){
+            
+        }else{
+            cursor=cursor->linkF;
+            curPos=0;
+        }
+    }
+    else if(curPos==cursor->blockPos-1){ //if cursor is at block capacity
         if(cursor->linkF->linkF!=NULL){
             cursor=cursor->linkF;
             curPos=0;
@@ -52,9 +59,14 @@ void EditorBuffer::moveCursorForward() {
 }
 void EditorBuffer::moveCursorBackward() {
     if(curPos==0){ //if cursor is equal to 0 in the block
-        if(cursor->linkB!=NULL){  //and the next block isn't blank
+        if(cursor->linkB==NULL){  //at start
+           
+        }else if(cursor->linkB==start){
+            cursor=cursor->linkB;  //go backwards to start
+            curPos=0;  //set the curPos = 0
+        }else{
             cursor=cursor->linkB;  //go backwards
-            curPos=cursor->blockPos;  //set the curPos to the last used block
+            curPos=cursor->blockPos-1;  //set the curPos to the last used block
         }
         
     }else{ //if not at block capacity
@@ -81,21 +93,24 @@ void EditorBuffer::insertCharacter(char ch) {
             insertCharacter(ch);
            
         }else if(cursor==start){
-            for(int x=BLOCK_CAPACITY-1; x>curPos; x--){
+            for(int x=cursor->linkF->blockPos; x>0; x--){
                 cursor->linkF->chArray[x]=cursor->linkF->chArray[x-1];  //move chars in charArray to the right in the array
             }
-            cursor->linkF->chArray[curPos]= ch;
+            cursor->linkF->chArray[0]= ch; //insert character as first character
             cursor->linkF->blockPos++;  //increment block counter
     
         }else{
             for(int x=BLOCK_CAPACITY-1; x>curPos; x--){
                 cursor->chArray[x]=cursor->chArray[x-1];  //move chars in charArray to the right in the array
             }
-            cursor->chArray[cursor->blockPos]=ch;
+            cursor->chArray[curPos+1]=ch;
             cursor->blockPos++;
         }
        
     }
+    cout<<"blockPos: "<<cursor->blockPos<<endl;
+    cout<<"curPos: "<<curPos<<endl;
+    cout<<"numBlocks: "<<numberOfBlocks<<endl;
 }
 
 
@@ -108,7 +123,7 @@ bool EditorBuffer::noBlocks(){
 }
 
 bool EditorBuffer::blockFull(){
-    return cursor->blockPos==BLOCK_CAPACITY-1; //if the current block is full
+    return cursor->blockPos==BLOCK_CAPACITY; //if the current block is full
         
 }
 
@@ -134,15 +149,22 @@ void EditorBuffer::insertShiftLettersRight(){
     
     
     if (BLOCK_CAPACITY%2==0){  //if block capacity is even
-        cursor->blockPos=divisor-1;
-        cursor->linkF->blockPos=divisor-1;
-        cursor=cursor->linkF;
-        curPos=0;
+        cursor->blockPos=divisor;
+        cursor->linkF->blockPos=divisor;
+        if (curPos<divisor){
+        }else{
+            cursor=cursor->linkF;
+            curPos-=divisor;
+        }
     }else{
         cursor->blockPos=divisor;  //if the block capacity is odd, subtract one
-        cursor->linkF->blockPos=divisor;
-        cursor=cursor->linkF;
-        curPos=0;
+        cursor->linkF->blockPos=divisor+1;
+        
+        if (curPos<divisor){
+        }else{cursor=cursor->linkF;
+            
+            curPos-=divisor-1;
+        }
     }
     
     
@@ -156,41 +178,46 @@ void EditorBuffer::display() {
     blockT *begPlaceHolder;  //create a dummy pointer to find the beginning
     
     begPlaceHolder = start;
-    
-    if(numberOfBlocks==0){
-        cout<<endl;
-        cout<< " ^"<<endl;  //if there are no blocks, print the cursor
-        
-    } else{
+  
     for (blockT *cp = begPlaceHolder->linkF; cp != end; cp = cp->linkF) {
         for(int x=0; x<cp->blockPos; x++){  //iterate through each block's chArray
             cout << ' ' << cp->chArray[x];
         }
-    }
+    
     cout << endl;
-    for (blockT *cp = begPlaceHolder; cp->linkF != NULL; cp = cp->linkF) {
+        
+        
+  
+    if(cp==start){
+            cout<<" ^"<<flush; //if there are no blocks, print the cursor
+    }else{
+        cout<<"  "<<flush;
+    }
+    
+        for (blockT *cp = begPlaceHolder->linkF; cp->linkF != NULL; cp = cp->linkF) {
+        
         if(cp==cursor){  //if on the cursor block
-            for(int x= 0; x<=cp->blockPos; x++){
-                if(curPos == x){
-                    
-                    cout << '^' <<flush;
-                    found = true;
+            for (int x=0; x<cp->blockPos; x++){
+                if(x==curPos){
+                    cout<<'^'<<flush;
                 }else{
-                    cout << "  " << flush;
+                    cout<<"  "<<flush;
                 }
-                
             }
-            
         }else if(cp->linkF==end && found==false){
-           cout<<"^"<<endl;  //print cursor if at the end of the block ;
-        }else{
+            cout<<"^"<<flush;  //print cursor if at the end of the block ;
+        }else{//if not on the cursor, print out all the potentional cursor points
             for(int x=0; x<=cp->blockPos; x++)
-            cout<< " " <<flush;  //if not on the cursor block, print a blank for each letter
+                cout<<"  "<<flush;  //if not on the cursor block, print a blank for each letter
+            
         }
         
     }
         
     }
     
+    
     cout<<endl;
+    cout<<"blockPos: "<<cursor->blockPos<<endl;
+    cout<<"curPos: "<<curPos<<endl;
 }
