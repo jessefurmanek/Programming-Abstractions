@@ -760,11 +760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "EditorBuffer::deleteCharacter()"
             landmarkType = "5">
          </BreakpointContent>
@@ -776,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -792,11 +792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
             <Locations>
@@ -916,11 +916,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
             <Locations>
@@ -962,11 +962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
             <Locations>
@@ -1008,11 +1008,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1024,11 +1024,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1072,11 +1072,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "EditorBuffer::insertBlock()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1088,11 +1088,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "EditorBuffer::insertBlock()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1104,11 +1104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "EditorBuffer::insertShiftLettersRight()"
             landmarkType = "5">
             <Locations>
@@ -1150,11 +1150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1214,11 +1214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
             <Locations>
@@ -1260,11 +1260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1276,11 +1276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1292,11 +1292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "EditorBuffer::insertShiftLettersRight()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1356,11 +1356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1372,11 +1372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "bufferlp.cpp"
-            timestampString = "412816397.159919"
+            timestampString = "412902080.15355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "EditorBuffer::display()"
             landmarkType = "5">
             <Locations>
@@ -1409,6 +1409,38 @@
                   offsetFromSymbolStart = "531">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bufferlp.cpp"
+            timestampString = "412902222.227554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "EditorBuffer::deleteCharacter()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bufferlp.cpp"
+            timestampString = "412902325.394584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "EditorBuffer::deleteCharacter()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

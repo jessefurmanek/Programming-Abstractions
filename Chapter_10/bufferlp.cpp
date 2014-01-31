@@ -119,6 +119,48 @@ void EditorBuffer::insertCharacter(char ch) {
 
 
 void EditorBuffer::deleteCharacter() {
+    
+    if(cursor == end->linkB && curPos == end->linkB->blockPos-1){  //if the cursor is at the last block and that that ch in that block
+        //do nothing
+    }else if(noBlocks()){
+        //do nothing
+    }else if(cursor == start || curPos == cursor->blockPos-1){
+        for(int x=0; x<cursor->linkF->blockPos-1; x++){
+            cursor->linkF->chArray[x]=cursor->linkF->chArray[x+1]; //shift chars to left
+        }
+        cursor->linkF->blockPos--;
+        
+        if(cursor->linkF->blockPos==0){
+            blockT *tempBlock= cursor->linkF;
+           
+            cursor->linkF = cursor->linkF->linkF;  // set cursor linkF to the value in front of the sooon to be deleted block
+            tempBlock->linkF->linkB=cursor;
+          
+            
+            delete[] tempBlock; //delete the blank block
+            numberOfBlocks--;
+        }
+        
+    }else{ //if cursor is in the middle or start of a block
+        for(int x=curPos+1; x<cursor->blockPos-1; x++){
+            cursor->chArray[x]=cursor->chArray[x+1]; //shift chars to left
+        }
+        
+        cursor->blockPos--;
+        
+        if(cursor->blockPos==0){  //if cursor block is now empty
+            blockT *tempBlock= cursor;
+            cursor=cursor->linkB;  //set cursor to the previous block
+            curPos = cursor->blockPos-1;  //set cursor position to end of block
+            cursor->linkF = tempBlock->linkF;  // set cursor linkF to the value in front of the sooon to be deleted block
+            tempBlock->linkF->linkB=cursor;  //set the block in front of the block to be deleted's linkB to cursor
+            
+            delete[] tempBlock; //delete the blank block
+            numberOfBlocks--;
+        }
+        
+        
+    }
 
 }
 
