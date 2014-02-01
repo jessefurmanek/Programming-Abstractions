@@ -32,8 +32,17 @@ EditorBuffer::EditorBuffer() {
 
 
 EditorBuffer::~EditorBuffer() {
-    
+    cout<<"here"<<endl;
     //need to iterate through the blocks and delete them all
+    blockT *cp = start->linkF;
+    while (cp->linkF != NULL) {
+        blockT *next = cp->linkF;
+        delete cp;
+        cp = next;
+    }
+    
+    delete[] start;
+    delete[] end;
  
 }
 
