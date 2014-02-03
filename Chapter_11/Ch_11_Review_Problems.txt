@@ -1,0 +1,133 @@
+Review questions
+1. When designing a generic container, what advantages does a C++ template offer?
+
+
+   * They allow a structure to take a base type as a parameter
+
+2. When specializing a class template for use as a client, how do you specify what type should be used to fill in the template placeholder?
+
+
+   * <typename nameOfParameter>
+
+3. Draw a linked-list diagram of the stack myStack after the following operations are performed:
+          Stack<char> myStack;
+          myStack.push('A');
+          myStack.push('B');
+          myStack.push('C’);
+
+
+   * The diagram would show each of characters being placed in the linked lift, and at the end of the run the order would read CBA
+
+4. What are the expanded forms of the acronyms LIFO and FIFO? Which of these disciplines pertains to the queue abstraction?
+
+
+   * Last in first out, first in first out
+   * Queue == first in first out
+
+5. What are the names of the fundamental queue operations?
+
+
+   * Enqueue
+   * Dequeue
+
+6. If you use an array to store the underlying elements in a queue, what are the Queue class private instance variables?
+
+
+   * Capacity - Allocated size of the array
+   * Head - Index of the start of the queue
+   * Tail - Index of the end of the queue
+
+7. What is a ring buffer? How does the ring-buffer concept apply to queues?
+
+
+   * It is an data structure concept that allows an array’s size to “wrap-around” the end
+   * With queues, using a ring-buffer allows the queue to allocate (nearly) the full array regardless of where the head starts
+
+8. How can you tell if an array-based queue is empty? How can you tell if it has reached its capacity?
+
+
+   * When head is = to the tail
+   * When the size = to capacity-1
+
+9. Assuming that INITIAL_CAPACITY has the artificially small value 3, draw a diagram showing the underlying representation of the array-based queue myQueue after the following sequence of operations:
+          Queue<char> myQueue;
+          myQueue.enqueue('A');
+          myQueue.enqueue('B');
+          myQueue.enqueue('C');
+          myQueue.dequeue();
+          myQueue.dequeue();
+          myQueue.enqueue('D');
+          myQueue.enqueue('E');
+          myQueue.dequeue();
+          myQueue.enqueue('F’);
+
+   * CBA
+   * 
+      * A pushed off
+      * B pushed off
+   * C
+   * 
+      * Add D
+   * DC
+   * 
+      * Add E
+   * EDC  
+
+   * 
+      * C pushed
+   * ED
+   * 
+      * Add F
+   * FED
+
+
+10. Explain how modular arithmetic is useful in the array-based implementation of queues.
+
+
+   * It allows the programmer to calculate the size of the queue, regardless of the relative position between the head and the tail
+
+11. Describe what is wrong with the following implementation of size for the array- based representation of queues:
+          template <typename ElemType>
+          int Queue<ElemType>::size() {
+              return (tail - head) % QueueArraySize;
+          }
+
+
+   * If the tail is smaller than the head, the number will be negative and not represent the size
+
+12. Draw a diagram showing the internal structure of a linked-list queue after the computer finishes the set of operations in question 9.
+
+
+   * F—>E—>D
+
+13. How can you tell if a linked-list queue is empty?
+
+
+   * Storing NULL in the head pointer
+
+14. What is the purpose of the operator keyword?
+
+
+   * It allows a programmer to change the definition of an operator e.g. +-= for a given class
+
+15. What is the name of the method you need to override if you want to define bracket selection for a class?
+
+
+   * the operator method
+
+
+16. True or false: A class named MyClass can gain access to the private variables of a class named YourClass by including a line designating YourClass as a friend.
+
+
+   * Depends— YourClass would have to add MyClass as a friend first
+
+17. What is meant by the term nested class?
+
+
+   * It is a class that is defined within another class
+
+18. What are the two pieces of information that any Iterator class must contain? 
+
+
+   * The complete designation of the class in which it appears
+   *  the template parameters. 
