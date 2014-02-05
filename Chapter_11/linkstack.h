@@ -22,7 +22,7 @@ public:
     //set prototypes for the basic stack commands
     void push(char ch);
     char pop();
-    void peek();
+    char peek();
 
     
 private:
