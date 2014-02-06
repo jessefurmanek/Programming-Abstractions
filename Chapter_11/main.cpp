@@ -9,7 +9,7 @@
 #include <iostream>
 #include "simpio.h"
 #include "console.h"
-#include "linkstack.h"
+#include "queueimp1.h"
 
 
 using namespace std;
@@ -17,20 +17,9 @@ using namespace std;
 
 
 int main() {
-    Stack testStack;
-    
-    char letter = 'c';
-    for(int x=0; x<25; x++){
-        testStack.push(letter+1);
-        letter+=1;
-    }
+    Queue<string> testQueue;
     
     
-    for(int x=0; x<25; x++){
-        cout<<testStack.pop()<<endl;
-    }
-    
-
     return 0;
 }
 
