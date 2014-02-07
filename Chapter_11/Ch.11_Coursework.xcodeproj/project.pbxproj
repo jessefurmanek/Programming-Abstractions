@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		954486F518A301A7003C516F /* queueimp1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 954486F318A301A7003C516F /* queueimp1.cpp */; };
 		95778AA818A09C23003F0E13 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95778AA718A09C23003F0E13 /* main.cpp */; };
 		95778AAB18A09C71003F0E13 /* linkstack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95778AA918A09C71003F0E13 /* linkstack.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
@@ -16,7 +15,6 @@
 /* Begin PBXFileReference section */
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.11_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.11_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		954486F318A301A7003C516F /* queueimp1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = queueimp1.cpp; sourceTree = "<group>"; };
 		954486F418A301A7003C516F /* queueimp1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queueimp1.h; sourceTree = "<group>"; };
 		954486F618A3026D003C516F /* queuepriv1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queuepriv1.h; sourceTree = "<group>"; };
 		95778AA718A09C23003F0E13 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -51,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				95778AA718A09C23003F0E13 /* main.cpp */,
-				954486F318A301A7003C516F /* queueimp1.cpp */,
 				954486F418A301A7003C516F /* queueimp1.h */,
 				954486F618A3026D003C516F /* queuepriv1.h */,
 				95778AA918A09C71003F0E13 /* linkstack.cpp */,
@@ -163,7 +160,6 @@
 			files = (
 				95778AAB18A09C71003F0E13 /* linkstack.cpp in Sources */,
 				95778AA818A09C23003F0E13 /* main.cpp in Sources */,
-				954486F518A301A7003C516F /* queueimp1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

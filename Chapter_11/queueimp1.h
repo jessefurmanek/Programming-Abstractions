@@ -107,6 +107,7 @@ Queue<ElemType>::Queue() {
     elements = new ElemType[capacity];
     head = 0;
     tail = 0;
+    numElements=0 ;//change the representation to include the number of elemetns
 }
 /*
  * Implementation notes: ~Queue destructor
@@ -129,7 +130,7 @@ Queue<ElemType>::~Queue() {
  */
 template <typename ElemType>
 int Queue<ElemType>::size() {
-    return (tail + capacity - head) % capacity;
+    return numElements;
 }
 /*
  * Implementation notes: isEmpty
@@ -141,7 +142,7 @@ int Queue<ElemType>::size() {
  */
 template <typename ElemType>
 bool Queue<ElemType>::isEmpty() {
-    return head == tail;
+    return numElements==0;  //if queue is empty, the number of elemetns should be zero
 }
 /*
  * Implementation notes: clear
@@ -152,7 +153,7 @@ bool Queue<ElemType>::isEmpty() {
  */
 template <typename ElemType>
 void Queue<ElemType>::clear() {
-    head = tail = 0;
+    head = numElements = 0;
 }
 /*
  * Implementation notes: enqueue
@@ -166,9 +167,9 @@ void Queue<ElemType>::clear() {
  */
 template <typename ElemType>
 void Queue<ElemType>::enqueue(ElemType elem) {
-    if (size() == capacity - 1) expandCapacity();
-    elements[tail] = elem;
-    tail = (tail + 1) % capacity;
+    if (size() == capacity) expandCapacity();  //if size is equal to capacity;
+    elements[((head+numElements)%capacity)] = elem;
+    numElements+=1;
 }
 
 /*
@@ -184,6 +185,7 @@ ElemType Queue<ElemType>::dequeue() {
     }
     ElemType result = elements[head];
     head = (head + 1) % capacity;
+    numElements-=1;
     return result;
 }
 template <typename ElemType>
@@ -209,10 +211,9 @@ void Queue<ElemType>::expandCapacity() {
     ElemType *oldElements = elements;
     elements = new ElemType[capacity];
     for (int i = 0; i < count; i++) {
-        elements[i] = oldElements[(head + i) % capacity];
+        elements[i] = oldElements[(head + i) % capacity];  
     }
     head = 0;
-    tail = count;
     delete[] oldElements;
 }
 

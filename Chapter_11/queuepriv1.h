@@ -43,13 +43,14 @@
  */
 /* Constants */
 
-static const int INITIAL_CAPACITY = 100;
+static const int INITIAL_CAPACITY = 10;
 
 /* Instance variables */
 ElemType *elements;
 int capacity;
 int head;
 int tail;
+int numElements;
 /* A dynamic array of the elements     */
 /* The allocated size of the array     */
 /* The index of the head of the queue  */
