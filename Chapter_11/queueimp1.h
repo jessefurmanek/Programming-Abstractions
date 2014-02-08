@@ -204,15 +204,48 @@ ElemType Queue<ElemType>::peek() {
 template <typename ElemType>
 void Queue<ElemType>::reverse(){
     
+    //set head = to tail
     
-    int newHead = (head+numElements)%capacity;  //head is equal to tail
+    head = ((head+numElements-1)%capacity);
     
-    for(int x=1; x<numElements; x++){
-        elements[(newHead+x)%capacity]= elements[((head+numElements)%capacity)-x];  //going forward from the new head, set value = to queue in reverse
+    //switch each data elements with its mirror data element i.e. a data elem in a position of head-1 would switch with one in head+1
+     //when lh is less than right hand, stop
+    int lh = head-1;
+    int rh = (head+1)%capacity;
+    
+    while(lh<rh){
+        ElemType temp = elements[lh];
+        elements[lh]=elements[rh];
+        elements[rh]=temp;    //switch the two
         
-        //problem-- i can't modulo backwardsx
+        if(lh==0){
+            lh=capacity-1;
+            rh=(rh+1)%capacity;
+        }else{
+            lh--;
+            rh=(rh+1)%capacity;
+        }
+        
     }
     
+    if(rh==0){
+        while(rh<lh){
+            ElemType temp = elements[lh];
+            elements[lh]=elements[rh];
+            elements[rh]=temp;    //switch the two
+            
+            if(lh==0){
+                lh=capacity-1;
+                rh=(rh+1)%capacity;
+            }else{
+                lh--;
+                rh=(rh+1)%capacity;
+            }
+        }
+    }
+    
+   
+ 
 }
 
 
