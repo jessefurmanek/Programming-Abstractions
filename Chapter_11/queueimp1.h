@@ -82,6 +82,11 @@ public:
      * Removes the first element from this queue and returns it.
      * Raises an error if called on an empty queue.
      */
+    
+    
+    void reverse(); //reverses the queue;
+    
+    
     ElemType dequeue();
     /*
      * Method: peek
@@ -106,7 +111,6 @@ Queue<ElemType>::Queue() {
     capacity = INITIAL_CAPACITY;
     elements = new ElemType[capacity];
     head = 0;
-    tail = 0;
     numElements=0 ;//change the representation to include the number of elemetns
 }
 /*
@@ -195,6 +199,23 @@ ElemType Queue<ElemType>::peek() {
     }
     return elements[head];
 }
+
+
+template <typename ElemType>
+void Queue<ElemType>::reverse(){
+    
+    
+    int newHead = (head+numElements)%capacity;  //head is equal to tail
+    
+    for(int x=1; x<numElements; x++){
+        elements[(newHead+x)%capacity]= elements[((head+numElements)%capacity)-x];  //going forward from the new head, set value = to queue in reverse
+        
+        //problem-- i can't modulo backwardsx
+    }
+    
+}
+
+
 /*
  * Implementation notes: expandCapacity
  * ------------------------------------

@@ -52,6 +52,9 @@ int main() {
     testQueue.enqueue("E");
     testQueue.enqueue("F");
     
+    testQueue.reverse();
+
+    
     length = testQueue.size();
     for(int x=0; x<length; x++){
         cout<<testQueue.dequeue()<<endl;

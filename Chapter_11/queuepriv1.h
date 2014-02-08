@@ -49,7 +49,6 @@ static const int INITIAL_CAPACITY = 10;
 ElemType *elements;
 int capacity;
 int head;
-int tail;
 int numElements;
 /* A dynamic array of the elements     */
 /* The allocated size of the array     */
