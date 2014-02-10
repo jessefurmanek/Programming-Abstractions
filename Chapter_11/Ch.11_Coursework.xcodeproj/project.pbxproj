@@ -8,19 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		95778AA818A09C23003F0E13 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95778AA718A09C23003F0E13 /* main.cpp */; };
-		95778AAB18A09C71003F0E13 /* linkstack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95778AA918A09C71003F0E13 /* linkstack.cpp */; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.11_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.11_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		954486F418A301A7003C516F /* queueimp1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queueimp1.h; sourceTree = "<group>"; };
-		954486F618A3026D003C516F /* queuepriv1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queuepriv1.h; sourceTree = "<group>"; };
+		95315D3E18A84812001A0A0A /* queuell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queuell.h; sourceTree = "<group>"; };
+		95315D4018A848C6001A0A0A /* queuellpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queuellpriv.h; sourceTree = "<group>"; };
 		95778AA718A09C23003F0E13 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		95778AA918A09C71003F0E13 /* linkstack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linkstack.cpp; sourceTree = "<group>"; };
-		95778AAA18A09C71003F0E13 /* linkstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linkstack.h; sourceTree = "<group>"; };
-		95778AAC18A09CB3003F0E13 /* linkstackpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = linkstackpriv.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,11 +45,8 @@
 			isa = PBXGroup;
 			children = (
 				95778AA718A09C23003F0E13 /* main.cpp */,
-				954486F418A301A7003C516F /* queueimp1.h */,
-				954486F618A3026D003C516F /* queuepriv1.h */,
-				95778AA918A09C71003F0E13 /* linkstack.cpp */,
-				95778AAA18A09C71003F0E13 /* linkstack.h */,
-				95778AAC18A09CB3003F0E13 /* linkstackpriv.h */,
+				95315D3E18A84812001A0A0A /* queuell.h */,
+				95315D4018A848C6001A0A0A /* queuellpriv.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -158,7 +151,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95778AAB18A09C71003F0E13 /* linkstack.cpp in Sources */,
 				95778AA818A09C23003F0E13 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

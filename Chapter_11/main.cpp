@@ -9,65 +9,34 @@
 #include <iostream>
 #include "simpio.h"
 #include "console.h"
-#include "queueimp1.h"
+#include "queuell.h"
+#include "queuell.h"
+
 
 
 using namespace std;
 
-
-
 int main() {
-    Queue<string> testQueue;
-    
 
+    Queue<string> testQ;
     
-    int length = testQueue.size();
-
-
-    testQueue.enqueue("A");
-    testQueue.enqueue("B");
-    testQueue.enqueue("C");
-    testQueue.enqueue("D");
-    testQueue.enqueue("E");
-    testQueue.enqueue("J");
-    testQueue.enqueue("E");
-    testQueue.enqueue("S");
-    testQueue.enqueue("S");
-    testQueue.enqueue("E");
-    testQueue.enqueue("F");
-    testQueue.enqueue("G");
-    testQueue.enqueue("H");
-    testQueue.enqueue("I");
-    testQueue.enqueue("A");
-    testQueue.enqueue("B");
-    testQueue.enqueue("C");
-    testQueue.enqueue("D");
-    testQueue.enqueue("E");
-    testQueue.enqueue("J");
-    testQueue.enqueue("E");
-    testQueue.enqueue("S");
-    testQueue.enqueue("S");
-    testQueue.enqueue("E");
-    testQueue.enqueue("F");
-    testQueue.enqueue("G");
-    testQueue.enqueue("H");
-    testQueue.enqueue("I");
+    testQ.enqueue("A");
+    testQ.enqueue("B");
+    testQ.enqueue("C");
+    testQ.enqueue("D");
+    testQ.enqueue("E");
+    testQ.clear();
+    testQ.enqueue("J");
+    testQ.enqueue("E");
+    testQ.enqueue("S");
+    testQ.enqueue("S");
+    testQ.enqueue("E");
     
+    int qSize =testQ.size();
     
-    for(int x=0; x<10; x++){
-        testQueue.dequeue();
+    for(int x=0; x<qSize; x++){
+       cout<<testQ.dequeue()<<endl;
     }
-    
-
-    
-    testQueue.reverse();
-
-    
-    length = testQueue.size();
-    for(int x=0; x<length; x++){
-        cout<<testQueue.dequeue()<<endl;
-    }
-
     
     return 0;
 }
