@@ -70,6 +70,8 @@ public:
      * Raises an error if called on an empty queue.
      */
     
+    void enqueue(ElemType elem, double setPriority);
+    
     
     void reverse(); //reverses the queue;
     
@@ -93,10 +95,10 @@ private:
 template <typename ElemType>
 
 
-
 Queue<ElemType>::Queue() {
     start = new queueBlock;
     start->blockPtr=NULL;
+    start->priority=0;
     current=start;
     queueSize =0;
 }
@@ -117,7 +119,6 @@ Queue<ElemType>::~Queue() {
         delete cp;
         cp = next;
     }
-
     
 }
 
@@ -170,11 +171,54 @@ template <typename ElemType>
 void Queue<ElemType>::enqueue(ElemType elem) {
     queueBlock *newBlock = new queueBlock;  //create a new block
     newBlock->valueCell = elem;
+    newBlock->priority=0;
     newBlock->blockPtr=NULL;  //set it's pointer to NULL
     current->blockPtr=newBlock;  //set the current block's pointer to the new block
     current = newBlock;  //set thet current block equal to the new block
     queueSize++;
 }
+
+
+template <typename ElemType>
+void Queue<ElemType>::enqueue(ElemType elem, double setPriority){
+    if(setPriority>0){
+
+        queueBlock *newBlock = new queueBlock;  //create a new block
+        newBlock->valueCell = elem;
+        newBlock->priority=setPriority; //set the priority equal to the input
+        
+        queueBlock *finder = start;
+        while (finder->blockPtr != NULL && finder->blockPtr->priority<setPriority && finder->blockPtr->priority!=0) {  //while the next pointer is less than or equal to NULL
+            queueBlock *next = finder->blockPtr;  //go to the next block
+            finder = next;
+            /*if(priority>next->priority || next->blockPtr==NULL){
+                found=true;
+            '}*/  //this is the implicit if statement of the while loop
+          
+        }
+        
+        if(finder==current){
+            
+            newBlock->blockPtr=NULL;  //set it's pointer to NULL
+            current->blockPtr=newBlock;  //set the current block's pointer to the new block
+            current = newBlock;  //set thet current block equal to the new block
+            
+        }else{
+        
+        newBlock->blockPtr=finder->blockPtr;
+        finder->blockPtr=newBlock;
+        
+        }
+        queueSize++;
+        //set newBlock equal to finder's previous location
+        
+    }else{
+        std::cout<<"Priority must be greater than 0"<<std::endl;
+    }
+    
+    
+}
+
 
 /*
  * Implementation notes: dequeue, peek

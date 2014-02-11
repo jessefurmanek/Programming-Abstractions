@@ -11,11 +11,13 @@
 struct queueBlock{
     ElemType valueCell;
     queueBlock *blockPtr;
+    double priority;  //include a priority data element
 };
 
 
 queueBlock *start;
 queueBlock *current;
 int queueSize;
+
 
 #endif

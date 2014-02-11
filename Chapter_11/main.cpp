@@ -26,11 +26,21 @@ int main() {
     testQ.enqueue("D");
     testQ.enqueue("E");
     testQ.clear();
-    testQ.enqueue("J");
-    testQ.enqueue("E");
-    testQ.enqueue("S");
-    testQ.enqueue("S");
-    testQ.enqueue("E");
+    testQ.enqueue("E", 2);
+    testQ.enqueue("S",4);
+    testQ.enqueue("J", 1);
+    testQ.enqueue("S",3);
+    testQ.enqueue("E", 5);
+    
+    testQ.dequeue();
+    testQ.dequeue();
+    testQ.dequeue();
+    testQ.dequeue();
+   
+    testQ.enqueue("E", 2);
+    testQ.enqueue("S",4);
+    testQ.enqueue("J", 1);
+    testQ.enqueue("S",3);
     
     int qSize =testQ.size();
     
