@@ -13,16 +13,7 @@
 #include "error.h"
 
 /*
- * Class: Vector
- * -------------
- * This interface defines a class template that stores a homogeneous
- * indexed collection.  The basic operations are similar to those
- * in the built-in array type, with the added features of dynamic
- * memory management, bounds-checking on indexes, and convenient
- * insert/remove operations.  Like an array, but better!  For
- * maximum generality, the Vector is supplied as a class template.
- * The client specializes the vector to hold values of a specific
- * type, such as Vector<int> or Vector<studentT>.
+ Using a linked list vector makes the add and clear function run slower; but the insert and remove functions run faster
  */
 template <typename ElemType>
 class Vector {
@@ -81,7 +72,14 @@ Vector<ElemType>::Vector() {
 
 template <typename ElemType>
 Vector<ElemType>::~Vector() {
+    vectorBlock *cp = start;
+    while (cp->blkPointer != NULL) {
+        vectorBlock *next = cp->blkPointer;
+        delete cp;
+        cp = next;
+    }
     
+    delete cp;
 }
 
 
@@ -101,19 +99,30 @@ template <typename ElemType>
 void Vector<ElemType>::clear() {
     //delete everything
     
+    vectorBlock *cp = start->blkPointer;
+    while (cp->blkPointer!= NULL) {
+        vectorBlock *next = cp->blkPointer;
+        delete cp;
+        cp = next;
+    }
+    
+    start->blkPointer=NULL;
     length=0;
 }
 
 template <typename ElemType>
 ElemType Vector<ElemType>::getAt(int index) {
     
-    if(start->blkPointer==NULL) error("Trying to get at an empty vector");
+    if (index < 0 || index > length-1) {
+        error("Vector selection index out of range");
+    }
     
     int x = 0;
-    vectorBlock *current=start->blkPointer;
+    vectorBlock *current;
     
-    for (vectorBlock *cp = start->blkPointer;  x<index; cp = cp->blkPointer){
-        current = cp;  //iterate through the vector to get to the index point
+    for (current =start->blkPointer;  x<index; current = current->blkPointer){
+       //iterate through the vector to get to the index point
+        x++;
     }
     
     return current->data;
@@ -128,8 +137,9 @@ void Vector<ElemType>::setAt(int index, ElemType elem) {
     int x = 0;
     vectorBlock *current;
     
-    for (vectorBlock *cp = start->blkPointer;  x<index; cp = cp->blkPointer){
-        current = cp;  //iterate through the vector to get to the index point
+    for (current = start->blkPointer;  x<index; current = current->blkPointer){
+        //iterate through the vector to get to the index point
+        x++;
     }
     
     current->data=elem;
@@ -174,8 +184,9 @@ void Vector<ElemType>::removeAt(int index) {
     int x = 0;
     vectorBlock *current;
     
-    for (vectorBlock *cp = start;  x<index; cp = cp->blkPointer){
-        current = cp;  //iterate through the vector to get to the index point
+    for (current =start;  x<index; current = current->blkPointer){
+        //iterate through the vector to get to the index point
+        x++;
     }
     
 
@@ -195,12 +206,9 @@ void Vector<ElemType>::removeAt(int index) {
 template <typename ElemType>
 void Vector<ElemType>::add(ElemType elem) {
 
-    vectorBlock *current=start;
+    vectorBlock *current;
     
-    int x=0;
-    
-    for (vectorBlock *cp = start;  x<length; cp = cp->blkPointer){
-        current = cp;
+    for (current = start;  current->blkPointer!=NULL; current = current->blkPointer){
     }
     
     vectorBlock *newBlock = new vectorBlock;
@@ -215,7 +223,19 @@ void Vector<ElemType>::add(ElemType elem) {
 template <typename ElemType>
 ElemType & Vector<ElemType>::operator[](int index) {
     
-    //overloaded operator
+    if (index < 0 || index > length-1) {
+        error("Vector selection index out of range");
+    }
+    
+    int x = 0;
+    vectorBlock *current;
+    
+    for (current =start->blkPointer;  x<index; current = current->blkPointer){
+        //iterate through the vector to get to the index point
+        x++;
+    }
+    
+    return current->data;
 }
 
 //not including the iterator
