@@ -15,8 +15,6 @@
 /* Begin PBXFileReference section */
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.11_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.11_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		95315D3E18A84812001A0A0A /* queuell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queuell.h; sourceTree = "<group>"; };
-		95315D4018A848C6001A0A0A /* queuellpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queuellpriv.h; sourceTree = "<group>"; };
 		953A965618AB14ED00DB45DC /* vectorll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vectorll.cpp; sourceTree = "<group>"; };
 		953A965718AB14ED00DB45DC /* vectorll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vectorll.h; sourceTree = "<group>"; };
 		953A965918AB161600DB45DC /* vectorllpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vectorllpriv.h; sourceTree = "<group>"; };
@@ -49,11 +47,9 @@
 			isa = PBXGroup;
 			children = (
 				95778AA718A09C23003F0E13 /* main.cpp */,
-				95315D3E18A84812001A0A0A /* queuell.h */,
 				953A965618AB14ED00DB45DC /* vectorll.cpp */,
 				953A965718AB14ED00DB45DC /* vectorll.h */,
 				953A965918AB161600DB45DC /* vectorllpriv.h */,
-				95315D4018A848C6001A0A0A /* queuellpriv.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,

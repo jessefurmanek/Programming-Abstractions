@@ -7,6 +7,7 @@
 //
 
 #include "vectorll.h"
+#include "vectorllpriv.h"
 
 #ifndef __Ch_11_Coursework__vectorll__
 
@@ -18,7 +19,9 @@
 
 template <typename ElemType>
 Vector<ElemType>::Vector() {
-    
+    vectorBlock *start = new vectorBlock;
+    start->blkPointer
+
   
 }
 

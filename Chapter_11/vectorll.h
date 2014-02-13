@@ -10,7 +10,7 @@
 #define __Ch_11_Coursework__vectorll__
 
 #include <iostream>
-
+#include "error.h"
 
 /*
  * Class: Vector
@@ -43,94 +43,183 @@ public:
     ~Vector();
     
     
-    /*
-     * Method: size
-     * Usage: nElems = vec.size();
-     * ---------------------------
-     * Returns the number of elements in this vector.
-     */
+
     int size();
     
     
-    /*
-     * Method: isEmpty
-     * Usage: if (vec.isEmpty())...
-     * -----------------------------
-     * Returns true if this vector contains no elements, false otherwise.
-     */
+  
     bool isEmpty();
-    /*
-     * Method: clear
-     * Usage: vec.clear();
-     * -------------------
-     * Removes all elements from this vector.
-     */
+   
     void clear();
-    /*
-     * Method: getAt
-     * Usage: val = vec.getAt(3);
-     * --------------------------
-     * Returns the element at the specified index in this vector.
-     * Elements are indexed starting with 0.  A call to vec.getAt(0)
-     * returns the first element; vec.getAt(vec.size()-1) returns the
-     * last.  Raises an error if index is not in the range [0, size()-1].
-     */
+    
     ElemType getAt(int index);
-    /*
-     * Method: setAt
-     * Usage: vec.setAt(3, value);
-     * ---------------------------
-     * Replaces the element at the specified index in this vector with
-     * a new value.  The previous value at that index is overwritten.
-     * Raises an error if index is not in the range [0, size()-1].
-     */
+ 
     void setAt(int index, ElemType value);
-    /*
-     * Method: insertAt
-     * Usage: vec.insertAt(0, value);
-     * ------------------------------
-     * Inserts the element into this vector before the specified index,
-     * shifting all subsequent elements one index higher.  A call to
-     * vec.insertAt(0, val) inserts a new element at the beginning;
-     * vec.insertAt(vec.size(), val) adds a new element to the end.
-     * Raises an error if index is outside the range [0, size()].
-     */
+  
     void insertAt(int index, ElemType elem);
     
-    /*
-     * Method: removeAt
-     * Usage: vec.removeAt(3);
-     * -----------------------
-     * Removes the element at the specified index from this vector,
-     * shifting all subsequent elements one index lower.  A call to
-     * vec.removeAt(0) removes the first element, while a call to
-     * vec.removeAt(vec.size()-1), removes the last.  Raises an error
-     * if index is outside the range [0, size()-1].
-     */
+  
     void removeAt(int index);
-    /*
-     * Method: add
-     * Usage: vec.add(value);
-     * ----------------------
-     * Adds an element to the end of this vector.
-     */
+  
     void add(ElemType elem);
-    /*
-     * Method: operator[]
-     * Usage: vec[0] = vec[1];
-     * -----------------------
-     * Overloads [] to select elements from this vector.  This extension
-     * allows the client to use traditional array notation to get/set
-     * individual elements.  Returns a reference to the element to
-     * allow in-place modification of values.  Raises an error if the
-     * index is outside the range [0, size()-1].
-     */
+   
     ElemType & operator[](int index);
  
 private:
+    
 #include "vectorllpriv.h"
+    
 };
 
-#include "vectorll.cpp"
+template <typename ElemType>
+Vector<ElemType>::Vector() {
+    start = new vectorBlock;
+    start->blkPointer=NULL;
+    length =0;
+    
+}
+
+template <typename ElemType>
+Vector<ElemType>::~Vector() {
+    
+}
+
+
+template <typename ElemType>
+inline int Vector<ElemType>::size() {
+    return length;
+    
+}
+
+template <typename ElemType>
+bool Vector<ElemType>::isEmpty() {
+    
+    return length==0;
+}
+
+template <typename ElemType>
+void Vector<ElemType>::clear() {
+    //delete everything
+    
+    length=0;
+}
+
+template <typename ElemType>
+ElemType Vector<ElemType>::getAt(int index) {
+    
+    if(start->blkPointer==NULL) error("Trying to get at an empty vector");
+    
+    int x = 0;
+    vectorBlock *current=start->blkPointer;
+    
+    for (vectorBlock *cp = start->blkPointer;  x<index; cp = cp->blkPointer){
+        current = cp;  //iterate through the vector to get to the index point
+    }
+    
+    return current->data;
+    
+}
+
+template <typename ElemType>
+void Vector<ElemType>::setAt(int index, ElemType elem) {
+    
+    if(start->blkPointer==NULL) error("Trying to set at an empty vector");
+    
+    int x = 0;
+    vectorBlock *current;
+    
+    for (vectorBlock *cp = start->blkPointer;  x<index; cp = cp->blkPointer){
+        current = cp;  //iterate through the vector to get to the index point
+    }
+    
+    current->data=elem;
+    
+}
+
+template <typename ElemType>
+void Vector<ElemType>::insertAt(int index, ElemType elem) {
+  
+    if(start->blkPointer==NULL) error("Trying to insert into an empty vector");
+    
+    int x = 0;
+    vectorBlock *current;
+    
+    for (vectorBlock *cp = start;  x<index; cp = cp->blkPointer){
+            current = cp;  //iterate through the vector to get to the index point
+    }
+    
+    
+    if(current->blkPointer==NULL){  //if at the end of the vector
+        vectorBlock *newBlock = new vectorBlock;
+        newBlock->data=elem;
+        newBlock->blkPointer=NULL;
+        current->blkPointer=newBlock;
+        
+    }else{
+    
+        vectorBlock *newBlock = new vectorBlock;
+        newBlock->data=elem;
+        newBlock->blkPointer=current->blkPointer;
+        current->blkPointer=newBlock;
+    }
+    length++;
+    
+}
+
+template <typename ElemType>
+void Vector<ElemType>::removeAt(int index) {
+    
+    if(start->blkPointer==NULL) error("Trying to delete an empty vector");
+    
+    int x = 0;
+    vectorBlock *current;
+    
+    for (vectorBlock *cp = start;  x<index; cp = cp->blkPointer){
+        current = cp;  //iterate through the vector to get to the index point
+    }
+    
+
+    if(current->blkPointer->blkPointer==NULL){  //if at the end of the vector
+        vectorBlock *temp = current->blkPointer;
+        current->blkPointer=NULL;
+        delete temp;
+    }else{
+        vectorBlock *temp = current->blkPointer;
+        current->blkPointer=temp->blkPointer;
+        delete temp;
+    }
+    
+    length--;
+}
+
+template <typename ElemType>
+void Vector<ElemType>::add(ElemType elem) {
+
+    vectorBlock *current=start;
+    
+    int x=0;
+    
+    for (vectorBlock *cp = start;  x<length; cp = cp->blkPointer){
+        current = cp;
+    }
+    
+    vectorBlock *newBlock = new vectorBlock;
+    newBlock->data=elem;
+    newBlock->blkPointer=NULL;
+    current->blkPointer = newBlock;
+    
+    length++;
+    
+}
+
+template <typename ElemType>
+ElemType & Vector<ElemType>::operator[](int index) {
+    
+    //overloaded operator
+}
+
+//not including the iterator
+
+
 
 #endif /* defined(__Ch_11_Coursework__vectorll__) */

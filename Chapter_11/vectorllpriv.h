@@ -10,6 +10,13 @@
 #define Ch_11_Coursework_vectorllpriv_h
 
 
-//include private section of a linked list interface here
+struct vectorBlock{
+    ElemType data;
+    vectorBlock *blkPointer;
+};
+
+int length;  //store size of the vector
+vectorBlock *start;
+
 
 #endif
