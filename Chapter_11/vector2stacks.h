@@ -11,17 +11,19 @@
 
 #include <iostream>
 #include "error.h"
+#include "stack.h"
+
 
 /*
  problem 6: reimplement the vector using two stacks
  */
 template <typename ElemType>
-class Vector {
+class VectorTwoStx {
 public:
 
-    Vector();
+    VectorTwoStx();
  
-    ~Vector();
+    ~VectorTwoStx();
     
     
     
@@ -48,73 +50,100 @@ public:
     
 private:
     
-#include "vectorllpriv.h"
+#include "vector2stxpriv.h"
     
 };
 
 template <typename ElemType>
-Vector<ElemType>::Vector() {
- 
-}
-
-template <typename ElemType>
-Vector<ElemType>::~Vector() {
-
-}
-
-
-template <typename ElemType>
-inline int Vector<ElemType>::size() {
-
+VectorTwoStx<ElemType>::VectorTwoStx() {
+    midPt = 0;
     
 }
 
 template <typename ElemType>
-bool Vector<ElemType>::isEmpty() {
-    
+VectorTwoStx<ElemType>::~VectorTwoStx() {
 
 }
 
+
 template <typename ElemType>
-void Vector<ElemType>::clear() {
+inline int VectorTwoStx<ElemType>::size() {
+    
+    return (stackone.size()+stacktwo.size());
+}
+
+template <typename ElemType>
+bool VectorTwoStx<ElemType>::isEmpty() {
+    
+    return (stackone.size()+stacktwo.size()==0)
+}
+
+template <typename ElemType>
+void VectorTwoStx<ElemType>::clear() {
+    for(int x=0; x<stackone.size(); x++){  //pop off all elements of stackone
+        stackone.pop;
+    }
+    
+    for(int x=0; x<stacktwo.size(); x++){
+        stacktwo.pop;                       //pop off all elemetns of stacktwo
+    }
  
 }
 
 template <typename ElemType>
-ElemType Vector<ElemType>::getAt(int index) {
+ElemType VectorTwoStx<ElemType>::getAt(int index) {
     
    
     
 }
 
 template <typename ElemType>
-void Vector<ElemType>::setAt(int index, ElemType elem) {
+void VectorTwoStx<ElemType>::setAt(int index, ElemType elem) {
     
 
     
 }
 
 template <typename ElemType>
-void Vector<ElemType>::insertAt(int index, ElemType elem) {
+void VectorTwoStx<ElemType>::insertAt(int index, ElemType elem) {
     
+    if(index<stackone.size()){
+        for(int x=0; x<(stackone.size()-index); x++){
+        stacktwo.push(stackone.pop());     //if the index is in stack one, move every element including the inserted at element to stack two
+        }
+        
+        stackone.push(elem);
+    }else{  /* if the index value is greater or equal to the size of the index, the index is going to be located on the second stack.  therefore, move excess elements from stack 2 to get to the referenced index.
+             */
+        for(int x=0; x<index-stackone.size(); x++){  /* subtract index from stack 1 size to reset index count on stack2.  meaning, if the index is on the top of the second stack, the index value will be equal to the size of stack1, as stack1 end on a value one less than the size of the stack.  this means if the index value is equal to the top of stack 2, subtracting the size of stack1 will not pop any values off of stack2.  the element will then be pushed to stack1, in effect inserting in constant time.... i think.
+                */
+            stackone.push(stacktwo.pop());
+        }
+        
+        stackone.push(elem);
+    }
 
     
 }
 
 template <typename ElemType>
-void Vector<ElemType>::removeAt(int index) {
+void VectorTwoStx<ElemType>::removeAt(int index) {
 
 }
 
 template <typename ElemType>
-void Vector<ElemType>::add(ElemType elem) {
+void VectorTwoStx<ElemType>::add(ElemType elem) {
     
+    for(int x=0; x<stacktwo.size(); x++){
+        stackone.push(stacktwo.pop());   //put all of stacktwos elements onto stackone
+    }
 
+    stackone.push(elem); //push the new element onto stackone
     
 }
 
 template <typename ElemType>
-ElemType & Vector<ElemType>::operator[](int index) {
+ElemType & VectorTwoStx<ElemType>::operator[](int index) {
 
 }
 

@@ -10,5 +10,11 @@
 #define Ch_11_Coursework_vector2stxpriv_h
 
 
+int midPt;
+
+Stack<ElemType> stackone;
+Stack<ElemType> stacktwo;
+
+
 
 #endif
