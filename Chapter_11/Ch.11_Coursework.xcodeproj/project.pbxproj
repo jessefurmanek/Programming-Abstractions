@@ -15,8 +15,8 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.11_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.11_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95778AA718A09C23003F0E13 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		95C41DA018AD82610014B1D6 /* vector2stacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector2stacks.h; sourceTree = "<group>"; };
-		95C41DA218AD82DD0014B1D6 /* vector2stxpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vector2stxpriv.h; sourceTree = "<group>"; };
+		95F3126E18B24F7100484EC2 /* gridarray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gridarray.h; sourceTree = "<group>"; };
+		95F3127018B26BF100484EC2 /* gridarrpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gridarrpriv.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,8 +45,8 @@
 			isa = PBXGroup;
 			children = (
 				95778AA718A09C23003F0E13 /* main.cpp */,
-				95C41DA018AD82610014B1D6 /* vector2stacks.h */,
-				95C41DA218AD82DD0014B1D6 /* vector2stxpriv.h */,
+				95F3126E18B24F7100484EC2 /* gridarray.h */,
+				95F3127018B26BF100484EC2 /* gridarrpriv.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,

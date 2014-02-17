@@ -9,47 +9,42 @@
 #include <iostream>
 #include "simpio.h"
 #include "console.h"
-#include "vector2stacks.h"
+#include "gridarray.h"
 
 
 
 
 using namespace std;
 
-int main() {
-    VectorTwoStx <string> testVec;
+int main(){
     
-    testVec.add("A");
-    testVec.add("B");
-    testVec.add("C");
+    Grid<string>Temp(4, 4);
     
+    Temp.setAt(0, 0, "A");
+    Temp.setAt(0, 1, "B");
+    Temp.setAt(1, 0, "C");
+    Temp.setAt(1, 1, "D");
     
-    testVec.removeAt(1);
-    testVec.insertAt(1, "X");
-    testVec.insertAt(1, "Y");
-    testVec.insertAt(1, "Z");
-    testVec.insertAt(1, "8");
-    
-    testVec.add("Z");
-    
-    testVec.clear();
-    
-    
-    testVec.add("A");
-    testVec.add("B");
-    testVec.add("C");
-    
-    testVec.setAt(0, "Z");
-    testVec.add("Y");
-    
-    
-    for(int x=0; x<testVec.size(); x++){
-        cout<<testVec[x]<<endl;
+    for(int x=0; x<Temp.numRows(); x++){
+        for(int y=0; y<Temp.numCols(); y++){
+            cout<<"{ "<<Temp.getAt(x,y)<<" }"<<flush;
+        }
+        cout<<endl;
     }
-   
+    
+    Temp.resize(5, 5);
+    
+    Temp.setAt(0, 0, "Jesse");
+    
+    for(int x=0; x<Temp.numRows(); x++){
+        for(int y=0; y<Temp.numCols(); y++){
+            cout<<"{ "<<Temp.getAt(x,y)<<" }"<<flush;
+        }
+        cout<<endl;
+    }
+    
+
     
     
-   
     return 0;
 }
-

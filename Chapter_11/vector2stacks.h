@@ -46,7 +46,7 @@ public:
     
     void add(ElemType elem);
     
-    ElemType & operator[](int index);
+
     
 private:
     
