@@ -1,0 +1,35 @@
+Review questions
+1. Describe the relationship between dictionaries and maps.
+
+
+   * Dictionaries can be represented as maps
+
+2. What does the term key mean in the context of a map?
+
+
+   * key is the flag or index used to reference a data point within a map
+
+3. Name the two operations that define the characteristic behavior of a map.
+
+
+   * Put
+   * 
+      * if a key already exists, replace the value associated with that key with the value give; if the key does not exist, adds a new entry into the map
+   * Get
+   * 
+      * retrieves the value associated with the given key
+
+4. What types are used in the Map class interface to represent keys and values?
+
+
+   * Arrays
+   * Keys = strings
+   * Values = variable
+
+5. What reasons justify committing to a key type of string while the value type is left open as a template placeholder?
+
+
+   * By choosing strings as the key type, it allows programmers to code maps to fit the paradigm?
+
+6. What simple strategy could you use if you wanted to use integers as keys, given the definition of the Map class interface used in this chapter?
+
