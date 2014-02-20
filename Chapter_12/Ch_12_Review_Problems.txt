@@ -1,5 +1,5 @@
 Review questions
-1. Describe the relationship between dictionaries and maps.
+1. Describe  the relationship between dictionaries and maps.
 
 
    * Dictionaries can be represented as maps
@@ -33,3 +33,112 @@ Review questions
 
 6. What simple strategy could you use if you wanted to use integers as keys, given the definition of the Map class interface used in this chapter?
 
+
+   * Wouldn’t have to change much, just substitute the string object for an int object
+
+7. Why does the get method raise an error instead of returning a sentinel when retrieving the value for a non-existent key?
+
+
+   * It limits the function of the method— contains Key is used to determine whether a key exists.
+
+8. True or false: If you represent a map using an array sorted by keys, the binary search algorithm allows you to implement both put and get in O (log N ) time.
+
+
+   * Truth
+
+9. Describe the dictionary analogue to the hashing algorithm.
+
+
+   * A dictionary has keys on the side of it to each letter.  A hash allows the computer to create keys based on an algorithm, therefore allowing the program to create a more generic key that doesn’t have to be tied to simple system, such as alphabetizing.  This allows the programs to create an index value for every entry in the map, instead of creating high-level index values (like letters in a dictionary)
+
+10. What disadvantages would you expect from using the ASCII value of the first character in a key as its hash code?
+
+
+   * This would create a number of collision in the map i.e. multiple keys on a single index, thereby increasing the runtime of the algorithm 
+
+11. What is meant by the term bucket in the implementation of a hash table? What constitutes a collision?
+
+
+   * Bucket refers to an index value within the table (which is represented by an array).  A collision occurs when two keys are contained within the same bucket.
+
+12. Explain the operation of the findCell function in the map.cpp implementation given in Figure 12-5.
+
+
+   * findCell points to a particular bucket in the array.  This bucket is referred to as the “chain” in the code.  The find cell function is able to point directly at the correct bucket because the bucket value, chain, is computed by the hash function prior to using the find cell function.
+
+13. The hash function that appears in the text has an internal structure similar to that of a random-number generator. If you took that similarity too literally, however, you might be tempted to write the following hash function:
+          int hash(string s, int nBuckets) {
+              return RandomInteger(0, nBuckets - 1);
+          }
+Why would this approach fail?
+
+
+   * This approach would fail because a random number generator is generally based on a system clock value, which is constantly changing.  Unless you held that system clock value constant, the same key value would be unretrievable using the random integer function as the hashing mechanism.
+
+14. What time-space tradeoff arises in the implementation of a hash table?
+
+
+   * The size of the hash and the number of chains allowed for each bucket affects the size of the data footprint, but decreases the amount of time needed to find a value based off of a key
+
+15. What is meant by the term rehashing?
+
+
+   * If the size of the hash table reaches a set limit, a hash table may rehash.  Rehashing increases the size of the hash table, and requires the previous hash entries to be reformatted/calculated to fit the new hash table (as the number of buckets changes)
+
+16. What advantages are cited in the chapter for regarding functions as part of the data structure?
+
+
+   * makes it much easier to design effective interfaces because doing so allows clients to specify operations as well as data
+
+
+
+17. Explain in English the effect of the following definition:
+
+
+   *  typedef string (*stringFnT)(string)
+   * 
+      * function takes a string type and returns a string type
+   * Give an example of a library function that fits this function type.
+
+   * 
+      * a string reversal function
+
+18. What typedef line would you use to define procT as the class of functions that take no arguments and return no results?
+
+
+   * this doesn’t seem to make much sense
+
+19. Describe the parameters used by the Sort function described in the section “A generic sorting function”.  Why is each of those parameters necessary?
+
+
+   * void Sort(Type array[], int n, int (*cmp)(Type, Type) = OperatorCmp);
+   * 
+      * Type array = the storage mechanism for the sort
+      * int n = number of objects to be sorted
+      * *cmp(type, type) function that compares one instance of a type to another
+
+20. What advantage does the version of the Sort function that uses a client-supplied comparator have over one that always uses the built-in < operator?
+
+
+   * The convenience of using the built-in relational operations for those types that don’t require a specialized comparison function.
+
+
+21. Define the terms callback function and mapping function.
+
+
+   * Callback function
+   * 
+      * Functions that are passed by clients to an implementation
+      * 
+         * It is called a callback because the implementation uses these functions to make calls back to the client
+   * Mapping Function
+   * 
+      *  a function that allows the client to execute a callback operation on every key/value pair in the map.
+
+
+22. What is one limitation of the context of a callback function?
+
+
+   * Have to define a callback function as a stand alone function, not as a method of another class.
+   * 
+      * This is due to some behind the scenes work of the “this” pointer
