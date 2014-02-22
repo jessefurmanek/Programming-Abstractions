@@ -9,15 +9,19 @@
 #include <iostream>
 #include "simpio.h"
 #include "console.h"
-#include "firstmap.h"
-
-void question1();
-
+#include "mapimpl.h"
 
 using namespace std;
 
 int main(){
-    question1();
+
+    
+    Map<string> testMap;
+    
+    testMap.put("Jesse", "Furmanek");
+    
+    cout<<testMap.containsKey("test")<<endl;
+    cout<<testMap.containsKey("Jesse")<<endl;
     
     return 0;
 }
