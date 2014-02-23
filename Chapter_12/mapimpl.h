@@ -123,21 +123,38 @@ void Map<ValueType>::clear() {
 template <typename ValueType>
 void Map<ValueType>::put(string key, ValueType value) {
     int index = findKey(key);
+    bool found = false;
     if (index == -1) {
         if (count == capacity) expandCapacity();
         //iterate through array to find where the new key/value belongs
-        
-        for(int x=0; x<count; x++){
-            if(array[x].key<key){
-                //insert key/value and shift to right
+        for(int x=0; x<count && found ==false; x++){
+            if(key>array[x].key){
+                //keep going
+                
+            }else{//if the new value is less than the next value
+                //shift to right
+                for(int y=count; y>x; y--){
+                    array[y].key=array[y-1].key; //shift elements of the array to the right
+                    array[y].value=array[y-1].value;
+                }
+                found = true;  //flag that a spot for the key was found
+                index = x;
+                count++;
             }
+            
         }
         
+        if(found==false){
+            index=count;
+            count++;
+        }
         
-        index = count++;
         array[index].key = key;
+        
     }
+    
     array[index].value = value;
+    
 }
 
 /*
@@ -203,11 +220,15 @@ int Map<ValueType>::findKey(string key) {
 
 template <typename ValueType>
 int Map<ValueType>::findKeyImpl(string key, int leftIndex, int rightIndex){
-        int midPoint = size()/2;
+    if (size()<=0){
+        return -1;
+    }
     
-    if(size()==1){
-        if(key==array[midPoint].key){
-            return midPoint;
+    int midPoint = (rightIndex+leftIndex)/2;
+    
+    if(rightIndex<=leftIndex){
+        if(key==array[leftIndex].key){
+            return leftIndex;
         }
         
         return -1;
@@ -216,7 +237,7 @@ int Map<ValueType>::findKeyImpl(string key, int leftIndex, int rightIndex){
     if(key==array[midPoint].key){  //run binary search
         return midPoint;
     }else if(key>array[midPoint].key){
-        return findKeyImpl(key, midPoint+1, size()-1);
+        return findKeyImpl(key, midPoint+1, rightIndex);
     }else{
         return findKeyImpl(key, 0, midPoint-1);
     }
