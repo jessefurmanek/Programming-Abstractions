@@ -37,6 +37,7 @@ int count;
 /* The current number of entries      */
 /* Private function prototypes */
 int findKey(string key);
+int findKeyImpl(string key, int leftIndex, int rightIndex);
 void expandCapacity();
 
 

@@ -125,6 +125,15 @@ void Map<ValueType>::put(string key, ValueType value) {
     int index = findKey(key);
     if (index == -1) {
         if (count == capacity) expandCapacity();
+        //iterate through array to find where the new key/value belongs
+        
+        for(int x=0; x<count; x++){
+            if(array[x].key<key){
+                //insert key/value and shift to right
+            }
+        }
+        
+        
         index = count++;
         array[index].key = key;
     }
@@ -186,10 +195,34 @@ void Map<ValueType>::remove(string key) {
  */
 template <typename ValueType>
 int Map<ValueType>::findKey(string key) {
-    for (int i = 0; i < count; i++) {
-        if (array[i].key == key) return i;
+
+    int findIndex = findKeyImpl(key, 0, size()-1);
+    return findIndex;
+    
+}
+
+template <typename ValueType>
+int Map<ValueType>::findKeyImpl(string key, int leftIndex, int rightIndex){
+        int midPoint = size()/2;
+    
+    if(size()==1){
+        if(key==array[midPoint].key){
+            return midPoint;
+        }
+        
+        return -1;
     }
-    return -1; }
+    
+    if(key==array[midPoint].key){  //run binary search
+        return midPoint;
+    }else if(key>array[midPoint].key){
+        return findKeyImpl(key, midPoint+1, size()-1);
+    }else{
+        return findKeyImpl(key, 0, midPoint-1);
+    }
+    
+}
+
 /*
  * Implementation notes: expandCapacity
  * ------------------------------------
