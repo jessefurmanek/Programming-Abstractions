@@ -15,27 +15,22 @@ using namespace std;
 
 int main(){
 
+    double x=12.5;
+    double total = 0;
     
-    Map<string> testMap;
-    
-    testMap.put("Jesse", "Furmanek");
-    testMap.put("Jenna", "Walker");
-    testMap.put("Alpha", "Tuna");
-    testMap.put("Zebra", "Luna");
-    testMap.put("Charlie", "Sauna");
-    
-    cout<<testMap.containsKey("test")<<endl;
-    cout<<testMap.containsKey("Jesse")<<endl;
-    cout<<testMap.containsKey("Jenna")<<endl;
-    cout<<testMap.containsKey("Alpha")<<endl;
-    
-    
-    cout<<testMap.get("Jesse")<<endl;
-    cout<<testMap.get("Jenna")<<endl;
-    cout<<testMap.get("Alpha")<<endl;
-    cout<<testMap.get("Zebra")<<endl;
-    cout<<testMap.get("Charlie")<<endl;  
+    while (x>0){
+        if(x==12.5){
+            total+=x;
+            x=x*2/5;
+        }else{
+            total+=(2*x);
+            x=x*2/5;
+        }
+        
+        cout<<total<<endl;
+    }
    
+    cout<<total<<endl;
     
     return 0;
 }

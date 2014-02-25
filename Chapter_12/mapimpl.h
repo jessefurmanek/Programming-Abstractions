@@ -195,9 +195,18 @@ bool Map<ValueType>::containsKey(string key) {
 template <typename ValueType>
 void Map<ValueType>::remove(string key) {
     int index = findKey(key);
+    
     if (index != -1) {
-        array[index] = array[--count];
+        //iterate through array to find where the new key/value belongs
+       
+        for(int x=count; x<count-1; x++){
+                array[x].key=array[x+1].key; //shift elements of the array to the left
+                array[x].value=array[x+1].value;
+        }
+        
+        count--;  //decrment the count
     }
+    
 }
 
 /* Private methods */
