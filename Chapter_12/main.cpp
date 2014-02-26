@@ -9,28 +9,25 @@
 #include <iostream>
 #include "simpio.h"
 #include "console.h"
-#include "mapimpl.h"
+#include "maphash.h"
+#include "strlib.h"
+
 
 using namespace std;
 
 int main(){
 
-    double x=12.5;
-    double total = 0;
+    Map<int> testRun;
+    string testStr = "Test ";
     
-    while (x>0){
-        if(x==12.5){
-            total+=x;
-            x=x*2/5;
-        }else{
-            total+=(2*x);
-            x=x*2/5;
-        }
+    for(int x=1; x<1000; x++){
+        string inputString = testStr;
+        testRun.put(inputString+=integerToString(x), x);
         
-        cout<<total<<endl;
+        
     }
-   
-    cout<<total<<endl;
     
+    testRun.DisplayHashTableStatistics();
     return 0;
+    
 }
