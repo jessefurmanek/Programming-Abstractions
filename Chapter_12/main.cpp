@@ -29,7 +29,6 @@ int main(){
     testRun.insert("Test 5", 1500);
     
     cout<<testRun.get("Test 5")<<endl;
-    
 
     return 0;
     
