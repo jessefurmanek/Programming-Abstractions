@@ -34,6 +34,7 @@ int nEntries;
 /* Private method prototypes */
 int hash(string s);
 cellT *findCell(cellT *chain, string key);
+cellT *findCellInsert(cellT *chain, string key);  //created to return the previous link in the linked list
 void deleteChain(cellT *chain);
 
 #endif

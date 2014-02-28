@@ -26,8 +26,11 @@ int main(){
         
         
     }
+    testRun.insert("Test 5", 1500);
     
-    testRun.DisplayHashTableStatistics();
+    cout<<testRun.get("Test 5")<<endl;
+    
+
     return 0;
     
 }

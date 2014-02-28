@@ -89,6 +89,8 @@ public:
      */
     void remove(string key);
     
+    void insert(string key, ValueType value);
+    
     void DisplayHashTableStatistics();
 private:
 #include "maphashpriv.h"
@@ -250,6 +252,21 @@ typename Map<ValueType>::cellT *Map<ValueType>
     }
     return NULL;
 }
+
+template <typename ValueType>
+typename Map<ValueType>::cellT *Map<ValueType>
+::findCellInsert(cellT *chain, string key) {
+    cellT *previousCell=chain;
+    
+    for (cellT *cp = chain; cp != NULL; cp = cp->link) {
+        if (cp->key == key) return previousCell;
+        
+        previousCell=cp;  //if findCell finds the key, return the previous link
+    }
+    return NULL;
+}
+
+
 /*
  * Private method: deleteChain
  * ---------------------------
@@ -298,6 +315,27 @@ void Map<ValueType>::DisplayHashTableStatistics(){
     
     cout<<"Mean: "<<mean<<endl;
     cout<<"Stand. Dev. "<<stdDev<<endl;
+    
+}
+
+template <typename ValueType>  //used for creating a temporary value for a key
+void Map<ValueType>::insert(string key, ValueType value){
+    //insert is going to act just like put
+    int index = hash(key) % nBuckets;
+    cellT *cell = findCellInsert(buckets[index], key);
+    if (cell == NULL) {
+            //do nothing
+    }else{
+        
+        cellT * cellTemp = new cellT; //create a new cell that is a copy of the current cell
+       
+        cellTemp->key = key;  //assign the choosen key to the tempcell
+        cellTemp->value = value; //assign the chosen value to the temp cell
+        cellTemp->link = cell->link;  //link the tempCell to the cell with the same key (i.e. the one in front of it)
+        cell->link = cellTemp;  //link the cell behind the tempCell to the tempCell
+        
+        nEntries++;
+    }
     
 }
 
