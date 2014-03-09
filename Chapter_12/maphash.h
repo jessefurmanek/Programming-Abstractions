@@ -106,11 +106,17 @@ private:
  */
 template <typename ValueType>
 Map<ValueType>::Map() {
-    nBuckets = INITIAL_SIZE;
-    buckets = new cellT *[nBuckets];
-    for (int i = 0; i < nBuckets; i++) {
+    counter.nBuckets = INITIAL_SIZE;
+    buckets = new cellT *[counter.nBuckets];
+    
+    cellCounter = new int[INITIAL_SIZE]; //create an array to hold the size (i.e. # of cells) of each of the buckets
+    
+    for (int i = 0; i < counter.nBuckets; i++) {
         buckets[i] = NULL;
+        cellCounter[i]=0;
     }
+    
+    
 }
 /*
  * Implementation notes: ~Map destructor
@@ -122,6 +128,7 @@ template <typename ValueType>
 Map<ValueType>::~Map() {
     clear();
     delete[] buckets;
+    delete[] newBuckets;
 }
 
 /*
@@ -132,11 +139,11 @@ Map<ValueType>::~Map() {
  */
 template <typename ValueType>
 int Map<ValueType>::size() {
-    return nEntries;
+    return counter.nEntries;
 }
 template <typename ValueType>
 bool Map<ValueType>::isEmpty() {
-    return nEntries;
+    return counter.nEntries;
 }
 /*
  * Implementation notes: clear
@@ -146,10 +153,16 @@ bool Map<ValueType>::isEmpty() {
  */
 template <typename ValueType>
 void Map<ValueType>::clear() {
-    for (int i = 0; i < nBuckets; i++) {
+    for (int i = 0; i < counter.nBuckets; i++) {
         deleteChain(buckets[i]);
     }
-    nEntries = 0;
+    counter.nEntries = 0;
+    
+    if (newBuckets!=NULL){
+        for (int i = 0; i < counter.nBuckets; i++) {
+            deleteChain(buckets[i]);
+        }
+    }
 }
 /*
  * Implementation notes: put
@@ -161,16 +174,61 @@ void Map<ValueType>::clear() {
  */
 template <typename ValueType>
 void Map<ValueType>::put(string key, ValueType value) {
-    int index = hash(key) % nBuckets;
-    cellT *cell = findCell(buckets[index], key);
+    int index = hash(key) % counter.nBuckets;
+    cellT *cell = findCell(buckets[index], key); 
     if (cell == NULL) {
         cell = new cellT;
         cell->key = key;
-        cell->link = buckets[index];
-        buckets[index] = cell;
-        nEntries++;
+        cell->link = buckets[index]; //new cell points to the old 1st bucket, new 1st bucket is the new cell
+        buckets[index] = cell;  //the old 1st bucket retains its pointer
+        counter.nEntries++;  //increase the total number of cells
+        cellCounter[index]++;  //increase the number of cells in that bucket
     }
     cell->value = value;
+   
+    
+    if(cellCounter[index]>REHASH_THRESHOLD){
+        cout<<"rehash!"<<endl;
+        
+        int doubleBuckets = counter.nBuckets*2;
+        newBuckets = new cellT *[doubleBuckets];  //create a new cellT array twice the size of the original
+        int *newCellCounter = new int[doubleBuckets];
+        
+        
+        for (int i = 0; i < doubleBuckets; i++) {
+            newBuckets[i] = NULL; //initialize the new buckets array
+            newCellCounter[i]=0;
+        }
+        
+        //copy and rehash the old array
+        for(int x=0; x<counter.nBuckets; x++){  //iterate through the old buckets array
+             cellT *cp;
+            for (cp =buckets[x]; cp!=NULL; cp = cp->link){  //iterate through each bucket
+                
+                int newIndex = hash(cp->key)%doubleBuckets;  //find the newBuckets hash for the cell in the old buckets
+                
+                cellT *cellInNewBuckets;
+                    cellInNewBuckets = new cellT;
+                
+                    cellInNewBuckets->key = key;
+                    cellInNewBuckets->link = newBuckets[newIndex];
+                    newBuckets[newIndex] = cell;
+                    newCellCounter[x]++;
+                    cell->value = value;
+            }
+            
+            
+        }
+        
+        
+        
+        delete [] buckets;
+        buckets = newBuckets;
+        counter.nBuckets = doubleBuckets;
+        cellCounter=newCellCounter;
+    }
+    
+    
 }
 /*
        * Implementation notes: get, containsKey
@@ -180,14 +238,14 @@ void Map<ValueType>::put(string key, ValueType value) {
        */
 template <typename ValueType>
 ValueType Map<ValueType>::get(string key) {
-    cellT *cell = findCell(buckets[hash(key) % nBuckets], key);
+    cellT *cell = findCell(buckets[hash(key) % counter.nBuckets], key);
     if (cell == NULL) {
         error("Attempt to get value for key that is not in the map."); }
     return cell->value;
 }
 template <typename ValueType>
 bool Map<ValueType>::containsKey(string key) {
-    return findCell(buckets[hash(key) % nBuckets], key) != NULL;
+    return findCell(buckets[hash(key) % counter.nBuckets], key) != NULL;
 }
 /*
  * Implementation notes: remove
@@ -200,7 +258,7 @@ bool Map<ValueType>::containsKey(string key) {
  */
 template <typename ValueType>
 void Map<ValueType>::remove(string key) {
-    int index = hash(key) % nBuckets;
+    int index = hash(key) % counter.nBuckets;
     cellT *prev = NULL;
     cellT *cp = buckets[index];
     while (cp != NULL && cp->key != key) {
@@ -214,8 +272,10 @@ void Map<ValueType>::remove(string key) {
             prev->link = cp->link;
         }
         delete cp;
-        nEntries--;
+        counter.nEntries--;
     }
+    
+    cellCounter[index]--; //decrement the index
 }
 
 /* Private methods */
@@ -279,16 +339,17 @@ void Map<ValueType>::DisplayHashTableStatistics(){
     double meanMinCur=0;
     double stdDev = 0;
     
-    for (int i = 0; i < nBuckets; i++) {  //for each bucket
+    for (int i = 0; i < counter.nBuckets; i++) {  //for each bucket
         for(cellT *cp = buckets[i]; cp!=NULL; cp=cp->link){  //and for each chain in the bucket
             meanCount++;
+            cout<<cp->value<<" "<<flush;
         }
-        
+        cout<<endl;
         numBuckets++;
     }
     mean = meanCount/numBuckets;
     
-    for (int i = 0; i < nBuckets; i++) {  //for each bucket
+    for (int i = 0; i < counter.nBuckets; i++) {  //for each bucket
         meanCount=0; //reset to zero
         
         for(cellT *cp = buckets[i]; cp!=NULL; cp=cp->link){  //and for each chain in the bucket
@@ -304,11 +365,11 @@ void Map<ValueType>::DisplayHashTableStatistics(){
     cout<<"Stand. Dev. "<<stdDev<<endl;
     
 }
-
+/*
 template <typename ValueType>  //used for creating a temporary value for a key
 void Map<ValueType>::insert(string key, ValueType value){
     //insert is going to act just like put
-    int index = hash(key) % nBuckets;
+    int index = hash(key) % counter.nBuckets;
     cellT *cell = findCell(buckets[index], key);
     if (cell == NULL) {
             //do nothing
@@ -323,10 +384,10 @@ void Map<ValueType>::insert(string key, ValueType value){
         cell->link = cellTemp;  //link the cell behind the tempCell to the tempCell
         cell->value = value;
         
-        nEntries++;
+        counter.nEntries++;
     }
     
 }
-
+*/
 
 #endif /* defined(__Ch_12_Coursework__maphash__) */
