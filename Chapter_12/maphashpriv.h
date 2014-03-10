@@ -18,7 +18,7 @@
  */
 /* Constants */
 static const int INITIAL_SIZE = 4;
-static const int REHASH_THRESHOLD = 2;
+static const int REHASH_THRESHOLD = 5;
 /* Type for a linked list cell */
 
 struct counterObject{

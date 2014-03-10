@@ -20,7 +20,7 @@ int main(){
     Map<int> testRun;
     string testStr = "Test ";
     
-    for(int x=1; x<10; x++){
+    for(int x=1; x<1000; x++){
         string inputString = testStr;
         testRun.put(inputString+=integerToString(x), x);
     }

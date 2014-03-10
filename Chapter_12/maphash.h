@@ -126,9 +126,8 @@ Map<ValueType>::Map() {
  */
 template <typename ValueType>
 Map<ValueType>::~Map() {
-    clear();
     delete[] buckets;
-    delete[] newBuckets;
+    
 }
 
 /*
@@ -158,11 +157,11 @@ void Map<ValueType>::clear() {
     }
     counter.nEntries = 0;
     
-    if (newBuckets!=NULL){
-        for (int i = 0; i < counter.nBuckets; i++) {
-            deleteChain(buckets[i]);
-        }
+    for (int i = 0; i < counter.nBuckets; i++) {  //reinitialive the buckets array
+        buckets[i] = NULL;
+        cellCounter[i]=0;
     }
+    
 }
 /*
  * Implementation notes: put
@@ -210,11 +209,11 @@ void Map<ValueType>::put(string key, ValueType value) {
                 cellT *cellInNewBuckets;
                     cellInNewBuckets = new cellT;
                 
-                    cellInNewBuckets->key = key;
+                    cellInNewBuckets->key = cp->key;
                     cellInNewBuckets->link = newBuckets[newIndex];
-                    newBuckets[newIndex] = cell;
+                    newBuckets[newIndex] = cellInNewBuckets;
                     newCellCounter[x]++;
-                    cell->value = value;
+                    cellInNewBuckets->value = cp->value;
             }
             
             
