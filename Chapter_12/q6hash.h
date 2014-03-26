@@ -1,18 +1,26 @@
 //
-//  maphash.h
+//  q6hash.h
 //  Ch.12_Coursework
 //
-//  Created by Jesse Furmanek on 2/25/14.
+//  Created by Jesse Furmanek on 3/26/14.
 //
 //
 
-#ifndef __Ch_12_Coursework__maphash__
-#define __Ch_12_Coursework__maphash__
+#ifndef __Ch_12_Coursework__q6hash__
+#define __Ch_12_Coursework__q6hash__
 
-
+#include <iostream>
 #include <iostream>
 #include "error.h"
 #include <cmath>
+/*1) Create an array of key/value pairs
+ 2) Include a hash function
+ 3) If the hash collides, increment array counter until an empty element is found
+ 4) Increment counter loops around the end of the array, accomplished by using a modulo
+ 5) Put key/value pair in open array element
+ 
+ Additional
+ - Include “array is full” error*/
 
 using namespace std;
 template <typename ValueType>
@@ -93,17 +101,10 @@ public:
     
     void DisplayHashTableStatistics();
 private:
-#include "maphashpriv.h"
+#include "q6hashpriv.h"
     
 };
 
-
-/*
- * Implementation notes: Map constructor
- * -------------------------------------
- * The constructor allocates the array of buckets and initializes
- * each bucket to the empty list.
- */
 template <typename ValueType>
 Map<ValueType>::Map() {
     counter.nBuckets = INITIAL_SIZE;
@@ -174,7 +175,7 @@ void Map<ValueType>::clear() {
 template <typename ValueType>
 void Map<ValueType>::put(string key, ValueType value) {
     int index = hash(key) % counter.nBuckets;
-    cellT *cell = findCell(buckets[index], key); 
+    cellT *cell = findCell(buckets[index], key);
     if (cell == NULL) {
         cell = new cellT;
         cell->key = key;
@@ -184,57 +185,14 @@ void Map<ValueType>::put(string key, ValueType value) {
         cellCounter[index]++;  //increase the number of cells in that bucket
     }
     cell->value = value;
-   
-    
-    if(cellCounter[index]>REHASH_THRESHOLD){
-        cout<<"rehash!"<<endl;
-        
-        int doubleBuckets = counter.nBuckets*2;
-        newBuckets = new cellT *[doubleBuckets];  //create a new cellT array twice the size of the original
-        int *newCellCounter = new int[doubleBuckets];
-        
-        
-        for (int i = 0; i < doubleBuckets; i++) {
-            newBuckets[i] = NULL; //initialize the new buckets array
-            newCellCounter[i]=0;
-        }
-        
-        //copy and rehash the old array
-        for(int x=0; x<counter.nBuckets; x++){  //iterate through the old buckets array
-             cellT *cp;
-            for (cp =buckets[x]; cp!=NULL; cp = cp->link){  //iterate through each bucket
-                
-                int newIndex = hash(cp->key)%doubleBuckets;  //find the newBuckets hash for the cell in the old buckets
-                
-                cellT *cellInNewBuckets;
-                    cellInNewBuckets = new cellT;
-                
-                    cellInNewBuckets->key = cp->key;
-                    cellInNewBuckets->link = newBuckets[newIndex];
-                    newBuckets[newIndex] = cellInNewBuckets;
-                    newCellCounter[x]++;
-                    cellInNewBuckets->value = cp->value;
-            }
-            
-            
-        }
-        
-        
-        
-        delete [] buckets;
-        buckets = newBuckets;
-        counter.nBuckets = doubleBuckets;
-        cellCounter=newCellCounter;
-    }
-    
     
 }
 /*
-       * Implementation notes: get, containsKey
-       * --------------------------------------
-       * These methods uses findCell to find the key in the map, which is
-       * where all the real work happens.
-       */
+ * Implementation notes: get, containsKey
+ * --------------------------------------
+ * These methods uses findCell to find the key in the map, which is
+ * where all the real work happens.
+ */
 template <typename ValueType>
 ValueType Map<ValueType>::get(string key) {
     cellT *cell = findCell(buckets[hash(key) % counter.nBuckets], key);
@@ -329,64 +287,6 @@ void Map<ValueType>::deleteChain(cellT *chain) {
 }
 
 
-template <typename ValueType>
-void Map<ValueType>::DisplayHashTableStatistics(){
-    
-    double mean = 0;
-    int meanCount=0;
-    int numBuckets =0;
-    double meanMinCur=0;
-    double stdDev = 0;
-    
-    for (int i = 0; i < counter.nBuckets; i++) {  //for each bucket
-        for(cellT *cp = buckets[i]; cp!=NULL; cp=cp->link){  //and for each chain in the bucket
-            meanCount++;
-            cout<<cp->value<<" "<<flush;
-        }
-        cout<<endl;
-        numBuckets++;
-    }
-    mean = meanCount/numBuckets;
-    
-    for (int i = 0; i < counter.nBuckets; i++) {  //for each bucket
-        meanCount=0; //reset to zero
-        
-        for(cellT *cp = buckets[i]; cp!=NULL; cp=cp->link){  //and for each chain in the bucket
-            meanCount++;  //add up the number of links in the chain
-        }
-        
-        meanMinCur+=pow(mean-meanCount,2);
-    }
-    
-    stdDev = sqrt(meanMinCur/numBuckets);
-    
-    cout<<"Mean: "<<mean<<endl;
-    cout<<"Stand. Dev. "<<stdDev<<endl;
-    
-}
-/*
-template <typename ValueType>  //used for creating a temporary value for a key
-void Map<ValueType>::insert(string key, ValueType value){
-    //insert is going to act just like put
-    int index = hash(key) % counter.nBuckets;
-    cellT *cell = findCell(buckets[index], key);
-    if (cell == NULL) {
-            //do nothing
-    }else{
-        
-        cellT * cellTemp = new cellT; //create a new cell that is a copy of the current cell
-       
-        cellTemp->key = key;  //assign the choosen key to the tempcell
-        cellTemp->value = cell->value; //assign the chosen value to the temp cell
-        
-        cellTemp->link = cell->link;  //link the tempCell to the cell with the same key (i.e. the one in front of it)
-        cell->link = cellTemp;  //link the cell behind the tempCell to the tempCell
-        cell->value = value;
-        
-        counter.nEntries++;
-    }
-    
-}
-*/
 
-#endif /* defined(__Ch_12_Coursework__maphash__) */
+
+#endif /* defined(__Ch_12_Coursework__q6hash__) */

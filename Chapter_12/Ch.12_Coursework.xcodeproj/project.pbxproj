@@ -14,6 +14,8 @@
 /* Begin PBXFileReference section */
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.12_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.12_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		950B921518E2FB2F003F5298 /* q6hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = q6hash.h; sourceTree = "<group>"; };
+		950B921718E2FB4D003F5298 /* q6hashpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = q6hashpriv.h; sourceTree = "<group>"; };
 		956B59E118CA978E00E018EA /* maphash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maphash.h; sourceTree = "<group>"; };
 		956B59E218CA978E00E018EA /* maphashpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maphashpriv.h; sourceTree = "<group>"; };
 		95778AA718A09C23003F0E13 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 			isa = PBXGroup;
 			children = (
 				956B59E118CA978E00E018EA /* maphash.h */,
+				950B921518E2FB2F003F5298 /* q6hash.h */,
+				950B921718E2FB4D003F5298 /* q6hashpriv.h */,
 				956B59E218CA978E00E018EA /* maphashpriv.h */,
 				95778AA718A09C23003F0E13 /* main.cpp */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
