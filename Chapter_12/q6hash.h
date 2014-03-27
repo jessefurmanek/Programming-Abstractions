@@ -13,6 +13,7 @@
 #include <iostream>
 #include "error.h"
 #include <cmath>
+
 /*1) Create an array of key/value pairs
  2) Include a hash function
  3) If the hash collides, increment array counter until an empty element is found
@@ -107,17 +108,13 @@ private:
 
 template <typename ValueType>
 Map<ValueType>::Map() {
-    counter.nBuckets = INITIAL_SIZE;
-    buckets = new cellT *[counter.nBuckets];
     
-    cellCounter = new int[INITIAL_SIZE]; //create an array to hold the size (i.e. # of cells) of each of the buckets
+    bucketArray = new cellT *[INITIAL_SIZE];
+    numCells = 0;  //set initial number of cells to 0
     
-    for (int i = 0; i < counter.nBuckets; i++) {
-        buckets[i] = NULL;
-        cellCounter[i]=0;
+    for (int i = 0; i < INITIAL_SIZE; i++) {
+        bucketArray[i] = NULL;
     }
-    
-    
 }
 /*
  * Implementation notes: ~Map destructor
@@ -127,7 +124,7 @@ Map<ValueType>::Map() {
  */
 template <typename ValueType>
 Map<ValueType>::~Map() {
-    delete[] buckets;
+    delete[] bucketArray;
     
 }
 
@@ -139,11 +136,11 @@ Map<ValueType>::~Map() {
  */
 template <typename ValueType>
 int Map<ValueType>::size() {
-    return counter.nEntries;
+    return numCells;
 }
 template <typename ValueType>
 bool Map<ValueType>::isEmpty() {
-    return counter.nEntries;
+    return numCells;
 }
 /*
  * Implementation notes: clear
@@ -153,16 +150,12 @@ bool Map<ValueType>::isEmpty() {
  */
 template <typename ValueType>
 void Map<ValueType>::clear() {
-    for (int i = 0; i < counter.nBuckets; i++) {
-        deleteChain(buckets[i]);
-    }
-    counter.nEntries = 0;
-    
-    for (int i = 0; i < counter.nBuckets; i++) {  //reinitialize the buckets array
-        buckets[i] = NULL;
-        cellCounter[i]=0;
+  
+    for (int i = 0; i < numCells; i++) {  //reinitialize the buckets array
+        bucketArray[i] = NULL;
     }
     
+    numCells=0;
 }
 /*
  * Implementation notes: put
@@ -174,15 +167,14 @@ void Map<ValueType>::clear() {
  */
 template <typename ValueType>
 void Map<ValueType>::put(string key, ValueType value) {
-    int index = hash(key) % counter.nBuckets;
-    cellT *cell = findCell(buckets[index], key);
+    int index = hash(key) % numCells;
+    cellT *cell = findCell(bucketArray[index], key);
     if (cell == NULL) {
         cell = new cellT;
         cell->key = key;
-        cell->link = buckets[index]; //new cell points to the old 1st bucket, new 1st bucket is the new cell
-        buckets[index] = cell;  //the old 1st bucket retains its pointer
-        counter.nEntries++;  //increase the total number of cells
-        cellCounter[index]++;  //increase the number of cells in that bucket
+        cell->link = bucketArray[index]; //new cell points to the old 1st bucket, new 1st bucket is the new cell
+        bucketArray[index] = cell;  //the old 1st bucket retains its pointer
+        numCells++;  //increase the total number of cells
     }
     cell->value = value;
     
@@ -195,14 +187,14 @@ void Map<ValueType>::put(string key, ValueType value) {
  */
 template <typename ValueType>
 ValueType Map<ValueType>::get(string key) {
-    cellT *cell = findCell(buckets[hash(key) % counter.nBuckets], key);
+    cellT *cell = findCell(bucketArray[hash(key) % INITIAL_SIZE], key);
     if (cell == NULL) {
         error("Attempt to get value for key that is not in the map."); }
     return cell->value;
 }
 template <typename ValueType>
 bool Map<ValueType>::containsKey(string key) {
-    return findCell(buckets[hash(key) % counter.nBuckets], key) != NULL;
+    return findCell(bucketArray[hash(key) % INITIAL_SIZE], key) != NULL;
 }
 /*
  * Implementation notes: remove
@@ -215,24 +207,7 @@ bool Map<ValueType>::containsKey(string key) {
  */
 template <typename ValueType>
 void Map<ValueType>::remove(string key) {
-    int index = hash(key) % counter.nBuckets;
-    cellT *prev = NULL;
-    cellT *cp = buckets[index];
-    while (cp != NULL && cp->key != key) {
-        prev = cp;
-        cp = cp->link;
-    }
-    if (cp != NULL) {
-        if (prev == NULL) {
-            buckets[index] = cp->link;
-        } else {
-            prev->link = cp->link;
-        }
-        delete cp;
-        counter.nEntries--;
-    }
-    
-    cellCounter[index]--; //decrement the index
+  
 }
 
 /* Private methods */
@@ -270,21 +245,6 @@ typename Map<ValueType>::cellT *Map<ValueType>
     return NULL;
 }
 
-
-/*
- * Private method: deleteChain
- * ---------------------------
- * This method deletes all of the cells in a bucket chain.
- * It operates recursively by freeing the rest of the chain
- * and the freeing the current cell.
- */
-template <typename ValueType>
-void Map<ValueType>::deleteChain(cellT *chain) {
-    if (chain != NULL) {
-        deleteChain(chain->link);
-        delete chain;
-    }
-}
 
 
 

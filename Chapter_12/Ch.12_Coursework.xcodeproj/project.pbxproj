@@ -7,18 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95778AA818A09C23003F0E13 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95778AA718A09C23003F0E13 /* main.cpp */; };
-		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; };
+		950B921C18E4B5C7003F5298 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 950B921A18E4B5C7003F5298 /* main.cpp */; settings = {COMPILER_FLAGS = "-Wno-error=unused-command-line-argument-hard-error-in-future"; }; };
+		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.12_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.12_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		950B921518E2FB2F003F5298 /* q6hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = q6hash.h; sourceTree = "<group>"; };
-		950B921718E2FB4D003F5298 /* q6hashpriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = q6hashpriv.h; sourceTree = "<group>"; };
-		956B59E118CA978E00E018EA /* maphash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maphash.h; sourceTree = "<group>"; };
-		956B59E218CA978E00E018EA /* maphashpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maphashpriv.h; sourceTree = "<group>"; };
-		95778AA718A09C23003F0E13 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		950B921A18E4B5C7003F5298 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		95F958C618E4D55600882C03 /* q6hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = q6hash.h; sourceTree = "<group>"; };
+		95F958C718E4D55600882C03 /* q6hashpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = q6hashpriv.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,11 +44,9 @@
 		29B97314FDCFA39411CA2CEA /* Basic */ = {
 			isa = PBXGroup;
 			children = (
-				956B59E118CA978E00E018EA /* maphash.h */,
-				950B921518E2FB2F003F5298 /* q6hash.h */,
-				950B921718E2FB4D003F5298 /* q6hashpriv.h */,
-				956B59E218CA978E00E018EA /* maphashpriv.h */,
-				95778AA718A09C23003F0E13 /* main.cpp */,
+				95F958C618E4D55600882C03 /* q6hash.h */,
+				95F958C718E4D55600882C03 /* q6hashpriv.h */,
+				950B921A18E4B5C7003F5298 /* main.cpp */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -103,7 +99,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Ch.12_Coursework" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -155,7 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95778AA818A09C23003F0E13 /* main.cpp in Sources */,
+				950B921C18E4B5C7003F5298 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,9 +175,11 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/StanfordCPPLib\"";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Ch.12_Coursework;
 				SDKROOT = macosx;
 				SYMROOT = "/tmp/Blank Project/build";
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -198,6 +196,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fstack-check";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = StanfordCPPLib;
 				WARNING_CFLAGS = (
