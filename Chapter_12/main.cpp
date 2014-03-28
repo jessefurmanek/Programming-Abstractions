@@ -9,11 +9,14 @@
 #include <iostream>
 #include "simpio.h"
 #include "console.h"
+#include "q6hash.h"
 
 using namespace std;
 
 int main(){
-    cout<<"xcode ruins lives"<<endl;
+    Map<int> test;
+    
+    
     
     return 0;
 }

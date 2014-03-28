@@ -109,11 +109,13 @@ private:
 template <typename ValueType>
 Map<ValueType>::Map() {
     
-    bucketArray = new cellT *[INITIAL_SIZE];
+    bucketArray = new cellT [INITIAL_SIZE];
     numCells = 0;  //set initial number of cells to 0
+    bucketArraySize = INITIAL_SIZE;
     
-    for (int i = 0; i < INITIAL_SIZE; i++) {
-        bucketArray[i] = NULL;
+    for (int i = 0; i < bucketArraySize; i++) {
+        bucketArray[i].value =NULL;
+        bucketArray[i].key = "";
     }
 }
 /*
@@ -151,8 +153,9 @@ bool Map<ValueType>::isEmpty() {
 template <typename ValueType>
 void Map<ValueType>::clear() {
   
-    for (int i = 0; i < numCells; i++) {  //reinitialize the buckets array
-        bucketArray[i] = NULL;
+    for (int i = 0; i < bucketArraySize; i++) {  //reinitialize the buckets array
+        bucketArray[i].value = NULL;
+        bucketArray[i].key = "";
     }
     
     numCells=0;
@@ -168,17 +171,15 @@ void Map<ValueType>::clear() {
 template <typename ValueType>
 void Map<ValueType>::put(string key, ValueType value) {
     int index = hash(key) % numCells;
-    cellT *cell = findCell(bucketArray[index], key);
-    if (cell == NULL) {
-        cell = new cellT;
-        cell->key = key;
-        cell->link = bucketArray[index]; //new cell points to the old 1st bucket, new 1st bucket is the new cell
-        bucketArray[index] = cell;  //the old 1st bucket retains its pointer
-        numCells++;  //increase the total number of cells
-    }
-    cell->value = value;
+    int cellIndex = findCell(index, key);
+    
+    if(cellIndex==NULL) error("cell array is full");
+    
+     bucketArray[cellIndex].key=key;
+     bucketArray[cellIndex].value = value;
     
 }
+
 /*
  * Implementation notes: get, containsKey
  * --------------------------------------
@@ -187,11 +188,14 @@ void Map<ValueType>::put(string key, ValueType value) {
  */
 template <typename ValueType>
 ValueType Map<ValueType>::get(string key) {
-    cellT *cell = findCell(bucketArray[hash(key) % INITIAL_SIZE], key);
-    if (cell == NULL) {
+    int index = hash(key) % numCells;
+    int cellIndex = findCell(index, key);
+    if (cellIndex == NULL) {
         error("Attempt to get value for key that is not in the map."); }
     return cell->value;
 }
+
+
 template <typename ValueType>
 bool Map<ValueType>::containsKey(string key) {
     return findCell(bucketArray[hash(key) % INITIAL_SIZE], key) != NULL;
@@ -236,13 +240,22 @@ int Map<ValueType>::hash(string s) {
  * If a match is found, findCell returns a pointer to that cell;
  * if not, findCell returns NULL.
  */
+
 template <typename ValueType>
-typename Map<ValueType>::cellT *Map<ValueType>
-::findCell(cellT *chain, string key) {
-    for (cellT *cp = chain; cp != NULL; cp = cp->link) {
-        if (cp->key == key) return cp;
+int Map<ValueType>::findCell(int index, string key) {
+
+    for (int x = index; x<bucketArraySize; x++){
+        if(bucketArray[(index+x)%bucketArraySize].key==key) return (index+x)%bucketArraySize;  //if the referenced cell is equal to the key, return the cell to overwrite the value
+        
+        if(bucketArray[(index+x)%bucketArraySize].key==NULL || bucketArray[(index+x)%bucketArraySize].key==""){
+            return (index+x)%bucketArraySize;  //if the referenced cell key is empty, return the index for assigning
+        }
+        
+        //if the index is full, continue on to the next cell
     }
+   
     return NULL;
+    
 }
 
 

@@ -23,9 +23,10 @@ struct cellT {
 /* Instance variables */
 cellT *bucketArray;
 int numCells;
+int bucketArraySize;
 
 /* Private method prototypes */
 int hash(string s);
-cellT *findCell(cellT *chain, string key);
+int findCell(int index, string key);
 
 #endif
