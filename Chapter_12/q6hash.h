@@ -80,6 +80,10 @@ public:
      * Clients can use the containsKey method to verify the presence
      * of a key in the map before attempting to get its value.
      */
+    void copyEntriesInto(Map<ValueType> & copy);
+    
+    //copies all the key/value pairs from the receiver into the copy parameter
+    
     ValueType get(string key);
     /*
      * Method: containsKey
@@ -101,6 +105,8 @@ public:
     void insert(string key, ValueType value);
     
     void DisplayHashTableStatistics();
+    
+    void Sort();
 private:
 #include "q6hashpriv.h"
     
@@ -154,10 +160,9 @@ template <typename ValueType>
 void Map<ValueType>::clear() {
   
     for (int i = 0; i < bucketArraySize; i++) {  //reinitialize the buckets array
-        bucketArray[i].value = NULL;
         bucketArray[i].key = "";
+        bucketArray[i].value = NULL;
     }
-    
     numCells=0;
 }
 /*
@@ -170,13 +175,16 @@ void Map<ValueType>::clear() {
  */
 template <typename ValueType>
 void Map<ValueType>::put(string key, ValueType value) {
-    int index = hash(key) % numCells;
+    int index = hash(key) % bucketArraySize;
     int cellIndex = findCell(index, key);
     
-    if(cellIndex==NULL) error("cell array is full");
+    if(cellIndex==-1) error("cell array is full");
     
      bucketArray[cellIndex].key=key;
      bucketArray[cellIndex].value = value;
+    
+    
+    numCells++;
     
 }
 
@@ -188,17 +196,19 @@ void Map<ValueType>::put(string key, ValueType value) {
  */
 template <typename ValueType>
 ValueType Map<ValueType>::get(string key) {
-    int index = hash(key) % numCells;
+    int index = hash(key) % bucketArraySize;
     int cellIndex = findCell(index, key);
-    if (cellIndex == NULL) {
+    if (cellIndex == -1) {
         error("Attempt to get value for key that is not in the map."); }
-    return cell->value;
+    
+    return bucketArray[cellIndex].value;
 }
 
 
 template <typename ValueType>
 bool Map<ValueType>::containsKey(string key) {
-    return findCell(bucketArray[hash(key) % INITIAL_SIZE], key) != NULL;
+    int index = hash(key) % bucketArraySize;
+    return findCell(index, key) != -1;
 }
 /*
  * Implementation notes: remove
@@ -211,6 +221,11 @@ bool Map<ValueType>::containsKey(string key) {
  */
 template <typename ValueType>
 void Map<ValueType>::remove(string key) {
+    int index = hash(key) % bucketArraySize;
+    int cellIndex =findCell(index, key);
+    
+    bucketArray[cellIndex].key="";
+    bucketArray[cellIndex].value = NULL;  //reset the removed cell to empty,  value to NULL
   
 }
 
@@ -244,21 +259,45 @@ int Map<ValueType>::hash(string s) {
 template <typename ValueType>
 int Map<ValueType>::findCell(int index, string key) {
 
-    for (int x = index; x<bucketArraySize; x++){
-        if(bucketArray[(index+x)%bucketArraySize].key==key) return (index+x)%bucketArraySize;  //if the referenced cell is equal to the key, return the cell to overwrite the value
+    for (int x = 0; x<bucketArraySize; x++){
+        if(bucketArray[(index+x)%bucketArraySize].key==key) return ((index+x)%bucketArraySize);  //if the referenced cell is equal to the key, return the cell to overwrite the value
         
-        if(bucketArray[(index+x)%bucketArraySize].key==NULL || bucketArray[(index+x)%bucketArraySize].key==""){
-            return (index+x)%bucketArraySize;  //if the referenced cell key is empty, return the index for assigning
+        if(bucketArray[((index+x)%bucketArraySize)].key==""){
+            return ((index+x)%bucketArraySize);  //if the referenced cell key is empty, return the index for assigning
         }
         
         //if the index is full, continue on to the next cell
     }
    
-    return NULL;
+    return -1;
     
 }
 
+template <typename ValueType>
+void Map<ValueType>::copyEntriesInto(Map <ValueType> & copy){
+    for(int x = 0; x<bucketArraySize; x++){
+        copy.put(bucketArray[x].key, bucketArray[x].value);
+    }
+}
 
+
+int OperatorCmp(){
+    return 0;
+}
+
+template<typename Type>
+void Sort(Type array[], int n, int (*cmp)(Type, Type) = OperatorCmp){
+    
+    for (int i = 0; i < n; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (cmp(array[j],array[minIndex]) < 0) minIndex = j;
+        }
+        Type temp =array[i];
+        array[i] = array[minIndex];
+        array[minIndex] = temp;
+    }
+}
 
 
 
