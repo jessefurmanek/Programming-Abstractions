@@ -13,6 +13,7 @@
 #include <iostream>
 #include "error.h"
 #include <cmath>
+#include "cmpfn.h"
 
 /*1) Create an array of key/value pairs
  2) Include a hash function
@@ -106,7 +107,7 @@ public:
     
     void DisplayHashTableStatistics();
     
-    void Sort();
+
 private:
 #include "q6hashpriv.h"
     
@@ -280,24 +281,6 @@ void Map<ValueType>::copyEntriesInto(Map <ValueType> & copy){
     }
 }
 
-
-int OperatorCmp(){
-    return 0;
-}
-
-template<typename Type>
-void Sort(Type array[], int n, int (*cmp)(Type, Type) = OperatorCmp){
-    
-    for (int i = 0; i < n; i++) {
-        int minIndex = i;
-        for (int j = i + 1; j < n; j++) {
-            if (cmp(array[j],array[minIndex]) < 0) minIndex = j;
-        }
-        Type temp =array[i];
-        array[i] = array[minIndex];
-        array[minIndex] = temp;
-    }
-}
 
 
 
