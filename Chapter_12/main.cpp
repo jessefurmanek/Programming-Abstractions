@@ -13,11 +13,14 @@
 #include "strlib.h"
 
 using namespace std;
-template <typename Type>
-void Sort(Type array[], int n, int (*cmp)(Type, Type));
 
 template <typename Type>
 int OperatorCmp(Type one, Type two);
+
+template <typename Type>
+void Sort(Type array[], int n, int (*cmp)(Type, Type)=OperatorCmp);  //defaulting the generic sorting fucntion to the operatorcmp function
+
+
 
 int main(){
     Map<int> test;
@@ -55,12 +58,12 @@ int main(){
     array[4] = 51;
     
     
-    Sort(array, 7, OperatorCmp(1, 1));
+    Sort(array, 5);
     
     return 0;
 }
 
-template <typename Type>
+template <typename Type>  //generic comparing function
 int OperatorCmp(Type one, Type two) {
     if (one == two) return 0;
     if (one < two) return -1;
@@ -72,8 +75,8 @@ void Sort(Type array[], int n, int (*cmp)(Type, Type)) {
     for (int i = 0; i < n; i++) {
         int minIndex = i;
         for (int j = i + 1; j < n; j++) {
-            if (cmp(array[j],array[minIndex]) < 0) minIndex = j;
-        }
+            if (cmp(array[j],array[minIndex]) < 0) minIndex = j;  //because OperatorCmp is set as the default compare function, calling *cmp
+        }                                                          //calls the OperatorCmp function
         Type temp =array[i];
         array[i] = array[minIndex];
         array[minIndex] = temp;
