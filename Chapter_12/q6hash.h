@@ -13,7 +13,7 @@
 #include <iostream>
 #include "error.h"
 #include <cmath>
-#include "cmpfn.h"
+
 
 /*1) Create an array of key/value pairs
  2) Include a hash function

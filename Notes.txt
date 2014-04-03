@@ -1,0 +1,8 @@
+Integrate(sin, 0, 3.1415926, 18);
+
+
+typedef double (*doubleFnT)(double);  //create a function type that takes a double and returns a double
+
+doubleFnT sin(double);
+
+double Integrate(doubleFnT mathFunction, double minX, double maxX, int numRect);
