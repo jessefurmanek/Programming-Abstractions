@@ -19,7 +19,7 @@ double Integrate(doubleFnT mathFunction, double minX, double maxX, int numRect);
 int main(){
    
 
-    cout<< Integrate(sin, 0.0, 3.14, 100)<<endl;
+    cout<< Integrate(sin, 0.0, 3.14, 1000)<<endl;
     return 0;
 }
 

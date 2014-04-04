@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		950B921C18E4B5C7003F5298 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 950B921A18E4B5C7003F5298 /* main.cpp */; settings = {COMPILER_FLAGS = "-Wno-error=unused-command-line-argument-hard-error-in-future"; }; };
+		958FD80218EE1BFC00566CEF /* BinarySearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 958FD80018EE1BFC00566CEF /* BinarySearch.cpp */; settings = {COMPILER_FLAGS = "-Wno-error=unused-command-line-argument-hard-error-in-future"; }; };
+		958FD80518EE43AF00566CEF /* genQuickSort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 958FD80318EE43AF00566CEF /* genQuickSort.cpp */; settings = {COMPILER_FLAGS = "-Wno-error=unused-command-line-argument-hard-error-in-future"; }; };
 		95FD04A518ED0C62007A02EA /* IntegrateFn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95FD04A318ED0C62007A02EA /* IntegrateFn.cpp */; settings = {COMPILER_FLAGS = "-Wno-error=unused-command-line-argument-hard-error-in-future"; }; };
 		E3DDB4120D2F60C500348E1D /* libStanfordCPPLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
@@ -16,6 +18,10 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Ch.12_Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ch.12_Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		950B921A18E4B5C7003F5298 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		958FD80018EE1BFC00566CEF /* BinarySearch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinarySearch.cpp; sourceTree = "<group>"; };
+		958FD80118EE1BFC00566CEF /* BinarySearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearch.h; sourceTree = "<group>"; };
+		958FD80318EE43AF00566CEF /* genQuickSort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = genQuickSort.cpp; sourceTree = "<group>"; };
+		958FD80418EE43AF00566CEF /* genQuickSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = genQuickSort.h; sourceTree = "<group>"; };
 		95F958C618E4D55600882C03 /* q6hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = q6hash.h; sourceTree = "<group>"; };
 		95F958C718E4D55600882C03 /* q6hashpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = q6hashpriv.h; sourceTree = "<group>"; };
 		95FD04A318ED0C62007A02EA /* IntegrateFn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntegrateFn.cpp; sourceTree = "<group>"; };
@@ -50,7 +56,11 @@
 				95F958C618E4D55600882C03 /* q6hash.h */,
 				95F958C718E4D55600882C03 /* q6hashpriv.h */,
 				950B921A18E4B5C7003F5298 /* main.cpp */,
+				958FD80318EE43AF00566CEF /* genQuickSort.cpp */,
+				958FD80418EE43AF00566CEF /* genQuickSort.h */,
 				95FD04A318ED0C62007A02EA /* IntegrateFn.cpp */,
+				958FD80018EE1BFC00566CEF /* BinarySearch.cpp */,
+				958FD80118EE1BFC00566CEF /* BinarySearch.h */,
 				95FD04A418ED0C62007A02EA /* IntegrateFn.h */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -156,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				958FD80518EE43AF00566CEF /* genQuickSort.cpp in Sources */,
 				950B921C18E4B5C7003F5298 /* main.cpp in Sources */,
+				958FD80218EE1BFC00566CEF /* BinarySearch.cpp in Sources */,
 				95FD04A518ED0C62007A02EA /* IntegrateFn.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
