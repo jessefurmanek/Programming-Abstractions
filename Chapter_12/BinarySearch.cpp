@@ -13,11 +13,11 @@
 
 
 template<typename Type>
-int BinarySearch(Type key, Type array[], int n, int (*cmp)(Type, Type)){
+int BinarySearchWrapper(Type key, Type array[], int n, int (*cmp)(Type, Type)){
     int index;
     
     //sort the array
-    Quicksort(array, 0, n);
+    Sort(array, n, cmp);
     
     //search
     FindKeyInSortedArray(key, array, n);
@@ -26,18 +26,18 @@ int BinarySearch(Type key, Type array[], int n, int (*cmp)(Type, Type)){
 }
 
 template<typename Type>
-int FindKeyInSortedArray(Type key, Type array[], int n){  //wrapper function
+int FindKeyInSortedArray(Type key, Type array[], int n, int cmp){  //wrapper function
     return BinarySearch(key, array, 0, n - 1); //run binary search
 }
 
 template<typename Type>
-int BinarySearch(Type key, Type array[], int low, int high) {
-    if (low > high) return -1;
+int BinarySearchFn(Type key, Type array[], int low, int high, int cmp) {
+    if (low > high) return -1;  //if the low integer ends up bigger than the high, the searched for item hasn't been found
     int mid = (low + high) / 2;
     if (key == array[mid]) return mid;
-    if (key < array[mid]) {
+    if (cmp(key, array[mid]) < 0) { //if the key is less than the mid
         return BinarySearch(key, array, low, mid - 1);
-    } else {
+    } else {  //if the key is greater than the mid
         return BinarySearch(key, array, mid + 1, high);
     }
 }

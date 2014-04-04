@@ -11,11 +11,11 @@
 
 #include <iostream>
 
-template <typename Type>  //generic comparing function for any "Type"
+template <typename Type>
 int OperatorCmp(Type one, Type two);
 
 template <typename Type>
-void Sort(Type array[], int n, int (*cmp)(Type, Type)=OperatorCmp);  //defaulting the generic sorting fucntion to the operatorcmp function
+void SortFn(Type array[], int n, int (*cmp)(Type, Type) = OperatorCmp);
 
 template <typename Type>
 void Quicksort(Type array[], int start, int finish);

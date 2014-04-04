@@ -15,7 +15,7 @@ int OperatorCmp(Type one, Type two) {
 }
 
 template <typename Type>
-void Sort(Type array[], int n, int (*cmp)(Type, Type)) { //Sort acts as a wrapper for the quicksort alogrithm
+void SortFn(Type array[], int n, int (*cmp)(Type, Type)) { //Sort acts as a wrapper for the quicksort alogrithm
     Quicksort(array, 0, n-1);
 }
 
