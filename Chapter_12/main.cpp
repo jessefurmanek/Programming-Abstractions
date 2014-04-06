@@ -12,33 +12,37 @@
 #include "strlib.h"
 #include "random.h"
 #include "genQuickSort.h"
+#include "BinarySearch.h"
 
 using namespace std;
 
-
-
 int main(){
-    int *array = new int[5];
+    string *array = new string[10];
     
-    for (int x=0; x<5; x++){
-        array[x] = randomInteger(0, 100);
+    for (int x=0; x<10; x++){
+        array[x] = "abc";
     }
    
+    array[1]="xyz";
+    array[3]="jesse";
     
-    for (int x=0; x<5; x++){
+    for (int x=0; x<10; x++){
         cout<<array[x]<<endl;
     }
     
-    SortFn(array, 5);
+    SortFn(array, 10);
     
     cout<<endl;
-    for (int x=0; x<5; x++){
+    for (int x=0; x<10; x++){
         cout<<array[x]<<endl;
     }
+    
+    string test = "jesse";
+    cout<<endl;
+    cout<<FindKeyInSortedArray(test, array, 10)<<endl;
     
     return 0;
 }
-
 
 template <typename Type>  //generic comparing function for any "Type"
 int OperatorCmp(Type one, Type two) {
@@ -47,6 +51,8 @@ int OperatorCmp(Type one, Type two) {
     return 1;
 }
 
+
+
 template <typename Type>
 void SortFn(Type array[], int n, int (*cmp)(Type, Type)) { //Sort acts as a wrapper for the quicksort alogrithm
     Quicksort(array, 0, n-1);
@@ -54,7 +60,7 @@ void SortFn(Type array[], int n, int (*cmp)(Type, Type)) { //Sort acts as a wrap
 
 template <typename Type>
 int Partition(Type array[], int start, int finish) {
-    int pivot = array[start];
+    Type pivot = array[start];
     int lh = start + 1;
     int rh = finish;
     while (true) {
@@ -78,6 +84,40 @@ void Quicksort(Type array[], int start, int finish) {
     int boundary = Partition(array, start, finish);
     Quicksort(array, start, boundary - 1);
     Quicksort(array, boundary + 1, finish);
+    
 }
+
+template<typename Type>
+int BinarySearchFn(Type key, Type array[], int low, int high, int (*cmp)(Type, Type)) {
+    if (low > high) return -1;  //if the low integer ends up bigger than the high, the searched for item hasn't been found
+    int mid = (low + high) / 2;
+    if (key == array[mid]) return mid;
+    if (cmp(key, array[mid]) < 0) { //if the key is less than the mid
+        return BinarySearchFn(key, array, low, mid - 1);
+    } else {  //if the key is greater than the mid
+        return BinarySearchFn(key, array, mid + 1, high);
+    }
+}
+
+template<typename Type>
+int FindKeyInSortedArray(Type key, Type array[], int n, int (*cmp)(Type, Type)){  //wrapper function
+    return BinarySearchFn(key, array, 0, n - 1); //run binary search
+}
+
+template<typename Type>
+int BinarySearchWrapper(Type key, Type array[], int n, int (*cmp)(Type, Type)){
+    int index=0;
+    
+    //sort the array
+    SortFn(array, n, cmp);
+    
+    //search
+    FindKeyInSortedArray(key, array, n);
+    
+    return index;
+}
+
+
+
 
 

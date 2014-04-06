@@ -11,6 +11,10 @@
 
 //The key argument is the value for which the function is searching, and the remaining arguments are equivalent to those used in Sort. The function returns the index of an array element containing the value key, assuming that the value appears in the array at all. If not, BSearch returns –1.
 
+template<typename Type>
+int FindKeyInSortedArray(Type key, Type array[], int n, int (*cmp)(Type, Type)){  //wrapper function
+    return BinarySearchFn(key, array, 0, n - 1); //run binary search
+}
 
 template<typename Type>
 int BinarySearchWrapper(Type key, Type array[], int n, int (*cmp)(Type, Type)){
@@ -21,17 +25,13 @@ int BinarySearchWrapper(Type key, Type array[], int n, int (*cmp)(Type, Type)){
     
     //search
     FindKeyInSortedArray(key, array, n);
-    
     return index;
 }
 
-template<typename Type>
-int FindKeyInSortedArray(Type key, Type array[], int n, int cmp){  //wrapper function
-    return BinarySearch(key, array, 0, n - 1); //run binary search
-}
+
 
 template<typename Type>
-int BinarySearchFn(Type key, Type array[], int low, int high, int cmp) {
+int BinarySearchFn(Type key, Type array[], int low, int high, int (*cmp)(Type, Type)) {
     if (low > high) return -1;  //if the low integer ends up bigger than the high, the searched for item hasn't been found
     int mid = (low + high) / 2;
     if (key == array[mid]) return mid;

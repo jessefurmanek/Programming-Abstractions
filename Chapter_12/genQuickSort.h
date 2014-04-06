@@ -11,6 +11,7 @@
 
 #include <iostream>
 
+
 template <typename Type>
 int OperatorCmp(Type one, Type two);
 

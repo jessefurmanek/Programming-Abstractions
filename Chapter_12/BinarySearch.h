@@ -13,13 +13,13 @@
 #include "genQuickSort.h"
 
 template<typename Type>
-int BinarySearchWrapper(Type key, Type array[], int n, int (*cmp)(Type, Type) = OperatorCmp);
+int BinarySearchWrapper(Type key, Type array[], int n, int (*cmp)(Type, Type)= OperatorCmp);
 
 template<typename Type>
-int FindKeyInSortedArray(int key, Type array[], int n, int (*cmp)(Type, Type)= OperatorCmp);
+int FindKeyInSortedArray(Type key, Type array[], int n, int (*cmp)(Type, Type)= OperatorCmp);
 
 template<typename Type>
-int BinarySearchFn(Type key, Type array[], int n, int (*cmp)(Type, Type) = OperatorCmp);
+int BinarySearchFn(Type key, Type array[], int low, int high, int (*cmp)(Type, Type) = OperatorCmp);
 
 
 #endif /* defined(__Ch_12_Coursework__BinarySearch__) */

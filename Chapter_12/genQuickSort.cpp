@@ -8,11 +8,6 @@
 
 #include "genQuickSort.h"
 
-template <typename Type>  //generic comparing function for any "Type"
-int OperatorCmp(Type one, Type two) {
-    if (one == two) return 0;
-    if (one < two) return -1;
-}
 
 template <typename Type>
 void SortFn(Type array[], int n, int (*cmp)(Type, Type)) { //Sort acts as a wrapper for the quicksort alogrithm
