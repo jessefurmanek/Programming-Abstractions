@@ -18,6 +18,8 @@
 		950B921A18E4B5C7003F5298 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		958FD80918F2157800566CEF /* wordfreq.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wordfreq.cpp; sourceTree = "<group>"; };
 		958FD80A18F2157800566CEF /* wordfreq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wordfreq.h; sourceTree = "<group>"; };
+		958FD80C18F351B700566CEF /* mapimpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapimpl.h; sourceTree = "<group>"; };
+		958FD80D18F351B700566CEF /* mapimplpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapimplpriv.h; sourceTree = "<group>"; };
 		A81255C316B4AC8C00098A07 /* spl.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = spl.jar; sourceTree = "<group>"; };
 		E3DDB4110D2F60C500348E1D /* libStanfordCPPLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStanfordCPPLib.a; path = StanfordCPPLib/libStanfordCPPLib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +49,8 @@
 			children = (
 				958FD80918F2157800566CEF /* wordfreq.cpp */,
 				958FD80A18F2157800566CEF /* wordfreq.h */,
+				958FD80C18F351B700566CEF /* mapimpl.h */,
+				958FD80D18F351B700566CEF /* mapimplpriv.h */,
 				950B921A18E4B5C7003F5298 /* main.cpp */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,

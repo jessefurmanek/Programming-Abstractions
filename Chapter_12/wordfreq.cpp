@@ -8,7 +8,6 @@
 
 #include "wordfreq.h"
 #include "simpio.h"
-#include "map.h"
 #include "tokenscanner.h"
 #include <string>
 #include "strlib.h"
@@ -16,7 +15,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-
+#include "mapimpl.h"
 
 using namespace std;
 
@@ -24,7 +23,7 @@ using namespace std;
 /* Main program */
 void wordfrequency() {
     ifstream infile;  //instantiate file for input
-    Map<string, int> wordCounts; //create a string key map
+    Map<int> wordCounts; //create a string key map
     
     AskUserForInputFile(infile); //ask user for filename
     
@@ -42,7 +41,8 @@ void wordfrequency() {
  * the word count. */
 
 
-void CreateFrequencyTable(ifstream & infile, Map<string, int> & wordCounts) {
+
+void CreateFrequencyTable(ifstream & infile, Map<int> & wordCounts) {
     TokenScanner scanner;
     scanner.setInput(infile);
     scanner.ignoreWhitespace();
@@ -50,25 +50,29 @@ void CreateFrequencyTable(ifstream & infile, Map<string, int> & wordCounts) {
         string word = toLowerCase(scanner.nextToken());
         if (IsAllAlpha(word)) {
             if (wordCounts.containsKey(word)) {
-                wordCounts[word]++;
+                int value = wordCounts.get(word);
+                value++;
+                wordCounts.put(word, value);
             } else {
-                wordCounts[word] = 1;
+                wordCounts.put(word,1);
             }
         } }
 }
 /*
  * Displays the count for each word in the frequency table.
  */
-void DisplayWordCounts(Map<string, int> & wordCounts) {  //this is what needs to be modified.
-    foreach (string word in wordCounts) {
-        cout << left << setw(15) << word
-        << right << setw(5) << wordCounts[word] << endl;
-    } }
+void DisplayEntry(string key, int value) {  
+    cout << left << setw(15) << key
+    << right << setw(5) << value << endl;
+}
+
+void DisplayWordCounts(Map<int> & wordCounts) {
+    wordCounts.mapAll(DisplayEntry);
+}
 
 void AskUserForInputFile(ifstream & infile) {
     while (true) {
-        cout << "?";
-        string filename = getLine();
+        string filename = "ball_so_hard.txt";
         infile.open(filename.c_str());
         if (!infile.fail()) break;
         cout << "Unable to open " << filename << endl;
@@ -82,3 +86,5 @@ bool IsAllAlpha(string & str) {
     }
     return true;
 }
+
+

@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include "simpio.h"
-#include "map.h"
 #include "tokenscanner.h"
 #include <string>
 #include "strlib.h"
@@ -19,11 +18,14 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include "mapimpl.h"
+using namespace std;
 
 /* Private function prototypes */
-void CreateFrequencyTable(ifstream & infile, Map<string, int> & wordCounts); void DisplayWordCounts(Map<string, int> & wordCounts);
+void CreateFrequencyTable(ifstream & infile, Map<int> & wordCounts); void DisplayWordCounts(Map<int> & wordCounts);
 void AskUserForInputFile(ifstream & infile);
 bool IsAllAlpha(string & str);
 void wordfrequency();
+void DisplayEntry(string key, int value);
 
 #endif /* defined(__Ch_12_Coursework__wordfreq__) */

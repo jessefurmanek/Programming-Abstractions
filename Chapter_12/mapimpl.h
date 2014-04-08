@@ -86,6 +86,10 @@ public:
      * If there is no entry for the key, the map is unchanged.
      */
     void remove(string key);
+    
+    void mapAll(void (*fn)(string, ValueType));
+    
+ 
 private:
 #include "mapimplpriv.h"
     
@@ -272,6 +276,14 @@ void Map<ValueType>::expandCapacity() {
     }
     delete[] oldArray;
 }
+
+template <typename ValueType>
+void Map<ValueType>::mapAll(void (*fn)(string, ValueType)){
+    for(int x = 0; x<INITIAL_CAPACITY; x++){
+        fn(array[x].key, array[x].value);
+    }
+};
+
 
 
 #endif /* defined(__Ch_12_Coursework__mapimpl__) */
