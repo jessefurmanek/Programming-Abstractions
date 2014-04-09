@@ -23,9 +23,21 @@
  * the Map class stores these entries in an array.
  */
 struct keyValuePairT {
-    string key;
+    KeyType key;
     ValueType value;
 };
+
+typedef int (*cmpFnT)(ValueType, ValueType);  //comparison function for key, returns integer
+typedef int (*hashFnT)(ValueType);   //hash function for generic key, return int
+
+
+cmpFnT stringCompare(string one, string two){
+    if (one<two) return -1;
+    if (one==two) return 0;
+    return 1;
+}
+
+
 /* Constants */
 static const int INITIAL_CAPACITY = 100;
 /* Instance variables */
@@ -36,11 +48,10 @@ int count;
 /* The allocated size of the array    */
 /* The current number of entries      */
 /* Private function prototypes */
-int findKey(string key);
-int findKeyImpl(string key, int leftIndex, int rightIndex);
+int findKey(KeyType key);
+int findKeyImpl(KeyType key, int leftIndex, int rightIndex);
 void expandCapacity();
 
-void DisplayWordFrequencies(Map<int> & map);
-
+void DisplayWordFrequencies(Map<string, int> & map);
 
 #endif

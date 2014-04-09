@@ -23,7 +23,7 @@ using namespace std;
 /* Main program */
 void wordfrequency() {
     ifstream infile;  //instantiate file for input
-    Map<int> wordCounts; //create a string key map
+    Map<string, int> wordCounts; //create a string key map
     
     AskUserForInputFile(infile); //ask user for filename
     
@@ -42,7 +42,7 @@ void wordfrequency() {
 
 
 
-void CreateFrequencyTable(ifstream & infile, Map<int> & wordCounts) {
+void CreateFrequencyTable(ifstream & infile, Map<string, int> & wordCounts) {
     TokenScanner scanner;
     scanner.setInput(infile);
     scanner.ignoreWhitespace();
@@ -66,7 +66,7 @@ void DisplayEntry(string key, int value) {
     << right << setw(5) << value << endl;
 }
 
-void DisplayWordCounts(Map<int> & wordCounts) {
+void DisplayWordCounts(Map<string, int> & wordCounts) {
     wordCounts.mapAll(DisplayEntry);
 }
 

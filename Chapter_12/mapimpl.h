@@ -13,7 +13,7 @@
 #include "error.h"
 
 using namespace std;
-template <typename ValueType>
+template <typename KeyType, typename ValueType>
 class Map {
 public:
     /*
@@ -59,7 +59,7 @@ public:
      * This method associates key with value in this map.  Any value
      * previously associated with this key is replaced by the new one.
      */
-    void put(string key, ValueType value);
+    void put(KeyType key, ValueType value);
     /*
      * Method: get
      * Usage: value = map.get(key);
@@ -69,7 +69,7 @@ public:
      * Clients can use the containsKey method to verify the presence
      * of a key in the map before attempting to get its value.
      */
-    ValueType get(string key);
+    ValueType get(KeyType key);
     /*
      * Method: containsKey
      * Usage: if (map.containsKey(key))...
@@ -77,7 +77,7 @@ public:
      * Returns true if there is an entry for key in this map,
      * false otherwise.
      */
-    bool containsKey(string key);
+    bool containsKey(KeyType key);
     /*
      * Method: remove
      * Usage: map.remove(key);
@@ -85,9 +85,9 @@ public:
      * This method removes any entry for key from this map.
      * If there is no entry for the key, the map is unchanged.
      */
-    void remove(string key);
+    void remove(KeyType key);
     
-    void mapAll(void (*fn)(string, ValueType));
+    void mapAll(void (*fn)(KeyType, ValueType));
     
  
 private:
@@ -95,26 +95,26 @@ private:
     
 };
 
-template <typename ValueType>
-Map<ValueType>::Map() {
+template <typename KeyType, typename ValueType>
+Map<KeyType, ValueType>::Map() {
     capacity = INITIAL_CAPACITY;
     array = new keyValuePairT[capacity];
     count = 0;
 }
-template <typename ValueType>
-Map<ValueType>::~Map() {
+template <typename KeyType, typename ValueType>
+Map<KeyType, ValueType>::~Map() {
     delete[] array;
 }
-template <typename ValueType>
-int Map<ValueType>::size() {
+template <typename KeyType, typename ValueType>
+int Map<KeyType, ValueType>::size() {
     return count;
 }
-template <typename ValueType>
-bool Map<ValueType>::isEmpty() {
+template <typename KeyType, typename ValueType>
+bool Map<KeyType, ValueType>::isEmpty() {
     return (count == 0);
 }
-template <typename ValueType>
-void Map<ValueType>::clear() {
+template <typename KeyType, typename ValueType>
+void Map<KeyType, ValueType>::clear() {
     count = 0; }
 /*
  * Implementation notes: put
@@ -124,8 +124,8 @@ void Map<ValueType>::clear() {
  * corresponding key/value pair.  If not, put adds a new key/value
  * pair to the array, expanding the capacity if necessary.
  */
-template <typename ValueType>
-void Map<ValueType>::put(string key, ValueType value) {
+template <typename KeyType, typename ValueType>
+void Map<KeyType, ValueType>::put(KeyType key, ValueType value) {
     int index = findKey(key);
     bool found = false;
     if (index == -1) {
@@ -168,8 +168,8 @@ void Map<ValueType>::put(string key, ValueType value) {
  * If the key is found, get returns the value from that key/value
  * pair.  If not, get reports an error.
  */
-template <typename ValueType>
-ValueType Map<ValueType>::get(string key) {
+template <typename KeyType, typename ValueType>
+ValueType Map<KeyType, ValueType>::get(KeyType key) {
     int index = findKey(key);
     if (index == -1) {
         error("Attempt to get value for key that is not in the map."); }
@@ -181,8 +181,8 @@ ValueType Map<ValueType>::get(string key) {
  * This method simply checks the result of the private findKey
  * method, which does all the work.
  */
-template <typename ValueType>
-bool Map<ValueType>::containsKey(string key) {
+template <typename KeyType, typename ValueType>
+bool Map<KeyType, ValueType>::containsKey(KeyType key) {
     return (findKey(key) != -1);
 }
 /*
@@ -196,8 +196,8 @@ bool Map<ValueType>::containsKey(string key) {
  * region of the array.  Note also that count can't be zero
  * if findKey has found a match.
  */
-template <typename ValueType>
-void Map<ValueType>::remove(string key) {
+template <typename KeyType, typename ValueType>
+void Map<KeyType, ValueType>::remove(KeyType key) {
     int index = findKey(key);
     
     if (index != -1) {
@@ -223,17 +223,17 @@ void Map<ValueType>::remove(string key) {
  * it returns the index of that element in the array.  If no
  * such key exists, findKey returns -1.
  */
-template <typename ValueType>
-int Map<ValueType>::findKey(string key) {
+template <typename KeyType, typename ValueType>
+int Map<KeyType, ValueType>::findKey(KeyType key) {
 
     int findIndex = findKeyImpl(key, 0, size()-1);
     return findIndex;
     
 }
 
-template <typename ValueType>
-int Map<ValueType>::findKeyImpl(string key, int leftIndex, int rightIndex){
-    if (size()<=0){
+template <typename KeyType, typename ValueType>
+int Map<KeyType, ValueType>::findKeyImpl(KeyType key, int leftIndex, int rightIndex){
+    if (size()<=0){  //if the map is empty
         return -1;
     }
     
@@ -265,8 +265,8 @@ int Map<ValueType>::findKeyImpl(string key, int leftIndex, int rightIndex){
  * copy all the elements from the old array to the new one, and
  * free the old storage.
  */
-template <typename ValueType>
-void Map<ValueType>::expandCapacity() {
+template <typename KeyType, typename ValueType>
+void Map<KeyType, ValueType>::expandCapacity() {
     int count = size();
     capacity *= 2;
     keyValuePairT *oldArray = array;
@@ -277,8 +277,8 @@ void Map<ValueType>::expandCapacity() {
     delete[] oldArray;
 }
 
-template <typename ValueType>
-void Map<ValueType>::mapAll(void (*fn)(string, ValueType)){
+template <typename KeyType, typename ValueType>
+void Map<KeyType, ValueType>::mapAll(void (*fn)(KeyType, ValueType)){
     for(int x = 0; x<INITIAL_CAPACITY; x++){
         fn(array[x].key, array[x].value);
     }

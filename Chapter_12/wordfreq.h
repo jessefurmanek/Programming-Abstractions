@@ -22,7 +22,7 @@
 using namespace std;
 
 /* Private function prototypes */
-void CreateFrequencyTable(ifstream & infile, Map<int> & wordCounts); void DisplayWordCounts(Map<int> & wordCounts);
+void CreateFrequencyTable(ifstream & infile, Map<string, int> & wordCounts); void DisplayWordCounts(Map<string, int> & wordCounts);
 void AskUserForInputFile(ifstream & infile);
 bool IsAllAlpha(string & str);
 void wordfrequency();
